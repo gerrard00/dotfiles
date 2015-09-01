@@ -3,3 +3,5 @@
 	name = Gerrard Lindsay
 [push]
 	default = simple
+[core]
+	excludesFile = /home/gerrard/.gitignore_global
