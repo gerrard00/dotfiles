@@ -2,7 +2,8 @@ autoload -U compinit promptinit
 compinit
 promptinit
 
-prompt off
+PROMPT='%~ %% '
+
 setopt HIST_IGNORE_DUPS
 
 . ~/.nvm/nvm.sh
