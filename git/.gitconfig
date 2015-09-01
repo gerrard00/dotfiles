@@ -1,3 +1,5 @@
 [user]
 	email = gerrard@pickabar.com
 	name = Gerrard Lindsay
+[push]
+	default = simple
