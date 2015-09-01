@@ -1,0 +1,5 @@
+#include "/home/gerrard/.colors/base16-monokai.dark.xresources"
+
+*scrollBar: false
+*font: xft:Inconsolata:Medium:size=9
+*boldFont: xft:Inconsolata:Bold:size=9
