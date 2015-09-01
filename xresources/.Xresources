@@ -3,3 +3,7 @@
 *scrollBar: false
 *font: xft:Inconsolata:Medium:size=9
 *boldFont: xft:Inconsolata:Bold:size=9
+
+! set fake transparency
+urxvt*transparent: true
+urxvt*shading: 60
