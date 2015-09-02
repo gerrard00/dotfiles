@@ -6,4 +6,4 @@
 
 ! set fake transparency
 urxvt*transparent: true
-urxvt*shading: 60
+urxvt*shading: 30
