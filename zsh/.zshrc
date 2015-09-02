@@ -4,6 +4,9 @@ compinit
 promptinit
 colors
 
+#setup spectrum to support custom colors
+source ~/.zsh_lib/spectrum.zsh 
+
 #setup git stuff
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git svn
@@ -17,7 +20,9 @@ precmd() {
 #setup prompt substitution, used by git
 setopt PROMPT_SUBST
 
-PROMPT='%~ %% '
+PROMPT="
+%{$FG[242]%}%~%{$reset_color%}
+$ "
 
 RPROMPT='${vcs_info_msg_0_}'
 
