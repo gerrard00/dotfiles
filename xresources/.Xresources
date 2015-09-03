@@ -1,4 +1,4 @@
-#include "/home/gerrard/.colors/base16-monokai.dark.xresources"
+#include "/home/gerrard/.colors/base16-monokai.dark.256.xresources"
 
 *scrollBar: false
 *font: xft:Inconsolata:Medium:size=9
