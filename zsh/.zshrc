@@ -33,3 +33,6 @@ setopt HIST_IGNORE_DUPS
 if [ -x ~/.aliases ]; then
 	. ~/.aliases
 fi
+
+#this works, but requries me to enter the passphrase at login 
+#eval $(keychain --eval -Q --quiet --noask  id_rsa)
