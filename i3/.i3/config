@@ -191,3 +191,5 @@ new_window none
 #gaps
 gaps inner 8
 gaps outer 2
+smart_gaps on
+smart_borders on 
