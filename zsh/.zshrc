@@ -21,7 +21,7 @@ precmd() {
 setopt PROMPT_SUBST
 
 PROMPT="
-%{$FG[028]%}%~%{$reset_color%}
+%{$FG[044]%}%~%{$reset_color%}
 $ "
 
 RPROMPT='${vcs_info_msg_0_}'
