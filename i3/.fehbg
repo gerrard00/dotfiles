@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --image-bg black --bg-center '/home/gerrard/.wallpaper/ds9.jpg' 
+feh  --bg-scale '/home/gerrard/Downloads/TOS2x24c.png' 
