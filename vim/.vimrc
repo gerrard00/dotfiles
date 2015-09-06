@@ -10,13 +10,18 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'pangloss/vim-javascript'
+Plugin 'goatslacker/mango.vim'
+Plugin 'chriskempson/base16-vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 filetype on
 
 syntax enable
-colorscheme base16-monokai
+"let base16colorspace=256  " Access colors present in 256 colorspace
+"colorscheme base16-monokai
+set background=dark
 :set tabstop=2 shiftwidth=2 expandtab
 "this is to  set up simple save with \s
 noremap <Leader>s :update
