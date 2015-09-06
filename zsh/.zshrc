@@ -29,7 +29,7 @@ RPROMPT='${vcs_info_msg_0_}'
 setopt HIST_IGNORE_DUPS
 
 . ~/.nvm/nvm.sh
-nvm use node
+#nvm use node
 
 if [ -x ~/.aliases ]; then
 	. ~/.aliases
