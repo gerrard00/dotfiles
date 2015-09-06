@@ -10,7 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'pangloss/vim-javascript'
-Plugin 'goatslacker/mango.vim'
+"Plugin 'goatslacker/mango.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
@@ -21,11 +21,14 @@ filetype plugin indent on    " required
 filetype on
 
 syntax enable
-" setup for the monokai theme
+" setup colors 
+set background=dark
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-monokai
 
-set background=dark
+"transparent background
+hi Normal ctermbg=none
+ 
 :set tabstop=2 shiftwidth=2 expandtab
 "this is to  set up simple save with \s
 noremap <Leader>s :update
