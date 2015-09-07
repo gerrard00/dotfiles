@@ -169,7 +169,7 @@ bar {
 exec --no-startup-id nm-applet
 
 #code for shutdown prompt from arch wiki
-set $Locker i3lock && sleep 1
+set $Locker i3lock -i /home/gerrard/images/1441616560_lock_big.png && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
