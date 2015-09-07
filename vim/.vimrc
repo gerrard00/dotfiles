@@ -10,7 +10,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'pangloss/vim-javascript'
-"Plugin 'goatslacker/mango.vim'
+" cool color scheme, but I don't want to use it now Plugin 'goatslacker/mango.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
@@ -35,11 +35,11 @@ hi Normal ctermbg=none
 noremap <Leader>s :update
 
 "syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_always_populate_loc_list = 0
+let g:syntastic_auto_loc_list = 1 
 let g:syntastic_check_on_open = 0 
-let g:syntastic_check_on_wq = 0
+let g:syntastic_check_on_wq = 1
