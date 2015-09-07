@@ -192,7 +192,7 @@ new_window pixel 3
 
 #gaps
 gaps inner 10 
-gaps outer 5 
+gaps outer 0 
 smart_gaps on
 smart_borders on 
 
