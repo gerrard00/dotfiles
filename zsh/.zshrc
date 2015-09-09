@@ -36,7 +36,7 @@ if [ -x ~/.aliases ]; then
 fi
 
 #this works, but requries me to enter the passphrase at login 
-#eval $(keychain --eval -Q --quiet --noask  id_rsa)
+eval $(keychain --eval -Q --quiet id_rsa)
 
 # Base16 Shell
 BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
