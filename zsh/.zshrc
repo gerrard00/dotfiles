@@ -28,8 +28,11 @@ RPROMPT='${vcs_info_msg_0_}'
 
 setopt HIST_IGNORE_DUPS
 
-. ~/.nvm/nvm.sh
-#nvm use node
+#nvm use is too slow on my beaters
+if [ -s ~/.nvm/nvm.sh ]; then
+  . ~/.nvm/nvm.sh
+  #nvm use node
+fi
 
 if [ -x ~/.aliases ]; then
 	. ~/.aliases
