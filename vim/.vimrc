@@ -31,7 +31,7 @@ colorscheme base16-monokai
 "transparent background
 hi Normal ctermbg=none
  
-:set tabstop=2 shiftwidth=2 expandtab
+:set tabstop=4 shiftwidth=2 expandtab
 "this is to  set up simple save with \s
 noremap <Leader>s :update
 
