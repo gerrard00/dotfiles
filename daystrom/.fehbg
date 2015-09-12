@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --image-bg black --bg-center '/home/gerrard/images/Daystrom.jpg' 
+feh  --image-bg black --bg-max '/home/gerrard/images/Daystrom.jpg' 
