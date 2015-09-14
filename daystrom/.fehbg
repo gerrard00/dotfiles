@@ -1,2 +1,2 @@
 #!/bin/sh
-feh  --image-bg black --bg-max '/home/gerrard/images/Daystrom.jpg' 
+feh --bg-max --randomize --no-fehbg ~/.wallpaper/*
