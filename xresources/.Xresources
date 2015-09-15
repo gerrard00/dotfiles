@@ -5,3 +5,5 @@
 ! set fake transparency
 urxvt*transparent: true
 urxvt*shading: 30
+URxvt.letterSpace: -1
+
