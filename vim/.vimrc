@@ -16,6 +16,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'scrooloose/nerdtree'
+Plugin 'othree/javascript-libraries-syntax.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -47,3 +49,10 @@ let g:syntastic_check_on_wq = 1
 
 "turn off word wrap
 :set nowrap
+
+"setup javascript-libraries-syntax
+let g:used_javascript_libs = 'jquery,underscore,angularjs,angularui,angularuirouter'
+
+"turn on line numbers...I don't like them, but need a margin
+:set number
+
