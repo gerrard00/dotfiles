@@ -16,7 +16,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'scrooloose/nerdtree'
-
+Plugin 'Valloric/YouCompleteMe'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -33,6 +33,10 @@ colorscheme base16-monokai
 hi Normal ctermbg=none
  
 :set tabstop=4 shiftwidth=2 expandtab
+
+"don't expand tabs for make files
+autocmd FileType Makefile setlocal noexpandtab
+
 "this is to  set up simple save with \s
 noremap <Leader>s :update
 
@@ -51,4 +55,7 @@ let g:syntastic_check_on_wq = 1
 
 "turn on line numbers...I don't like them, but need a margin
 :set number
+
+"default ycm conf for c files.
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 
