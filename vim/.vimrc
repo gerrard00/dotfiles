@@ -32,10 +32,7 @@ colorscheme base16-monokai
 "transparent background
 hi Normal ctermbg=none
  
-:set tabstop=4 shiftwidth=2 expandtab
-
-"don't expand tabs for make files
-autocmd FileType Makefile setlocal noexpandtab
+:set tabstop=2 shiftwidth=2 expandtab
 
 "this is to  set up simple save with \s
 noremap <Leader>s :update
