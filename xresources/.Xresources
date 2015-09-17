@@ -4,7 +4,7 @@
 
 ! set fake transparency
 urxvt*transparent: true
-urxvt*shading: 30
+urxvt*shading: 20
 URxvt.letterSpace: -1
 
 ! setup urxvt-font-size for on the fly font changes
@@ -15,3 +15,4 @@ URxvt.keysym.C-S-Up:   font-size:incglobal
 URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-0:      font-size:reset
 
+URxvt.intensityStyles: false
