@@ -31,6 +31,7 @@ colorscheme base16-monokai
 
 "transparent background
 hi Normal ctermbg=none
+hi LineNr ctermbg=none
  
 :set tabstop=2 shiftwidth=2 expandtab
 
