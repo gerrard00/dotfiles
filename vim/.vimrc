@@ -17,6 +17,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'PotatoesMaster/i3-vim-syntax'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'majutsushi/tagbar'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -56,4 +57,7 @@ let g:syntastic_check_on_wq = 1
 
 "default ycm conf for c files.
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+
+"tagbar config
+nmap <silent> <F8> :TagbarToggle<CR>
 
