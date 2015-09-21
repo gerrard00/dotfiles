@@ -1,7 +1,7 @@
 *scrollBar: false
-*font: xft:Inconsolata for Powerline:Medium:size=9,xft:Inconsolata:Medium:size=9
-*boldFont: xft:Inconsolata for Powerline:Bold:size=9,xft:Inconsolata:Bold:size=9
 
+*font: xft:Inconsolata:Medium:size=9,xft:Inconsolata for Powerline:Medium:size=9
+*boldFont: xft:Inconsolata:Bold:size=9,xft:Inconsolata for Powerline:Bold:size=9
 
 ! set fake transparency
 urxvt*transparent: true
@@ -17,3 +17,5 @@ URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-0:      font-size:reset
 
 URxvt.intensityStyles: false
+
+
