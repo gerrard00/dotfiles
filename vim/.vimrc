@@ -64,7 +64,7 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 nmap <silent> <F8> :TagbarToggle<CR>
 
 " airline config
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 0
 
 "powerline symbols
 if !exists('g:airline_symbols')
