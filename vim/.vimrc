@@ -80,3 +80,10 @@ let g:airline_symbols.branch = ''
 let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ''
 
+
+function! AirlineInit()
+  let g:airline_section_x = airline#section#create_right(['tagbar'])
+  let g:airline_section_y = '' 
+endfunction
+autocmd User AirlineAfterInit call AirlineInit()
+
