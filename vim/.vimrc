@@ -87,3 +87,5 @@ function! AirlineInit()
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
+" toggle paste mode
+set pastetoggle=<F2>
