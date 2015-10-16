@@ -20,6 +20,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'majutsushi/tagbar'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -55,7 +58,7 @@ let g:syntastic_check_on_wq = 1
 :set nowrap
 
 "turn on line numbers...I don't like them, but need a margin
-":set number
+:set number
 
 "default ycm conf for c files.
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
