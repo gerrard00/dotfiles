@@ -30,14 +30,6 @@ filetype plugin indent on    " required
 filetype on
 
 syntax enable
-" setup colors 
-set background=dark
-let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-monokai
-
-"transparent background
-"hi Normal ctermbg=none
-hi LineNr ctermbg=none
  
 :set tabstop=2 shiftwidth=2 expandtab
 
@@ -92,3 +84,8 @@ autocmd User AirlineAfterInit call AirlineInit()
 
 " toggle paste mode
 set pastetoggle=<F2>
+
+let $vimrc_local = expand('~/.vimrc.local')
+if filereadable($vimrc_local)
+  source $vimrc_local
+endif

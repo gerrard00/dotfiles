@@ -1,0 +1,9 @@
+" setup colors 
+set background=dark
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-monokai
+
+"transparent background
+"hi Normal ctermbg=none
+hi LineNr ctermbg=none
+
