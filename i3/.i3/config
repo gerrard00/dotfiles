@@ -216,3 +216,5 @@ client.focused                 #66d9ef #66d9ef #272822 #383830
 client.focused_inactive        #49483e #49483e #75715e #383830
 client.unfocused               #383830 #383830 #75715e #383830
 client.urgent                  #49483e #f92672 #f9f8f5 #f92672
+
+bindsym Print exec scrot
