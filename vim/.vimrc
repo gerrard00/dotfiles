@@ -85,7 +85,16 @@ autocmd User AirlineAfterInit call AirlineInit()
 " toggle paste mode
 set pastetoggle=<F2>
 
+"get rid of scrollbars
+set guioptions-=r 
+set guioptions-=L 
+
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
   source $vimrc_local
 endif
+
+"transparent background (note has to go after local file,
+"as that might set colors
+"hi Normal ctermbg=none
+hi LineNr ctermbg=none guibg=bg
