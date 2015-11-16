@@ -60,22 +60,7 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 nmap <silent> <F8> :TagbarToggle<CR>
 
 " airline config
-"let g:airline_powerline_fonts = 0
-
-"powerline symbols
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-"let g:airline_right_alt_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-
+let g:airline_powerline_fonts = 1
 
 function! AirlineInit()
   let g:airline_section_x = airline#section#create_right(['tagbar'])
@@ -99,3 +84,12 @@ endif
 "as that might set colors
 "hi Normal ctermbg=none
 hi LineNr ctermbg=none guibg=bg
+
+"NERDTree
+"show hidden files
+let NERDTreeShowHidden=1
+
+"toggle display of nerdtree: http://stackoverflow.com/a/10417725/1011470
+silent! nmap <C-p> :NERDTreeToggle<CR>
+silent! map <F3> :NERDTreeFind<CR>
+let g:NERDTreeMapPreview="<F4>"
