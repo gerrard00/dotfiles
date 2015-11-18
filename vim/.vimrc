@@ -93,3 +93,6 @@ let NERDTreeShowHidden=1
 silent! nmap <C-p> :NERDTreeToggle<CR>
 silent! map <F3> :NERDTreeFind<CR>
 let g:NERDTreeMapPreview="<F4>"
+
+"have <ENTER> add a new line staying in normal mode
+nmap <CR> o<Esc>
