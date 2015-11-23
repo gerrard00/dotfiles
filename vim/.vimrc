@@ -35,7 +35,7 @@ syntax enable
 :set tabstop=2 shiftwidth=2 expandtab
 
 "this is to  set up simple save with \s
-noremap <Leader>s :update
+noremap <silent><Leader>s :update<CR>
 
 "syntastic
 "set statusline+=%#warningmsg#
