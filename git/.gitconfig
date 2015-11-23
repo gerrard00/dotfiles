@@ -9,9 +9,8 @@
 [diff]
     tool = kdiff3
 [merge]
-    tool = kdiff3noauto
-[mergetool "kdiff3noauto"]
-    cmd = kdiff3 --l1 \"$merged (base)\" --l2 \"$merged (local)\" --l3 \"$merged (remote)\" -o \"$merged\" \"$base\" \"$local\" \"$remote\"
+    tool = kdiff3
+[mergetool "kdiff3"]
     keeptemporaries = false
     trustexitcode = false
     keepbackup = false
