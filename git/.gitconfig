@@ -5,3 +5,15 @@
 	default = simple
 [core]
 	excludesFile = /home/gerrard/.gitignore_global
+  autocrlf = false
+[diff]
+    tool = kdiff3
+[merge]
+    tool = kdiff3noauto
+[mergetool "kdiff3noauto"]
+    cmd = kdiff3 --l1 \"$merged (base)\" --l2 \"$merged (local)\" --l3 \"$merged (remote)\" -o \"$merged\" \"$base\" \"$local\" \"$remote\"
+    keeptemporaries = false
+    trustexitcode = false
+    keepbackup = false
+[difftool]
+	prompt = false
