@@ -23,7 +23,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'kien/ctrlp.vim'
-
+Plugin 'tpope/vim-commentary'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
