@@ -1,2 +1,9 @@
 alias ls='ls --color=auto'
 alias grep='grep  --color=auto'
+
+#setup gcd to cd from git repo root
+function gcd() {
+  cd $(git rev-parse --show-toplevel)/$1
+}
+
+

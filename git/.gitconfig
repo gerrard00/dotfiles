@@ -5,3 +5,14 @@
 	default = simple
 [core]
 	excludesFile = /home/gerrard/.gitignore_global
+  autocrlf = false
+[diff]
+    tool = kdiff3
+[merge]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    keeptemporaries = false
+    trustexitcode = false
+    keepbackup = false
+[difftool]
+	prompt = false
