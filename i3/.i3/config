@@ -218,3 +218,7 @@ client.unfocused               #383830 #383830 #75715e #383830
 client.urgent                  #49483e #f92672 #f9f8f5 #f92672
 
 bindsym Print exec scrot
+
+# setup osx style workspace switching
+bindsym Control+Left workspace prev
+bindsym Control+Right workspace next 
