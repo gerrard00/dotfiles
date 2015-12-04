@@ -1,0 +1,2 @@
+# override alias set in .aliases, which doesn't work for osx
+alias ls='ls -G'
