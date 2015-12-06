@@ -97,3 +97,6 @@ let g:NERDTreeMapPreview="<F4>"
 
 "have <ENTER> add a new line staying in normal mode
 nmap <CR> o<Esc>
+
+"Ctrlp.vim should ignore stuff in .gitignore
+ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
