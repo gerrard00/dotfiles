@@ -1,0 +1,12 @@
+" setup colors 
+set background=dark
+colorscheme base16-monokai
+
+set lazyredraw " to avoid scrolling problems in mac
+
+"enable eslint for now just on osx box
+"not sure I actually need this
+let g:syntastic_javascript_checkers = ['eslint', 'jscs']
+
+"enable mouse scrolling, will help during demos
+:set mouse=a
