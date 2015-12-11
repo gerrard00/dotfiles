@@ -1,7 +1,7 @@
 *scrollBar: false
 
-*font: xft:Inconsolata:Medium:size=9, xft:Inconsolata for Powerline:Medium:size=9
-*boldFont: xft:Inconsolata:Bold:size=9, xft:Inconsolata for Powerline:Medium:size=9
+*font: xft:Inconsolata:Medium:size=12, xft:Inconsolata for Powerline:Medium:size=12
+*boldFont: xft:Inconsolata:Bold:size=12, xft:Inconsolata for Powerline:Medium:size=12
 
 ! set fake transparency
 urxvt*transparent: true
@@ -9,7 +9,7 @@ urxvt*shading: 20
 URxvt.letterSpace: -1
 
 ! setup urxvt-font-size for on the fly font changes
-URxvt.perl-ext-common: ...,font-size
+URxvt.perl-ext-common: font-size
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
 URxvt.keysym.C-S-Up:   font-size:incglobal

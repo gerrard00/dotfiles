@@ -47,3 +47,4 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
 
 #use vi mode
 bindkey -v
+bindkey "^R" history-incremental-pattern-search-backward
