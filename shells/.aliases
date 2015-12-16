@@ -4,8 +4,11 @@ alias please='sudo $(fc -ln -1)'
 
 #setup gcd to cd from git repo root
 function gcd() {
-  cd $(git rev-parse --show-toplevel)/$1
-  echo $(pwd)
+  cd $(gpwd)/$1
+}
+
+function gpwd() {
+  echo $(git rev-parse --show-toplevel)
 }
 
 # keep this at the end, so aliases can be
