@@ -4,6 +4,7 @@ alias grep='grep  --color=auto'
 #setup gcd to cd from git repo root
 function gcd() {
   cd $(git rev-parse --show-toplevel)/$1
+  echo $(pwd)
 }
 
 # keep this at the end, so aliases can be
