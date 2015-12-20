@@ -3,10 +3,8 @@
 *font: xft:Inconsolata:Medium:size=12, xft:Inconsolata for Powerline:Medium:size=12
 *boldFont: xft:Inconsolata:Bold:size=12, xft:Inconsolata for Powerline:Medium:size=12
 
-! set fake transparency
-urxvt*transparent: true
-urxvt*shading: 20
-URxvt.letterSpace: -1
+Rxvt.letterSpace: -1
+URxvt.depth: 32
 
 ! setup urxvt-font-size for on the fly font changes
 URxvt.perl-ext-common: font-size
@@ -38,8 +36,11 @@ URxvt.intensityStyles: false
 #define base0E #ae81ff
 #define base0F #cc6633
 
+#define base00trans [95]#272822
+  
+
 *.foreground:   base05
-*.background:   base00
+URxvt.background:   base00trans
 *.cursorColor:  base05
 
 *.color0:       base00
