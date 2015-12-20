@@ -156,11 +156,13 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar
+
 bar {
-        status_command i3blocks
-        font pango:Inconsolata 12
-        mode hide
-        modifier $mod
+  status_command i3blocks
+  font pango:Inconsolata 12
+  mode hide
+  modifier $mod
+  
 	colors {
     background              #272822
     separator               #75715e
