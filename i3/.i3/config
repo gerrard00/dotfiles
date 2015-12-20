@@ -175,10 +175,6 @@ bar {
 	}
 }
 
-# Start Network Manager
-
-exec --no-startup-id nm-applet
-
 #code for shutdown prompt from arch wiki
 set $Locker $HOME/.i3/i3lock-fancy/lock && sleep 1
 
