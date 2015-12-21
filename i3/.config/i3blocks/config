@@ -28,6 +28,10 @@ command=/usr/lib/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
+color_good=#a6e22e
+color_degraded=#f4bf75
+color_bad=#f92672
+
 # Volume indicator
 #
 # The first parameter sets the step (and units to display)
@@ -35,7 +39,7 @@ markup=none
 # See the script for details.
 [volume]
 label=VOL
-#label=♪
+label=
 instance=Master
 #instance=PCM
 interval=once
@@ -69,16 +73,21 @@ signal=1
 #
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
-[iface]
+# [iface]
 #instance=wlan0
-color=#00FF00
-interval=10
-separator=false
+# color=#00FF00
+# interval=10
+# separator=false
 
 [wifi]
+label=
 instance=wlp3s0
-interval=10
-# separator=false
+interval=30
+separator=false
+
+[ssid]
+command=echo "$(iw dev wlp3s0 link | grep SSID | cut -d " " -f 2-)"
+interval=30
 
 # [bandwidth]
 #instance=eth0
@@ -94,8 +103,8 @@ interval=10
 # min_width=CPU: 100.00%
 #separator=false
 
-#[load_average]
-#interval=10
+[load_average]
+interval=10
 
 # Battery indicator
 #
