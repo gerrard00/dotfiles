@@ -24,12 +24,13 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/lib/i3blocks/$BLOCK_NAME
+command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
 color_good=#a6e22e
-color_degraded=#f4bf75
+color_fair=#f4bf75
+color_degraded=#fd971f
 color_bad=#f92672
 
 # Volume indicator
@@ -38,7 +39,6 @@ color_bad=#f92672
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-label=VOL
 label=
 instance=Master
 #instance=PCM

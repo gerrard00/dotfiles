@@ -158,7 +158,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar
 
 bar {
-  status_command i3blocks
+  status_command SCRIPT_DIR=/home/gerrard/oss/i3blocks-fork/scripts /home/gerrard/oss/i3blocks-fork/i3blocks -c ~/.config/i3blocks/config
   font pango:Inconsolata 12
   mode hide
   modifier $mod
