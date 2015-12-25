@@ -16,6 +16,10 @@ URxvt.keysym.C-0:      font-size:reset
 
 URxvt.intensityStyles: false
 
+
+! Hide the pointer when typing (no need for unclutter)
+URxvt*pointerBlank: true
+
 ! Base16 Monokai
 ! Scheme: Wimer Hazenberg (http://www.monokai.nl)
 
