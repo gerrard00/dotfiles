@@ -79,3 +79,6 @@ node_modules
 Session.vim
 .netrwhist
 *~
+
+# Ignore TernJS project files
+.tern-project
