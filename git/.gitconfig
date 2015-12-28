@@ -1,11 +1,11 @@
+[core]
+	excludesfile = /Users/glindsay/.gitignore_global
+	editor = vim
 [user]
-	email = gerrard@pickabar.com
 	name = Gerrard Lindsay
+	email = gerrardalindsay@gmail.com
 [push]
 	default = simple
-[core]
-	excludesFile = /home/gerrard/.gitignore_global
-  autocrlf = false
 [diff]
     tool = kdiff3
 [merge]
@@ -16,3 +16,5 @@
     keepbackup = false
 [difftool]
 	prompt = false
+[url "https://"]
+	insteadOf = git://
