@@ -7,12 +7,9 @@
 	excludesFile = /home/gerrard/.gitignore_global
   autocrlf = false
 [diff]
-    tool = kdiff3
+	tool = vimdiff
 [merge]
-    tool = kdiff3
-[mergetool "kdiff3"]
-    keeptemporaries = false
-    trustexitcode = false
-    keepbackup = false
+	tool = vimdiff
+  conflictstyle = diff3
 [difftool]
 	prompt = false
