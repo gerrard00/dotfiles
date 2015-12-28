@@ -24,6 +24,9 @@ Plugin 'xolox/vim-easytags'
 Plugin 'xolox/vim-misc'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-commentary'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'ternjs/tern_for_vim'
+Plugin 'tpope/vim-surround'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -100,3 +103,6 @@ nmap <CR> o<Esc>
 
 "Ctrlp.vim should ignore stuff in .gitignore
  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+ "I just want vim-better-whitespace to work on demand
+let g:better_whitespace_enabled = 0
