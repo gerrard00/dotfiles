@@ -5,6 +5,7 @@ promptinit
 colors
 
 #setup spectrum to support custom colors
+# TODO: this won't be needed if I switch to zpresto, just use their spectrum module
 source ~/.zsh_lib/spectrum.zsh 
 
 #setup git stuff
