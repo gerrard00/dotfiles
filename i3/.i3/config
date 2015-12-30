@@ -31,6 +31,9 @@ font pango:Inconsolata, FontAwesome 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# shell script that shows the bar for a moment
+set $peek_bar_command exec ~/.i3/peek-bar 0.65
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -95,20 +98,20 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # Name the workspaces
-set $tag1 "1: www"
-set $tag2 "2: term"
+set $tag1 1: www
+set $tag2 2: term
 
 # switch to workspace
-bindsym $mod+1 workspace $tag1
-bindsym $mod+2 workspace $tag2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 "workspace $tag1; $peek_bar_command"
+bindsym $mod+2 "workspace $tag2; $peek_bar_command"
+bindsym $mod+3 "workspace 3; $peek_bar_command"
+bindsym $mod+4 "workspace 4; $peek_bar_command"
+bindsym $mod+5 "workspace 5; $peek_bar_command"
+bindsym $mod+6 "workspace 6; $peek_bar_command"
+bindsym $mod+7 "workspace 7; $peek_bar_command"
+bindsym $mod+8 "workspace 8; $peek_bar_command"
+bindsym $mod+9 "workspace 9; $peek_bar_command"
+bindsym $mod+0 "workspace 10; $peek_bar_command"
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $tag1
@@ -162,7 +165,7 @@ bar {
   font pango:Inconsolata 12
   mode hide
   modifier $mod
-  
+  separator_symbol "|"
 	colors {
     background              #272822
     separator               #75715e
@@ -204,9 +207,9 @@ smart_gaps on
 smart_borders on 
 
 #setup audio buttons
-bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2dB+ unmute ; pkill -RTMIN+1 i3blocks"
-bindsym XF86AudioLowerVolume exec "amixer -q set Master 2dB- unmute ; pkill -RTMIN+1 i3blocks"
-bindsym XF86AudioMute exec "amixer -q set Master toggle ; pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2dB+ unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioLowerVolume exec "amixer -q set Master 2dB- unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioMute exec "amixer -q set Master toggle ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
 
 
 #setup shortcut for firefox
@@ -222,8 +225,10 @@ client.urgent                  #49483e #f92672 #f9f8f5 #f92672
 bindsym Print exec scrot
 
 # setup osx style workspace switching
-bindsym Control+Left workspace prev
-bindsym Control+Right workspace next 
+bindsym Control+Left "workspace prev; $peek_bar_command"
+bindsym Control+Right "workspace next; $peek_bar_command"
+bindsym XF86Back "workspace prev; $peek_bar_command"
+bindsym XF86Forward "workspace next; $peek_bar_command"
 
 # use compton 
 exec compton --config ~/.config/compton.conf -b
