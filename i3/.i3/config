@@ -227,6 +227,8 @@ bindsym Print exec scrot
 # setup osx style workspace switching
 bindsym Control+Left "workspace prev; $peek_bar_command"
 bindsym Control+Right "workspace next; $peek_bar_command"
+bindsym XF86Back "workspace prev; $peek_bar_command"
+bindsym XF86Forward "workspace next; $peek_bar_command"
 
 # use compton 
 exec compton --config ~/.config/compton.conf -b
