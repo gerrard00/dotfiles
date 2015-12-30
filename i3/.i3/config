@@ -31,6 +31,9 @@ font pango:Inconsolata, FontAwesome 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# shell script that shows the bar for a moment
+set $peek_bar_command exec ~/.i3/peek-bar 0.65
+
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
@@ -204,9 +207,9 @@ smart_gaps on
 smart_borders on 
 
 #setup audio buttons
-bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2dB+ unmute ; pkill -RTMIN+1 i3blocks"
-bindsym XF86AudioLowerVolume exec "amixer -q set Master 2dB- unmute ; pkill -RTMIN+1 i3blocks"
-bindsym XF86AudioMute exec "amixer -q set Master toggle ; pkill -RTMIN+1 i3blocks"
+bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2dB+ unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioLowerVolume exec "amixer -q set Master 2dB- unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioMute exec "amixer -q set Master toggle ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
 
 
 #setup shortcut for firefox
@@ -222,8 +225,8 @@ client.urgent                  #49483e #f92672 #f9f8f5 #f92672
 bindsym Print exec scrot
 
 # setup osx style workspace switching
-bindsym Control+Left workspace prev
-bindsym Control+Right workspace next 
+bindsym Control+Left "workspace prev; $peek_bar_command"
+bindsym Control+Right "workspace next; $peek_bar_command"
 
 # use compton 
 exec compton --config ~/.config/compton.conf -b
