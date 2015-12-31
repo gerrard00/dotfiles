@@ -106,3 +106,6 @@ nmap <CR> o<Esc>
 
  "I just want vim-better-whitespace to work on demand
 let g:better_whitespace_enabled = 0
+
+" Don't show mode in status line
+set noshowmode
