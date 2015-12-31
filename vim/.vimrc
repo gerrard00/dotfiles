@@ -35,7 +35,7 @@ filetype on
 
 syntax enable
  
-:set tabstop=2 shiftwidth=2 expandtab
+set tabstop=2 shiftwidth=2 expandtab
 
 "this is to  set up simple save with \s
 noremap <silent><Leader>s :update<CR>
@@ -52,10 +52,10 @@ let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 
 "turn off word wrap
-:set nowrap
+set nowrap
 
 "turn on line numbers...I don't like them, but need a margin
-:set number
+set number
 
 "default ycm conf for c files.
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
