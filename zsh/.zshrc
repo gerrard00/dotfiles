@@ -42,9 +42,5 @@ fi
 #this works, but requries me to enter the passphrase at login 
 eval $(keychain --eval -Q --quiet id_rsa)
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
-[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
-
 #use vi mode
 bindkey -v
