@@ -36,7 +36,6 @@ if [ -f /usr/bin/VBoxClient-all ] ; then
   sh /usr/bin/VBoxClient-all
 fi
 
-sh ~/.fehbg &
 exec i3
 
 #disable capslock 
