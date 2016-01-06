@@ -1,2 +1,5 @@
 # override alias set in .aliases, which doesn't work for osx
 alias ls='ls -G'
+
+# make reset actually clear scrollback buffer in iterm2
+alias reset='printf '\''\e]50;ClearScrollback\a'\'
