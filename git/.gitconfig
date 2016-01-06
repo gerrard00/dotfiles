@@ -10,8 +10,10 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
-  conflictstyle = diff3
+  	conflictstyle = diff3
 [difftool]
 	prompt = false
 [url "https://"]
 	insteadOf = git://
+[mergetool "vimdiff"]
+	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"

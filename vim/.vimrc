@@ -104,8 +104,11 @@ nmap <CR> o<Esc>
 "Ctrlp.vim should ignore stuff in .gitignore
  let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
- "I just want vim-better-whitespace to work on demand
+"I just want vim-better-whitespace to work on demand
 let g:better_whitespace_enabled = 0
 
 " Don't show mode in status line
 set noshowmode
+
+" use local tags file if present
+set tags+=tags;

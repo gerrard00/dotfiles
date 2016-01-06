@@ -32,7 +32,7 @@ font pango:Inconsolata, FontAwesome 8
 floating_modifier $mod
 
 # shell script that shows the bar for a moment
-set $peek_bar_command exec ~/.i3/peek-bar 0.65
+set $peek_bar_command exec ~/.i3/peek-bar 0.75
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
@@ -201,7 +201,7 @@ bindsym $mod+Pause mode "$mode_system"
 new_window pixel 0
 
 #gaps
-gaps inner 10
+gaps inner 8
 gaps outer 0 
 smart_gaps on
 smart_borders on 
