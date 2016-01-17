@@ -18,6 +18,4 @@ if [ -x "$HOME/.aliases_local" ]; then
   for aliasfile in $HOME/.aliases_local/*; do
     . $aliasfile
   done
-else
-  echo shithead
 fi
