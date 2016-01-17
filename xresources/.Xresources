@@ -64,3 +64,11 @@ URxvt.background:   base00trans
 *.color13:      base06
 *.color14:      base0F
 *.color15:      base07
+
+! Xft settings ---------------------------------------------------------------
+
+Xft.dpi:        118
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
