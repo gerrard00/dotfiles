@@ -41,7 +41,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run -font "Serif\ 20" -hlbg "#66d9ef" -hlfg "#272822" -bg "#383830" -fg "#75715e"
+bindsym $mod+d exec rofi -show run -font "Serif\ 20" -hlbg "#66d9ef" \
+  -hlfg "#272822" -bg "#383830" -fg "#75715e" -opacity 90 -fullscreen -padding 80 -lines 5 -eh 2
 # using the window switcher seems to cause problems
 # bindsym Mod4+d exec rofi -show window -font "Serif\ 20" -hlbg "#66d9ef" -hlfg "#272822" -bg "#383830" -fg "#75715e"
 
