@@ -3,7 +3,7 @@
 *font: xft:Inconsolata:Medium:size=12, xft:Inconsolata for Powerline:Medium:size=12
 *boldFont: xft:Inconsolata:Bold:size=12, xft:Inconsolata for Powerline:Medium:size=12
 
-Rxvt.letterSpace: -1
+URxvt.letterSpace: -1
 URxvt.depth: 32
 
 ! setup urxvt-font-size for on the fly font changes
@@ -44,6 +44,7 @@ URxvt*pointerBlank: true
   
 
 *.foreground:   base05
+! vim doesn't like this if we don't specify URxvt
 URxvt.background:   base00trans
 *.cursorColor:  base05
 
@@ -64,3 +65,11 @@ URxvt.background:   base00trans
 *.color13:      base06
 *.color14:      base0F
 *.color15:      base07
+
+! Xft settings ---------------------------------------------------------------
+
+Xft.dpi:        118
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
