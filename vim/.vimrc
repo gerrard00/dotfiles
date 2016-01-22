@@ -116,3 +116,10 @@ autocmd User Node
   \ if &filetype == "javascript" |
   \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile <bar> <C-w>r |
   \ endif
+
+" new line w/o insert
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
+
+" jk for escape
+inoremap jk <esc>
