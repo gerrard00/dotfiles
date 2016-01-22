@@ -27,6 +27,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'ternjs/tern_for_vim'
 Plugin 'tpope/vim-surround'
+Plugin 'moll/vim-node'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -112,3 +113,9 @@ set noshowmode
 
 " use local tags file if present
 set tags+=tags;
+
+" vim-node split should use vertical split
+autocmd User Node
+  \ if &filetype == "javascript" |
+  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile <bar> <C-w>r |
+  \ endif
