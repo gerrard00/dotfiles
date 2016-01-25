@@ -18,16 +18,26 @@ precmd() {
     vcs_info
 }
 
+setopt HIST_IGNORE_DUPS
+
 #setup prompt substitution, used by git
 setopt PROMPT_SUBST
 
-PROMPT="
-%{$FG[044]%}%~%{$reset_color%}
-$ "
+function zle-line-init zle-keymap-select {
+  NEWLINE=$'\n'
+  if [[ $KEYMAP == "vicmd" ]]; then
+    PROMPT="${NEWLINE}%{$FG[002]%}%~${NEWLINE}€%{$reset_color%} "
+  else
+    PROMPT="${NEWLINE}%{$FG[044]%}%~${NEWLINE}$%{$reset_color%} "
+  fi
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 RPROMPT='${vcs_info_msg_0_}'
 
-setopt HIST_IGNORE_DUPS
 
 #nvm use is too slow on my beaters
 # if [ -s ~/.nvm/nvm.sh ]; then
