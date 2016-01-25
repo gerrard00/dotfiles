@@ -35,7 +35,7 @@ filetype plugin indent on    " required
 filetype on
 
 syntax enable
- 
+
 set tabstop=2 shiftwidth=2 expandtab
 
 "this is to  set up simple save with \s
@@ -49,7 +49,7 @@ noremap <silent><Leader>s :update<CR>
 let g:syntastic_always_populate_loc_list = 1
 "don't auto show location for errors
 let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0 
+let g:syntastic_check_on_open = 0
 let g:syntastic_check_on_wq = 1
 
 "turn off word wrap
@@ -69,7 +69,7 @@ let g:airline_powerline_fonts = 1
 
 function! AirlineInit()
   let g:airline_section_x = airline#section#create_right(['tagbar'])
-  let g:airline_section_y = '' 
+  let g:airline_section_y = ''
 endfunction
 autocmd User AirlineAfterInit call AirlineInit()
 
@@ -77,8 +77,8 @@ autocmd User AirlineAfterInit call AirlineInit()
 set pastetoggle=<F2>
 
 "get rid of scrollbars
-set guioptions-=r 
-set guioptions-=L 
+set guioptions-=r
+set guioptions-=L
 
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
