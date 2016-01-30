@@ -1,7 +1,3 @@
-" setup colors 
-set background=dark
-colorscheme base16-monokai
-
 "transparent background
 "hi Normal ctermbg=none
 hi LineNr ctermbg=none

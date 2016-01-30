@@ -4,9 +4,9 @@ compinit
 promptinit
 colors
 
-#setup spectrum to support custom colors
-# TODO: this won't be needed if I switch to zpresto, just use their spectrum module
-source ~/.zsh_lib/spectrum.zsh 
+# Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 #setup git stuff
 autoload -Uz vcs_info
@@ -26,9 +26,9 @@ setopt PROMPT_SUBST
 function zle-line-init zle-keymap-select {
   NEWLINE=$'\n'
   if [[ $KEYMAP == "vicmd" ]]; then
-    PROMPT="${NEWLINE}%{$FG[002]%}%~${NEWLINE}€%{$reset_color%} "
+    PROMPT="${NEWLINE}%{$fg[green]%}%~${NEWLINE}€%{$reset_color%} "
   else
-    PROMPT="${NEWLINE}%{$FG[044]%}%~${NEWLINE}$%{$reset_color%} "
+    PROMPT="${NEWLINE}%{$fg[blue]%}%~${NEWLINE}$%{$reset_color%} "
   fi
   zle reset-prompt
 }

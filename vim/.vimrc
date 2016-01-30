@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'tpope/vim-sensible'
 Plugin 'pangloss/vim-javascript'
-" cool color scheme, but I don't want to use it now Plugin 'goatslacker/mango.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
@@ -79,6 +78,11 @@ set pastetoggle=<F2>
 "get rid of scrollbars
 set guioptions-=r
 set guioptions-=L
+
+" setup colors 
+let base16colorspace=256  " Access colors present in 256 colorspace
+set background=dark
+colorscheme base16-monokai
 
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
