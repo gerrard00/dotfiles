@@ -64,7 +64,9 @@ if [ -x ~/.aliases ]; then
 fi
 
 #this works, but requries me to enter the passphrase at login 
-eval $(keychain --eval -Q --quiet id_rsa)
+if (( $+commands[keychain] )); then
+  eval $(keychain --eval -Q --quiet id_rsa)
+fi
 
 #use vi mode
 bindkey -v
