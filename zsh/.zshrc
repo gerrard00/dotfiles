@@ -24,12 +24,26 @@ setopt HIST_IGNORE_DUPS
 setopt PROMPT_SUBST
 
 function zle-line-init zle-keymap-select {
-  NEWLINE=$'\n'
+  # TODO: we have extra braces in the escapes
+  local NEWLINE=$'\n'
+  local PROMPT_SYMBOL
+  local FG_COLOR
+  local HOST_DISPLAY
+
   if [[ $KEYMAP == "vicmd" ]]; then
-    PROMPT="${NEWLINE}%{$fg[green]%}%~${NEWLINE}€%{$reset_color%} "
+    PROMPT_SYMBOL="€"
+    FG_COLOR=green
   else
-    PROMPT="${NEWLINE}%{$fg[blue]%}%~${NEWLINE}$%{$reset_color%} "
+    PROMPT_SYMBOL="$"
+    FG_COLOR=blue
   fi
+
+  # only show host name while in ssh
+  if [[ -n "$SSH_CLIENT" ]]; then
+    HOST_DISPLAY="[$HOST] "
+  fi
+
+  PROMPT="${NEWLINE}%{$fg[${FG_COLOR}]%}${HOST_DISPLAY}%~${NEWLINE}$PROMPT_SYMBOL%{$reset_color%} "
   zle reset-prompt
 }
 
