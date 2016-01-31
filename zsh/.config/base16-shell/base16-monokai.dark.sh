@@ -88,7 +88,8 @@ if [ -n "$ITERM_SESSION_ID" ]; then
   printf $printf_template_custom Pm 272822 # cursor text
 else
   printf $printf_template_var 10 $color_foreground
-  printf $printf_template_var 11 $color_background
+
+  # printf $printf_template_var 11 $color_background
   printf $printf_template_var 12 $color_cursor
 fi
 
