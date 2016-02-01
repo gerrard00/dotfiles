@@ -1,7 +1,7 @@
 *scrollBar: false
 
-*font: xft:Inconsolata:Medium:size=12, xft:Inconsolata for Powerline:Medium:size=12
-*boldFont: xft:Inconsolata:Bold:size=12, xft:Inconsolata for Powerline:Medium:size=12
+*font: xft:Inconsolata:Medium:size=14, xft:Inconsolata for Powerline:Medium:size=14
+*boldFont: xft:Inconsolata:Bold:size=14, xft:Inconsolata for Powerline:Medium:size=14
 
 URxvt.letterSpace: -1
 URxvt.depth: 32
