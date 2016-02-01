@@ -31,8 +31,9 @@ Plugin 'moll/vim-node'
 " Only need to enable this plugin temporarily, then run 
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
-"Plugin 'edkolev/tmuxline.vim'
+" Plugin 'edkolev/tmuxline.vim'
 " All of your Plugins must be added before the following line
+Plugin 'rking/ag.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
