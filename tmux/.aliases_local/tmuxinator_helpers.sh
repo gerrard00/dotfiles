@@ -1,13 +1,15 @@
+function _get_session_name() 
+{
+  echo ${${PWD##*/}:gs/\./_/}
+}
+
 function work()
 {
-  local project_name=${${PWD##*/}:s/\./_/}
-
-  tmuxinator start node -n $project_name
+  tmuxinator start node -n $(_get_session_name)
 }
 
 function stopwork()
 {
-  local project_name=${${PWD##*/}:s/\./_/}
-  tmux kill-session -t $project_name
+  tmux kill-session -t $(_get_session_name)  
   exit
 }
