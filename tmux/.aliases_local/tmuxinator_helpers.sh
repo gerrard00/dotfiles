@@ -10,6 +10,7 @@ function work()
 
 function stopwork()
 {
-  tmux kill-session -t $(_get_session_name)  
+  # kill the current session
+  tmux kill-session # -t $(_get_session_name)  
   exit
 }
