@@ -133,3 +133,7 @@ nnoremap <Leader>O O<Esc>
 
 " jk for escape
 inoremap jk <esc>
+
+" setup ternjs key mappings
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
