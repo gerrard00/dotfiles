@@ -5,7 +5,7 @@ function _get_session_name()
 
 function work()
 {
-  let session_name=$(_get_session_name)
+  local session_name=$(_get_session_name)
 
   # kill any already attached clients
   # workaround for the fact that iterm2 can't detach from sessions
