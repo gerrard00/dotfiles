@@ -64,6 +64,10 @@ fi
 #use vi mode
 bindkey -v
 
+# full vim editing for command line
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
+
 # Less Colors for Man Pages
 export LESS_TERMCAP_mb=$'\e[01;01m'       # begin blinking
 export LESS_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
