@@ -11,6 +11,14 @@ function gpwd() {
   echo $(git rev-parse --show-toplevel)
 }
 
+function nnvm() {
+#nvm use is too slow on my beaters
+  # if [ -s ~/.nvm/nvm.sh ]; then
+    . ~/.nvm/nvm.sh
+    # nvm use node
+  # fi
+}
+
 # keep this at the end, so aliases can be
 # overridden
 if [ -s "$HOME/.aliases_local" ]; then
