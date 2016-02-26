@@ -34,6 +34,8 @@ Plugin 'moll/vim-node'
 " Plugin 'edkolev/tmuxline.vim'
 " All of your Plugins must be added before the following line
 Plugin 'rking/ag.vim'
+" tmux syntax
+Plugin 'tmux-plugins/vim-tmux'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
