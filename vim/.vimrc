@@ -139,3 +139,6 @@ inoremap jk <esc>
 " setup ternjs key mappings
 let g:tern_map_keys=1
 let g:tern_show_argument_hints='on_hold'
+
+" easier way to go to next buffer
+nnoremap gb :bn<CR>
