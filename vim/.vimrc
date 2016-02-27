@@ -73,6 +73,13 @@ nmap <silent> <F8> :TagbarToggle<CR>
 
 " airline config
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+" only show name part of file path
+let g:airline#extensions#tabline#fnamemod = ':t'
+" only show tabline if multiple buffers are open
+let g:airline#extensions#tabline#buffer_min_count = 2
+" hide tab type on right hand side
+let g:airline#extensions#tabline#show_tab_type = 0
 
 function! AirlineInit()
   let g:airline_section_x = airline#section#create_right(['tagbar'])
