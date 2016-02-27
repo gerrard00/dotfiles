@@ -235,3 +235,6 @@ bindsym XF86Forward "workspace next; $peek_bar_command"
 
 # use compton 
 exec compton --config ~/.config/compton.conf -b
+
+# launch redshift
+exec --no-startup-id redshift -l 40.71:-74.00 -t 6500:3700
