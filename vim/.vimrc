@@ -150,3 +150,6 @@ let g:tern_show_argument_hints='on_hold'
 
 " easier way to go to next buffer
 nnoremap gb :bn<CR>
+
+" autoformat xml w/ tidy
+au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
