@@ -148,5 +148,8 @@ inoremap jk <esc>
 let g:tern_map_keys=1
 let g:tern_show_argument_hints='on_hold'
 
+" tell easytags to stop updating status
+let g:easytags_suppress_report = 1
+
 " easier way to go to next buffer
 nnoremap gb :bn<CR>
