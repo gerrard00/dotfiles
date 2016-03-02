@@ -36,7 +36,7 @@ if [ -f /usr/bin/VBoxClient-all ] ; then
   sh /usr/bin/VBoxClient-all
 fi
 
-exec i3
-
 #disable capslock 
 setxkbmap -option caps:none
+
+exec i3
