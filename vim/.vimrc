@@ -153,3 +153,6 @@ let g:easytags_suppress_report = 1
 
 " easier way to go to next buffer
 nnoremap gb :bn<CR>
+
+" autoformat xml w/ tidy
+au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
