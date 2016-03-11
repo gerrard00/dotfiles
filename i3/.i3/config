@@ -238,3 +238,6 @@ exec compton --config ~/.config/compton.conf -b
 
 # launch redshift
 exec --no-startup-id redshift -l 40.71:-74.00 -t 6500:3700
+
+# toggle trackpad
+bindsym XF86Launch1 exec ~/.i3/toggleTrackPad 
