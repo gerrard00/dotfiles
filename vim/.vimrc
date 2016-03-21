@@ -1,42 +1,47 @@
-"setup vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-sensible'
-Plugin 'pangloss/vim-javascript'
-Plugin 'chriskempson/base16-vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'scrooloose/syntastic'
-Plugin 'PotatoesMaster/i3-vim-syntax'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'majutsushi/tagbar'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tpope/vim-fugitive'
-Plugin 'xolox/vim-easytags'
-Plugin 'xolox/vim-misc'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-commentary'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'ternjs/tern_for_vim'
-Plugin 'tpope/vim-surround'
-Plugin 'moll/vim-node'
-" Only need to enable this plugin temporarily, then run 
+" configure plugins
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'pangloss/vim-javascript'
+Plug 'chriskempson/base16-vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/syntastic'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': './install.py --clang-completer' }
+autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-commentary'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'ternjs/tern_for_vim'
+Plug 'tpope/vim-surround'
+Plug 'moll/vim-node'
+" Only need to enable this plugin temporarily, then run
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
-" Plugin 'edkolev/tmuxline.vim'
-" All of your Plugins must be added before the following line
-Plugin 'rking/ag.vim'
+" Plug 'edkolev/tmuxline.vim'
+" All of your Plugs must be added before the following line
+Plug 'rking/ag.vim'
 " tmux syntax
-Plugin 'tmux-plugins/vim-tmux'
-call vundle#end()            " required
+Plug 'tmux-plugins/vim-tmux'
+" Add plugins to &runtimepath
+call plug#end()
+
 filetype plugin indent on    " required
 
 filetype on
@@ -68,12 +73,21 @@ set number
 
 "default ycm conf for c files.
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+" if installed via the default install py script the ycm server 
+" crashes if this isn't set. ycm docs suggest it's a mismatch
+" between python2 and python3 during install vs usage. 
+let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 
 "tagbar config
 nmap <silent> <F8> :TagbarToggle<CR>
 
 " airline config
+" for some reason, auto detect of theme isn't working
+" after switching to vim-plug
+let g:airline_theme = "base16"
 let g:airline_powerline_fonts = 1
+" only show name part of file path
+let g:airline#extensions# = ':t'
 let g:airline#extensions#tabline#enabled = 1
 " only show name part of file path
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -95,7 +109,7 @@ set pastetoggle=<F2>
 set guioptions-=r
 set guioptions-=L
 
-" setup colors 
+" setup colors
 let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
 colorscheme base16-monokai
@@ -120,7 +134,7 @@ silent! map <F4> :NERDTreeFind<CR>
 let g:NERDTreeMapPreview="<F4>"
 
 "Ctrlp.vim should ignore stuff in .gitignore
- let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "I just want vim-better-whitespace to work on demand
 let g:better_whitespace_enabled = 0
@@ -133,9 +147,9 @@ set tags+=tags;
 
 " vim-node split should use vertical split
 autocmd User Node
-  \ if &filetype == "javascript" |
-  \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile <bar> <C-w>r |
-  \ endif
+      \ if &filetype == "javascript" |
+      \   nmap <buffer> <C-w>f <Plug>NodeVSplitGotoFile <bar> <C-w>r |
+      \ endif
 
 " new line w/o insert
 nnoremap <Leader>o o<Esc>
@@ -156,3 +170,4 @@ nnoremap gb :bn<CR>
 
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
+
