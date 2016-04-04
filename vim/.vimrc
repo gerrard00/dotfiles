@@ -17,7 +17,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp'], 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript'], 'do': './install.py --clang-completer' }
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
