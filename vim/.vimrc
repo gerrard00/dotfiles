@@ -39,6 +39,8 @@ Plug 'moll/vim-node'
 Plug 'rking/ag.vim'
 " tmux syntax
 Plug 'tmux-plugins/vim-tmux'
+" json formatting
+Plug 'tpope/vim-jdaddy'
 " Add plugins to &runtimepath
 call plug#end()
 
