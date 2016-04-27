@@ -173,3 +173,5 @@ nnoremap gb :bn<CR>
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
+" turn on matchit, so we can match markup tags
+source $VIMRUNTIME/macros/matchit.vim
