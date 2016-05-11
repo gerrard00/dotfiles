@@ -112,3 +112,7 @@ Temporary Items
 .apdisk
 
 # end OSX stuff
+
+# visual studio code stuff
+.vscode
+# end visual studio code stuff
