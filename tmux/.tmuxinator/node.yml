@@ -33,4 +33,5 @@ windows:
       panes:
         - vim
         - nnvm
+  - git:
         - git status

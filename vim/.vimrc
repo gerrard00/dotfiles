@@ -45,6 +45,8 @@ Plug 'moll/vim-node'
 Plug 'rking/ag.vim'
 " tmux syntax
 Plug 'tmux-plugins/vim-tmux'
+" json formatting
+Plug 'tpope/vim-jdaddy'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -180,3 +182,5 @@ nnoremap gb :bn<CR>
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
+" turn on matchit, so we can match markup tags
+source $VIMRUNTIME/macros/matchit.vim
