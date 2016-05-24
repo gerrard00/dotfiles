@@ -28,7 +28,13 @@ Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'ternjs/tern_for_vim'
+" http://www.adamwadeharris.com/how-to-switch-from-vundle-to-vim-plug/
+function! BuildTern(info)
+  if a:info.status == 'installed' || a:info.force
+    !npm install
+  endif
+endfunction
+Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Plug 'tpope/vim-surround'
 Plug 'moll/vim-node'
 " Only need to enable this plugin temporarily, then run
@@ -97,6 +103,9 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#buffer_min_count = 2
 " hide tab type on right hand side
 let g:airline#extensions#tabline#show_tab_type = 0
+" truncate git branch name
+let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline#extensions#branch#enabled = 1
 
 function! AirlineInit()
   let g:airline_section_x = airline#section#create_right(['tagbar'])
