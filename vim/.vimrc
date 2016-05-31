@@ -17,7 +17,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript'], 'do': './install.py --clang-completer' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript'], 'do': 'python3 ./install.py --clang-completer --tern-completer --system-libclang' }
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -84,7 +84,7 @@ let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
 " if installed via the default install py script the ycm server 
 " crashes if this isn't set. ycm docs suggest it's a mismatch
 " between python2 and python3 during install vs usage. 
-let g:ycm_path_to_python_interpreter = "/usr/bin/python"
+" let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 
 "tagbar config
 nmap <silent> <F8> :TagbarToggle<CR>
