@@ -47,6 +47,8 @@ Plug 'rking/ag.vim'
 Plug 'tmux-plugins/vim-tmux'
 " json formatting
 Plug 'tpope/vim-jdaddy'
+" graphical undo
+Plug 'sjl/gundo.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -202,3 +204,5 @@ nnoremap <Leader>uuid i<C-R>=NewUUID()<CR><Esc>
 inoremap <Leader>uuid <C-R>=NewUUID()<CR>
 vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
 
+" gundo mapping
+nnoremap <silent> <F7> :GundoToggle<CR>
