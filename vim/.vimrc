@@ -176,6 +176,17 @@ let g:tern_show_argument_hints='on_hold'
 " tell easytags to stop updating status
 let g:easytags_suppress_report = 1
 
+" setup easytags to use jsctags for javascript
+let g:easytags_languages = {
+  \   'javascript': {
+  \       'cmd': 'jsctags',
+  \       'args': [],
+  \       'fileoutput_opt': '-f',
+  \       'stdout_opt': '-f-',
+  \       'recurse_flag': '-R'
+  \   }
+\}
+
 " easier way to go to next buffer
 nnoremap gb :bn<CR>
 
