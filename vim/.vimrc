@@ -81,9 +81,9 @@ set number
 
 "default ycm conf for c files.
 let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-" if installed via the default install py script the ycm server 
+" if installed via the default install py script the ycm server
 " crashes if this isn't set. ycm docs suggest it's a mismatch
-" between python2 and python3 during install vs usage. 
+" between python2 and python3 during install vs usage.
 " let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 
 "tagbar config
@@ -201,14 +201,14 @@ source $VIMRUNTIME/macros/matchit.vim
 function! NewUUID()
 python << endpython
 import vim
-import sys,uuid; 
+import sys,uuid;
 
 # do important stuff
 vim.command("return \"" + str(uuid.uuid4()) + "\"") # return from the Vim function!
 endpython
 endfunction
 
-" Mappings
+" Mappings to create uuids using NewUUID
 nnoremap <Leader>uuid i<C-R>=NewUUID()<CR><Esc>
 inoremap <Leader>uuid <C-R>=NewUUID()<CR>
 vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
