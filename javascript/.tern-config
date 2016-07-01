@@ -1,5 +1,6 @@
 {
   "plugins": {
-    "node": {}
+    "node": {},
+    "node_resolve": {}
   }
 }

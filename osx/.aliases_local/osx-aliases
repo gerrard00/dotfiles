@@ -3,3 +3,26 @@ alias ls='ls -G'
 
 # make reset actually clear scrollback buffer in iterm2
 alias reset='printf '\''\e]50;ClearScrollback\a'\'
+
+# equivalent of linux pwdx to get cwd of running process
+# https://gist.github.com/tobym/648188
+function pwdx {
+  # note: NF is the number of columns, so $NF gives us the last column
+  lsof -a -p $1 -d cwd -n | tail -1 | awk '{print $1, "\t", $NF}'
+}
+
+function portpwdx {
+  # pid=$(lsof -i :5858 | tail -1 | perl -pe 's/[^\s]+\s+([^\s]+)\s.*/$1/')
+  pid=$(lsof -i :$1 | tail -1 | perl -pe 's/[^\s]+\s+([^\s]+)\s.*/$1/')
+  if [[ ! -z $pid ]]; then
+    echo $pid
+    pwdx $pid
+    return 0
+  else
+    echo "No process listening to port $1"
+    return -1
+  fi
+}
+
+# just shoving this here for now, since I always need it at work
+export NODE_ENV=dev
