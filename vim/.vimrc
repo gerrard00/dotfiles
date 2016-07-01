@@ -49,6 +49,10 @@ Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-jdaddy'
 " graphical undo
 Plug 'sjl/gundo.vim'
+" docker syntax
+Plug 'docker/docker'
+" pgsql syntax
+Plug 'exu/pgsql.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
