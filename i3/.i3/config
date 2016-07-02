@@ -11,7 +11,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -41,8 +41,12 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run -font "Serif\ 20" -hlbg "#66d9ef" \
-  -hlfg "#272822" -bg "#383830" -fg "#75715e" -opacity 90 -fullscreen -padding 80 -lines 5 -eh 2
+# TODO: figure out how best to use xresources for rofi colors
+# a la dmenu, for desktop stuff
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -opacity 90 -i -p "¥ " -font "Serif\ 20" -fullscreen -padding 80 -lines 5 -eh 2'
+
+# normal rofi run mode
+bindsym $mod+Shift+d exec rofi -show run -font "Serif\ 20" -opacity 90 -fullscreen -padding 80 -lines 5 -eh 2
 # using the window switcher seems to cause problems
 # bindsym Mod4+d exec rofi -show window -font "Serif\ 20" -hlbg "#66d9ef" -hlfg "#272822" -bg "#383830" -fg "#75715e"
 
@@ -231,3 +235,9 @@ bindsym XF86Forward "workspace next; $peek_bar_command"
 
 # use compton 
 exec compton --config ~/.config/compton.conf -b
+
+# launch redshift
+exec --no-startup-id redshift -l 40.71:-74.00 -t 6500:3700
+
+# toggle trackpad
+bindsym XF86Launch1 exec ~/.i3/toggleTrackPad 

@@ -2,6 +2,7 @@
 Description=Random wallpaper with feh
 
 [Timer]
+OnBootSec=60
 OnCalendar=hourly
 Unit=feh-wallpaper.service
 

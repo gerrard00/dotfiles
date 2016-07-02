@@ -1,0 +1,7 @@
+CURRENT=$(synclient -l | grep TouchpadOff | sed -e 's/\s*TouchpadOff\s*=\s*//g')
+
+if [[ $CURRENT -eq '0' ]]; then
+  synclient TouchpadOff=1
+else
+  synclient TouchpadOff=0
+fi

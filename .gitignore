@@ -1,2 +1,5 @@
 bundle/
 .fehbg
+
+#ignore vim-plug installed plugins
+vim/.vim/plugged
