@@ -53,6 +53,8 @@ Plug 'sjl/gundo.vim'
 Plug 'docker/docker'
 " pgsql syntax
 Plug 'exu/pgsql.vim'
+" signature for mark magic
+Plug 'kshenoy/vim-signature'
 " Add plugins to &runtimepath
 call plug#end()
 
