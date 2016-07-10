@@ -155,8 +155,9 @@ let g:NERDTreeMapPreview="<F4>"
 "Ctrlp.vim should ignore stuff in .gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-"I just want vim-better-whitespace to work on demand
-let g:better_whitespace_enabled = 0
+" have vim better whitespace work on save
+let g:strip_whitespace_on_save = 1
+let g:better_whitespace_enabled = 1
 
 " Don't show mode in status line
 set noshowmode
