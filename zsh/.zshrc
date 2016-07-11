@@ -53,10 +53,10 @@ zle -N zle-keymap-select
 RPROMPT='${vcs_info_msg_0_}'
 
 if [ -x ~/.aliases ]; then
-	. ~/.aliases
+  . ~/.aliases
 fi
 
-#this works, but requries me to enter the passphrase at login 
+#this works, but requries me to enter the passphrase at login
 if (( $+commands[keychain] )); then
   eval $(keychain --eval -Q --quiet id_rsa)
 fi
