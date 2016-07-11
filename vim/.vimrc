@@ -228,3 +228,6 @@ vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
 
 " gundo mapping
 nnoremap <silent> <F7> :GundoToggle<CR>
+
+" tweak indent line color, got color from colortest script
+let g:indentLine_color_term = 18
