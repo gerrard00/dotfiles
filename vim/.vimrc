@@ -55,6 +55,8 @@ Plug 'docker/docker'
 Plug 'exu/pgsql.vim'
 " signature for mark magic
 Plug 'kshenoy/vim-signature'
+" show indent lines
+Plug 'Yggdroot/indentLine'
 " Add plugins to &runtimepath
 call plug#end()
 
