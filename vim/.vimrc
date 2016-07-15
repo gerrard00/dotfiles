@@ -230,3 +230,5 @@ nnoremap <silent> <F7> :GundoToggle<CR>
 
 " tweak indent line color, got color from colortest script
 let g:indentLine_color_term = 18
+" only conceal characters in normal and command
+let g:indentLine_concealcursor = 'nc'
