@@ -19,6 +19,10 @@ function nnvm() {
   # fi
 }
 
+if type "node-tree-fiddy" > /dev/null; then
+  alias tree='node-tree-fiddy'
+fi
+
 # keep this at the end, so aliases can be
 # overridden
 if [ -s "$HOME/.aliases_local" ]; then

@@ -41,7 +41,6 @@ Plug 'moll/vim-node'
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
 " Plug 'edkolev/tmuxline.vim'
-" All of your Plugs must be added before the following line
 Plug 'rking/ag.vim'
 " tmux syntax
 Plug 'tmux-plugins/vim-tmux'
