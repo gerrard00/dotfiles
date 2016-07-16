@@ -20,6 +20,10 @@ URxvt.intensityStyles: false
 ! Hide the pointer when typing (no need for unclutter)
 URxvt*pointerBlank: true
 
+! blinky underliney cursor
+URxvt.cursorBlink: 1
+URxvt.cursorUnderline: 1
+
 ! Base16 Monokai
 ! Scheme: Wimer Hazenberg (http://www.monokai.nl)
 #define base00 #272822

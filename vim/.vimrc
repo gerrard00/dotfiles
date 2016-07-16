@@ -41,7 +41,6 @@ Plug 'moll/vim-node'
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
 " Plug 'edkolev/tmuxline.vim'
-" All of your Plugs must be added before the following line
 Plug 'rking/ag.vim'
 " tmux syntax
 Plug 'tmux-plugins/vim-tmux'
@@ -53,6 +52,10 @@ Plug 'sjl/gundo.vim'
 Plug 'docker/docker'
 " pgsql syntax
 Plug 'exu/pgsql.vim'
+" signature for mark magic
+Plug 'kshenoy/vim-signature'
+" show indent lines
+Plug 'Yggdroot/indentLine'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -153,8 +156,9 @@ let g:NERDTreeMapPreview="<F4>"
 "Ctrlp.vim should ignore stuff in .gitignore
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-"I just want vim-better-whitespace to work on demand
-let g:better_whitespace_enabled = 0
+" have vim better whitespace work on save
+let g:strip_whitespace_on_save = 1
+let g:better_whitespace_enabled = 1
 
 " Don't show mode in status line
 set noshowmode
@@ -194,7 +198,9 @@ let g:easytags_languages = {
 \}
 
 " easier way to go to next buffer
-nnoremap gb :bn<CR>
+nnoremap gn :bn<CR>
+nnoremap gp :bp<CR>
+nnoremap gb :b#<CR>
 
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
@@ -221,3 +227,8 @@ vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
 
 " gundo mapping
 nnoremap <silent> <F7> :GundoToggle<CR>
+
+" tweak indent line color, got color from colortest script
+let g:indentLine_color_term = 18
+" only conceal characters in normal and command
+let g:indentLine_concealcursor = 'nc'
