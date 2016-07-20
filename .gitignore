@@ -3,3 +3,6 @@ bundle/
 
 #ignore vim-plug installed plugins
 vim/.vim/plugged
+
+" ignore tmux resurrect data
+tmux/.tmux/resurrect/
