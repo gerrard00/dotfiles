@@ -1,0 +1,6 @@
+echo $OSTYPE
+if [[ $OSTYPE == darwin* ]]; then
+  python ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer
+else
+  python3 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer --system-libclang
+fi
