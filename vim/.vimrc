@@ -56,6 +56,8 @@ Plug 'exu/pgsql.vim'
 Plug 'kshenoy/vim-signature'
 " show indent lines
 Plug 'Yggdroot/indentLine'
+" syntax for typescript
+Plug 'leafgarland/typescript-vim'
 " OmniSharp for C#
 Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 " Add plugins to &runtimepath
