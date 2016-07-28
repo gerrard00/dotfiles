@@ -60,6 +60,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'leafgarland/typescript-vim'
 " OmniSharp for C#
 Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
+" needed for ycm + omnisharp
+Plug 'tpope/vim-dispatch'
 " Add plugins to &runtimepath
 call plug#end()
 
