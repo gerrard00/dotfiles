@@ -17,7 +17,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/syntastic'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript'], 'do': '~/.vim/install-ycm' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs'], 'do': '~/.vim/install-ycm' }
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
@@ -56,6 +56,12 @@ Plug 'exu/pgsql.vim'
 Plug 'kshenoy/vim-signature'
 " show indent lines
 Plug 'Yggdroot/indentLine'
+" syntax for typescript
+Plug 'leafgarland/typescript-vim'
+" OmniSharp for C#
+Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
+" needed for ycm + omnisharp
+Plug 'tpope/vim-dispatch'
 " Add plugins to &runtimepath
 call plug#end()
 
