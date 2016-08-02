@@ -14,7 +14,8 @@ Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/syntastic'
+" 2016-08-01 shouldn't be needed anymore with ycm
+" Plug 'scrooloose/syntastic'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs'], 'do': '~/.vim/install-ycm' }
@@ -23,7 +24,8 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'xolox/vim-easytags'
+" 2016-08-01 making saves slow
+" Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
