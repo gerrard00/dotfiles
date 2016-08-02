@@ -24,8 +24,7 @@ Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-" 2016-08-01 making saves slow
-" Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
@@ -192,6 +191,7 @@ let g:tern_map_keys=1
 let g:tern_show_argument_hints='on_hold'
 
 " tell easytags to stop updating status
+let g:easytags_async=1
 let g:easytags_suppress_report = 1
 
 " setup easytags to use jsctags for javascript
