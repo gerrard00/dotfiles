@@ -229,7 +229,7 @@ endpython
 endfunction
 
 " Mappings to create uuids using NewUUID
-nnoremap <Leader>uuid i<C-R>=NewUUID()<CR><Esc>
+nnoremap <Leader>uuid a<C-R>=NewUUID()<CR><Esc>
 inoremap <Leader>uuid <C-R>=NewUUID()<CR>
 vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
 
@@ -240,3 +240,10 @@ nnoremap <silent> <F7> :GundoToggle<CR>
 let g:indentLine_color_term = 18
 " only conceal characters in normal and command
 let g:indentLine_concealcursor = 'nc'
+
+" enter iso date
+
+
+nnoremap <Leader>date a<C-R>=strftime('%FT%T%z')<CR><Esc>
+inoremap <Leader>date <C-R>=strftime('%FT%T%z')<CR>
+vnoremap <Leader>date c<C-R>=strftime('%FT%T%z')<CR><Esc>
