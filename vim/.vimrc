@@ -63,6 +63,8 @@ Plug 'leafgarland/typescript-vim'
 Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 " needed for ycm + omnisharp
 Plug 'tpope/vim-dispatch'
+" golang
+Plug 'fatih/vim-go', { 'for': ['go']  }
 " Add plugins to &runtimepath
 call plug#end()
 
