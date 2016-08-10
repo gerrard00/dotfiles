@@ -169,7 +169,7 @@ bar {
   mode hide
   modifier $mod
   separator_symbol "|"
-	colors {
+  colors {
     background              #272822
     separator               #75715e
     statusline              #f8f8f2
@@ -178,7 +178,7 @@ bar {
     focused_workspace       #66d9ef #66d9ef #272822
     inactive_workspace      #383830 #383830 #75715e
     urgent_workspace        #f92672 #f92672 #f9f8f5
-	}
+  }
 }
 
 #code for shutdown prompt from arch wiki
@@ -191,7 +191,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -205,9 +205,9 @@ new_window pixel 0
 
 #gaps
 gaps inner 8
-gaps outer 0 
+gaps outer 0
 smart_gaps on
-smart_borders on 
+smart_borders on
 
 #setup audio buttons
 bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2dB+ unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
@@ -233,11 +233,11 @@ bindsym Control+Right "workspace next; $peek_bar_command"
 bindsym XF86Back "workspace prev; $peek_bar_command"
 bindsym XF86Forward "workspace next; $peek_bar_command"
 
-# use compton 
+# use compton
 exec compton --config ~/.config/compton.conf -b
 
 # launch redshift
 exec --no-startup-id redshift -l 40.71:-74.00 -t 6500:3700
 
 # toggle trackpad
-bindsym XF86Launch1 exec ~/.i3/toggleTrackPad 
+bindsym XF86Launch1 exec ~/.i3/toggleTrackPad
