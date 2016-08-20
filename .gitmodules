@@ -1,9 +1,3 @@
-[submodule "i3/.i3/i3lock-fancy"]
-	path = i3/.i3/i3lock-fancy
-	url = git@github.com:gerrard00/i3lock-fancy.git
-[submodule "vim/.vim/bundle/Vundle.vim"]
-	path = vim/.vim/bundle/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
