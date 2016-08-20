@@ -7,3 +7,6 @@
 [submodule "tmux/.tmux/plugins/tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "i3/.i3/i3lock-blur"]
+	path = i3/.i3/i3lock-blur
+	url = git@github.com:petvas/i3lock-blur.git

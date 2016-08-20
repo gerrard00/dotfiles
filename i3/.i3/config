@@ -182,7 +182,7 @@ bar {
 }
 
 #code for shutdown prompt from arch wiki
-set $Locker $HOME/.i3/i3lock-fancy/lock && sleep 1
+set $Locker $HOME/.i3/i3lock-blur/lock.sh && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
