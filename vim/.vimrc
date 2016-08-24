@@ -65,6 +65,8 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
+" tired of entering closing braces
+Plug 'jiangmiao/auto-pairs'
 " Add plugins to &runtimepath
 call plug#end()
 
