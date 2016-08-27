@@ -65,8 +65,6 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
-" tired of entering closing braces
-Plug 'jiangmiao/auto-pairs'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -246,8 +244,12 @@ let g:indentLine_color_term = 18
 let g:indentLine_concealcursor = 'nc'
 
 " enter iso date
-
-
 nnoremap <Leader>date a<C-R>=strftime('%FT%T%z')<CR><Esc>
 inoremap <Leader>date <C-R>=strftime('%FT%T%z')<CR>
 vnoremap <Leader>date c<C-R>=strftime('%FT%T%z')<CR><Esc>
+
+" simple closing braces, etc.
+" the plugins didn't work with my style
+" note: <C-G>u in insert mode breaks the undo sequence
+imap {}  {<CR>}<C-o>O<C-G>u
+imap (); ();<C-o>h
