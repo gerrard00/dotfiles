@@ -46,7 +46,8 @@ URxvt.cursorUnderline: 1
 #define base00trans [95]#272822
 
 *.foreground:   base05
-*.background:   base00trans
+*.background:   base00
+URxvt.background:   base00trans
 *.cursorColor:  base05
 
 *.color0:       base00
