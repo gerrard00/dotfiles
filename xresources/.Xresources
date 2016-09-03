@@ -33,4 +33,4 @@ Xft.hinting:    true
 Xft.hintstyle:  hintslight
 
 ! includes
-#include ".Xresources.d/base16-monokai"
+#include ".Xresources.d/gotham"

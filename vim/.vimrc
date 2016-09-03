@@ -12,7 +12,6 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
-Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
 " 2016-08-01 shouldn't be needed anymore with ycm
 " Plug 'scrooloose/syntastic'
@@ -65,6 +64,8 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
+" switch to gotham color scheme
+Plug 'whatyouhide/vim-gotham'
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -140,9 +141,8 @@ set guioptions-=r
 set guioptions-=L
 
 " setup colors
-let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
-colorscheme base16-monokai
+colorscheme gotham
 
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
