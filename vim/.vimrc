@@ -66,6 +66,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'fatih/vim-go', { 'for': ['go']  }
 " switch to gotham color scheme
 Plug 'whatyouhide/vim-gotham'
+" show hex colors
+Plug 'ap/vim-css-color'
 " Add plugins to &runtimepath
 call plug#end()
 
