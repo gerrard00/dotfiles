@@ -65,6 +65,8 @@ Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
+" repl like
+Plug 'metakirby5/codi.vim'
 " Add plugins to &runtimepath
 call plug#end()
 
