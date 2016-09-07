@@ -67,6 +67,8 @@ Plug 'tpope/vim-dispatch'
 Plug 'fatih/vim-go', { 'for': ['go']  }
 " repl like
 Plug 'metakirby5/codi.vim'
+" Docker
+Plug 'tianon/vim-docker'
 " Add plugins to &runtimepath
 call plug#end()
 
