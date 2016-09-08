@@ -212,11 +212,6 @@ let g:easytags_languages = {
   \   }
 \}
 
-" easier way to go to next buffer
-nnoremap gn :bn<CR>
-nnoremap gp :bp<CR>
-nnoremap gb :b#<CR>
-
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
