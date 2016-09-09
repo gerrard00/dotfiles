@@ -28,10 +28,10 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-color_good=#a6e22e
-color_fair=#f4bf75
-color_degraded=#fd971f
-color_bad=#f92672
+color_good=#8f9d6a
+color_fair=#f9ee98
+color_degraded=#cda869
+color_bad=#cf6a4c
 
 # Volume indicator
 #

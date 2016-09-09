@@ -4,8 +4,8 @@ compinit
 promptinit
 colors
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/base16-monokai.dark.sh"
+# # Base16 Shell
+BASE16_SHELL="$HOME/.config/base16-shell/base16-twilight.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 #setup git stuff

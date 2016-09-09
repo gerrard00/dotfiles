@@ -146,7 +146,7 @@ set guioptions-=L
 " setup colors
 let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
-colorscheme base16-monokai
+colorscheme base16-twilight
 
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
