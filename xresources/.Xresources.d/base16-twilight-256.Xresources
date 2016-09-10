@@ -18,9 +18,12 @@
 #define base0E #9b859d
 #define base0F #9b703f
 
+#define base00trans [95]#1e1e1e
+
 *.foreground:   base05
 *.background:   base00
 *.cursorColor:  base05
+urxvt.background:   base00trans
 
 *.color0:       base00
 *.color1:       base08
