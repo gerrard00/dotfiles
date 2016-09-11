@@ -24,6 +24,10 @@ URxvt*pointerBlank: true
 URxvt.cursorBlink: 1
 URxvt.cursorUnderline: 1
 
+! fooling around with urxvt borders
+URxvt.internalBorder: 7
+! URxvt.externalBorder: 50
+
 ! Xft settings ---------------------------------------------------------------
 
 Xft.dpi:        118
