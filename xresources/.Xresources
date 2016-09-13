@@ -22,7 +22,7 @@ URxvt*pointerBlank: true
 
 ! blinky underliney cursor
 URxvt.cursorBlink: 1
-URxvt.cursorUnderline: 1
+URxvt.cursorUnderline: 0
 
 ! fooling around with urxvt borders
 URxvt.internalBorder: 7
