@@ -6,16 +6,20 @@
 URxvt.letterSpace: -1
 URxvt.depth: 32
 
-! setup urxvt-font-size for on the fly font changes
-URxvt.perl-ext-common: font-size
+! setup urxvt extenstion
+URxvt.perl-ext-common: font-size,matcher
+! urxvt-font-size for on the fly font changes
 URxvt.keysym.C-Up:     font-size:increase
 URxvt.keysym.C-Down:   font-size:decrease
 URxvt.keysym.C-S-Up:   font-size:incglobal
 URxvt.keysym.C-S-Down: font-size:decglobal
 URxvt.keysym.C-0:      font-size:reset
+! matcher for clickable urls
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+
 
 URxvt.intensityStyles: false
-
 
 ! Hide the pointer when typing (no need for unclutter)
 URxvt*pointerBlank: true
