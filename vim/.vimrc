@@ -14,8 +14,8 @@ Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
-" 2016-08-01 shouldn't be needed anymore with ycm
-" Plug 'scrooloose/syntastic'
+" still need syntastic for javascript linting
+Plug 'scrooloose/syntastic', { 'for': ['javascript'] }
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs'], 'do': '~/.vim/install-ycm' }
