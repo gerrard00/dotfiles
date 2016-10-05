@@ -69,6 +69,8 @@ Plug 'fatih/vim-go', { 'for': ['go']  }
 Plug 'metakirby5/codi.vim'
 " Docker
 Plug 'tianon/vim-docker'
+" my mocha plugin
+Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript'] }
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -253,3 +255,6 @@ vnoremap <Leader>date c<C-R>=strftime('%FT%T%z')<CR><Esc>
 " note: <C-G>u in insert mode breaks the undo sequence
 imap {}  {<CR>}<C-o>O<C-G>u
 imap (); ();<C-o>h
+
+" my mocha only plugin mapping
+nnoremap <Leader>mo :MochaOnlyToggle<CR>
