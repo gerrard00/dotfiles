@@ -1,4 +1,8 @@
-set nocompatible              " be iMproved, required
+" load vim defaults
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
+" should I still have this? copied a long time ago
 filetype off                  " required
 
 " auto-install vim-plug
