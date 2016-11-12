@@ -262,3 +262,6 @@ imap (); ();<C-o>h
 
 " my mocha only plugin mapping
 nnoremap <Leader>mo :MochaOnlyToggle<CR>
+
+" make comments italic
+highlight Comment cterm=italic gui=italic
