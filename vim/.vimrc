@@ -262,3 +262,7 @@ imap (); ();<C-o>h
 
 " my mocha only plugin mapping
 nnoremap <Leader>mo :MochaOnlyToggle<CR>
+
+" setup shortcuts for moving through buffers
+nnoremap <C-j> :bn<CR>
+nnoremap <C-k> :bp<CR>
