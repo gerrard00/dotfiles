@@ -276,3 +276,5 @@ if exists('+colorcolumn')
   set colorcolumn=81
 endif
 
+" tell OmniSharp to use rosyln?
+let g:OmniSharp_server_type = 'roslyn'

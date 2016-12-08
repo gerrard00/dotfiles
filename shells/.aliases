@@ -30,3 +30,8 @@ if [ -s "$HOME/.aliases_local" ]; then
     . $aliasfile
   done
 fi
+
+alias tree=node-tree-fiddy
+
+# use python for prettyjson
+alias prettyjson='python -m json.tool'

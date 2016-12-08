@@ -1,19 +1,22 @@
 [core]
-	excludesfile = ~/.gitignore_global
-	editor = vim
+  excludesfile = ~/.gitignore_global
+  editor = vim
 [user]
-	name = Gerrard Lindsay
-	email = gerrardalindsay@gmail.com
+  name = Gerrard Lindsay
+  email = gerrard.lindsay@kaplan.com
 [push]
-	default = simple
-[diff]
-	tool = vimdiff
-[merge]
-	tool = vimdiff
-  	conflictstyle = diff3
+  default = simple
+[difftool "kdiff3"]
+    path = /usr/local/bin/kdiff3
+    trustExitCode = false
 [difftool]
-	prompt = false
-[url "https://"]
-	insteadOf = git://
-[mergetool "vimdiff"]
-	cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+    prompt = false
+[diff]
+    tool = kdiff3
+[mergetool "kdiff3"]
+    path = /usr/local/bin/kdiff3
+    trustExitCode = false
+[mergetool]
+    keepBackup = false
+[merge]
+    tool = kdiff3
