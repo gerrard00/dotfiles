@@ -83,10 +83,7 @@ separator=false
 [wifi]
 label=
 instance=wlp3s0
-interval=60
 separator=false
-
-[ssid]
 command=echo "$(iw dev wlp3s0 link | grep SSID | cut -d " " -f 2-)"
 interval=30
 separator=false
