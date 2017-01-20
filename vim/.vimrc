@@ -75,6 +75,10 @@ Plug 'metakirby5/codi.vim'
 Plug 'tianon/vim-docker'
 " my mocha plugin
 Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript'] }
+" rainbow parentheses... need to set let g:lisp_rainbow=1
+Plug 'losingkeys/vim-niji', { 'for': ['scheme'] }
+" matching parentheses
+Plug 'kovisoft/slimv', { 'for': ['scheme'] }
 " Add plugins to &runtimepath
 call plug#end()
 
