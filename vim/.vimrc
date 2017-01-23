@@ -270,3 +270,9 @@ nnoremap <Leader>mo :MochaOnlyToggle<CR>
 " setup shortcuts for moving through buffers
 nnoremap <C-j> :bn<CR>
 nnoremap <C-k> :bp<CR>
+
+" set 80 character line limit
+if exists('+colorcolumn')
+  set colorcolumn=81
+endif
+
