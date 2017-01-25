@@ -23,6 +23,12 @@ if type "node-tree-fiddy" > /dev/null; then
   alias tree='node-tree-fiddy'
 fi
 
+# convert a github repo url to a git ssh path
+function convert-to-git-ssh()
+{
+  echo $1 | sed 's#https://github.com/\([^/]*\)/\([^/]*\).*$#git@github.com:\1/\2.git#g'
+}
+
 # keep this at the end, so aliases can be
 # overridden
 if [ -s "$HOME/.aliases_local" ]; then
