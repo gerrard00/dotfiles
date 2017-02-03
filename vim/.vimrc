@@ -1,6 +1,8 @@
 " load vim defaults
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
+if filereadable($VIMRUNTIME . "/defaults.vim")
+  unlet! skip_defaults_vim
+  source $VIMRUNTIME/defaults.vim
+endif
 
 " should I still have this? copied a long time ago
 filetype off                  " required
