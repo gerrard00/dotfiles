@@ -20,8 +20,7 @@ Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
 Plug 'airblade/vim-gitgutter'
-" still need syntastic for javascript linting
-Plug 'scrooloose/syntastic', { 'for': ['javascript'] }
+Plug 'w0rp/ale'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs'], 'do': '~/.vim/install-ycm' }
@@ -96,17 +95,10 @@ set tabstop=2 shiftwidth=2 expandtab
 noremap <silent><Leader>s :update<CR>
 inoremap <silent><Leader>s <Esc>:update<CR>
 
-"syntastic
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-"don't auto show location for errors
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 1
-let g:syntastic_javascript_checkers = ['eslint']
+" Write this in your vimrc file
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
+let g:ale_lint_on_enter = 0
 
 "turn off word wrap
 set nowrap
