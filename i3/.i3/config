@@ -34,8 +34,11 @@ floating_modifier $mod
 # shell script that shows the bar for a moment
 set $peek_bar_command exec ~/.i3/peek-bar 0.75
 
+# start urxvt in daemon mode
+exec /usr/bin/urxvtd -q -f -o
+
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec /usr/bin/urxvtc -e /usr/bin/tmux
 
 # kill focused window
 bindsym $mod+Shift+q kill
