@@ -13,6 +13,3 @@ inoremap <buffer> <silent> <C-o>$ <C-o>g$
 
 " turn on spell checking
 setlocal spell
-
-" turn off line numbers
-setlocal nonumber

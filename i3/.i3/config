@@ -54,10 +54,10 @@ bindsym $mod+Shift+d exec rofi -show run -font "Serif\ 20" -opacity 90 -fullscre
 # bindsym Mod4+d exec rofi -show window -font "Serif\ 20" -hlbg "#66d9ef" -hlfg "#272822" -bg "#383830" -fg "#75715e"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -66,10 +66,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -78,18 +78,18 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+v split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+s split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -146,10 +146,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -214,8 +214,8 @@ smart_gaps on
 smart_borders on
 
 #setup audio buttons
-bindsym XF86AudioRaiseVolume exec "amixer -q set Master 2dB+ unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
-bindsym XF86AudioLowerVolume exec "amixer -q set Master 2dB- unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
 bindsym XF86AudioMute exec "amixer -q set Master toggle ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
 
 
