@@ -1,0 +1,15 @@
+TMPFILE=/tmp/peek-bar.pid
+
+swaymsg bar hidden_state show > /dev/null
+echo $$ > $TMPFILE
+
+sleep $1
+
+# Don't hide the bar if the script has been invoked
+# again with a different pid. That prevents the bar
+# from flashing
+FILE_PID=$(<$TMPFILE)
+if [[ $$ -eq $FILE_PID ]]; then
+  swaymsg bar hidden_state hide > /dev/null
+fi
+
