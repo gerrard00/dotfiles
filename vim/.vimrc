@@ -56,16 +56,10 @@ Plug 'tpope/vim-jdaddy'
 Plug 'sjl/gundo.vim'
 " docker syntax
 Plug 'docker/docker'
-" pgsql syntax
-Plug 'exu/pgsql.vim'
 " signature for mark magic
 Plug 'kshenoy/vim-signature'
 " show indent lines
 Plug 'Yggdroot/indentLine'
-" syntax for typescript
-Plug 'leafgarland/typescript-vim'
-" OmniSharp for C#
-Plug 'OmniSharp/omnisharp-vim', { 'for': ['cs'], 'do': 'cd server && xbuild' }
 " needed for ycm + omnisharp
 Plug 'tpope/vim-dispatch'
 " golang
