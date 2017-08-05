@@ -1,0 +1,9 @@
+function node-in-docker() {
+  SCRIPT_PATH=${1:-index.js}
+  sudo docker run -it --rm --name "${PWD##*/}-dev" -e "NODE_ENV=development" -v `pwd`:/app node:latest node "app/$SCRIPT_PATH"
+}
+
+function node-in-docker-bash() {
+  SCRIPT_PATH=${1:-index.js}
+  sudo docker run -it --rm --name "${PWD##*/}-dev" -e "NODE_ENV=development" -v `pwd`:/app node:latest bash
+}
