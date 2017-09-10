@@ -38,7 +38,8 @@ set $peek_bar_command exec ~/.i3/peek-bar 0.75
 exec /usr/bin/urxvtd -q -f -o
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/urxvtc
+bindsym $mod+Return exec /usr/bin/urxvtc -e tmux
+bindsym $mod+Shift+Return exec /usr/bin/urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
