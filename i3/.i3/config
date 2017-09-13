@@ -215,9 +215,10 @@ smart_gaps on
 smart_borders on
 
 #setup audio buttons
-bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
-bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
-bindsym XF86AudioMute exec "amixer -q set Master toggle ; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+# need the test check to ensure we don't go over 153%
+bindsym XF86AudioRaiseVolume exec "test `pactl list sinks | grep 'Volume: front' | perl -pe 's/.* (\d+)%.*/\1/'` -lt 150 && pactl -- set-sink-volume 0 +10%; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioLowerVolume exec "pactl -- set-sink-volume 0 -10%; pkill -RTMIN+1 i3blocks; $peek_bar_command"
+bindsym XF86AudioMute exec "pactl set-sink-mute 0 toggle; pkill -RTMIN+1 i3blocks; $peek_bar_command"
 
 
 #setup shortcut for firefox
