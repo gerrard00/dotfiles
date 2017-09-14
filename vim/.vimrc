@@ -262,3 +262,6 @@ if exists('+colorcolumn')
   set colorcolumn=81
 endif
 
+" turn on rainbow parentheses
+let g:lisp_rainbow=1
+
