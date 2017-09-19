@@ -19,15 +19,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
-Plug 'airblade/vim-gitgutter'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs'], 'do': '~/.vim/install-ycm' }
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
-Plug 'majutsushi/tagbar'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
@@ -42,7 +39,7 @@ function! BuildTern(info)
 endfunction
 Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Plug 'tpope/vim-surround'
-Plug 'moll/vim-node'
+Plug 'moll/vim-node', { 'for': 'javascript' }
 " Only need to enable this plugin temporarily, then run
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
@@ -95,7 +92,6 @@ let g:ale_lint_on_enter = 0
 "turn off word wrap
 set nowrap
 
-"turn on line numbers...I don't like them, but need a margin
 set number
 
 "default ycm conf for c files.
