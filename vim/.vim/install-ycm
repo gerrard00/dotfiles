@@ -1,7 +1,7 @@
 echo $OSTYPE
 if [[ $OSTYPE == darwin* ]]; then
   # note: only installing omnisharp on mac for now
-  python ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer --omnisharp-completer
+  python ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer --gocode-completer
 else
-  python3 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer  --system-libclang
+  python3 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer --tern-completer --gocode-completer --system-libclang
 fi
