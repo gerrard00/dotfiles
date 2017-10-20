@@ -1,0 +1,7 @@
+{
+    "vim.disableAnnoyingNeovimMessage": true,
+    "files.exclude": {
+        "**/*.swp": true
+    },
+    "editor.fontSize": 12
+}
