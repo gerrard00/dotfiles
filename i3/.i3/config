@@ -47,7 +47,7 @@ bindsym $mod+Shift+q kill
 # start rofi (a program launcher)
 # TODO: figure out how best to use xresources for rofi colors
 # a la dmenu, for desktop stuff
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -opacity 90 -i -p "¥ " -font "Serif\ 20" -fullscreen -padding 80 -lines 5 -eh 2'
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -opacity 90 -i -p "¥ " -font "Serif\ 20" -padding 40 -lines 5 -eh 2'
 
 # normal rofi run mode
 bindsym $mod+Shift+d exec rofi -show run -font "Serif\ 20" -opacity 90 -fullscreen -padding 80 -lines 5 -eh 2
