@@ -4,9 +4,6 @@ if filereadable($VIMRUNTIME . "/defaults.vim")
   source $VIMRUNTIME/defaults.vim
 endif
 
-" should I still have this? copied a long time ago
-filetype off                  " required
-
 " auto-install vim-plug
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -76,7 +73,10 @@ filetype plugin indent on    " required
 
 filetype on
 
-syntax enable
+" https://stackoverflow.com/a/33380495/1011470
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
 set tabstop=2 shiftwidth=2 expandtab
 
