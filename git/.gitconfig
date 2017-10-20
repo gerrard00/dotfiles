@@ -10,7 +10,7 @@
 	tool = vimdiff
 [merge]
 	tool = vimdiff
-  	conflictstyle = diff3
+  conflictstyle = diff3
 [difftool]
 	prompt = false
 [url "https://"]
