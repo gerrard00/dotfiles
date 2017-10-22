@@ -3,5 +3,6 @@
     "files.exclude": {
         "**/*.swp": true
     },
-    "editor.fontSize": 12
+    "editor.fontSize": 12,
+    "workbench.colorTheme": "Base16 Twilight Dark"
 }
