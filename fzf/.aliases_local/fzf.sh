@@ -33,6 +33,7 @@ fo() {
 # GAL: custom, use ag twice for in file search
 fa() {
   # echo $@
+  # couldn't get this to work with rg for now
   local files=($(ag --nobreak --nonumbers --noheading -l $1 | fzf --preview="ag $1 -C {}"))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
