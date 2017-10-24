@@ -1,8 +1,18 @@
+## vim ##
+# from https://raw.githubusercontent.com/github/gitignore/master/Global/Vim.gitignore
+
+# swap
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
-*.un~
+# session
+Session.vim
+# temporary
 .netrwhist
 *~
+# auto-generated tag files
+tags/
+
+
 
 # YouCompleteMe compiled prefs
 *.pyc
@@ -22,9 +32,6 @@ lib-cov
 
 # Coverage directory used by tools like istanbul
 coverage
-
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
 
 # node-waf configuration
 .lock-wscript
@@ -76,10 +83,6 @@ node_modules
 [._]*.s[a-w][a-z]
 [._]s[a-w][a-z]
 *.un~
-Session.vim
-session.vim
-.netrwhist
-*~
 
 # Ignore TernJS project files
 .tern-project
@@ -120,3 +123,6 @@ Temporary Items
 
 # i like to make junk folders
 junk
+
+## hugo ##
+wp-hugo-*
