@@ -219,24 +219,6 @@ let g:easytags_languages = {
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
 " turn on matchit, so we can match markup tags
-source $VIMRUNTIME/macros/matchit.vim
-
-" use python to generate uuid/guids, adapted from vim-nuuuid
-" TODO: move this into a custom plugin
-function! NewUUID()
-python << endpython
-import vim
-import sys,uuid;
-
-# do important stuff
-vim.command("return \"" + str(uuid.uuid4()) + "\"") # return from the Vim function!
-endpython
-endfunction
-
-" Mappings to create uuids using NewUUID
-nnoremap <Leader>uuid a<C-R>=NewUUID()<CR><Esc>
-inoremap <Leader>uuid <C-R>=NewUUID()<CR>
-vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
 
 " gundo mapping
 nnoremap <silent> <F7> :GundoToggle<CR>
