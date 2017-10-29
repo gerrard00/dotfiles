@@ -65,8 +65,18 @@ Plug 'metakirby5/codi.vim'
 Plug 'tianon/vim-docker'
 " my mocha plugin
 Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript'] }
-" matching parentheses
 Plug 'kovisoft/slimv', { 'for': ['scheme'] }
+" my single buffer diff plugin
+Plug 'gerrard00/vim-diffbuff'
+" Plug '~/projects/vimdiffbuff'
+" pgsql syntax
+Plug 'lifepillar/pgsql.vim'
+Plug 'majutsushi/tagbar'
+" better jsx highlighting for react
+Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+" required for vim-jsx to work on .js files
+let g:jsx_ext_required = 0
+
 " Add plugins to &runtimepath
 call plug#end()
 
