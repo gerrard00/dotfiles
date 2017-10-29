@@ -42,6 +42,7 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 " from .tmux.conf
 " Plug 'edkolev/tmuxline.vim'
 Plug 'rking/ag.vim'
+cabbrev Ag Ag!
 " tmux syntax
 Plug 'tmux-plugins/vim-tmux'
 " json formatting
