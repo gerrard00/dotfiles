@@ -142,10 +142,6 @@ autocmd User AirlineAfterInit call AirlineInit()
 " toggle paste mode
 set pastetoggle=<F2>
 
-"get rid of scrollbars
-set guioptions-=r
-set guioptions-=L
-
 " setup colors
 let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
