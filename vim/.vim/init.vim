@@ -1,1 +1,0 @@
-/home/gerrard/.vimrc
