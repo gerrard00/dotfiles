@@ -39,7 +39,7 @@ fa() {
 }
 
 # GAL: custom; search custom dir bookmarks file
-fcdb() {
+cdb() {
   local dir=($(fzf <$DIRBOOKMARKSFILE))
   [[ -n "$dir" ]] && cd $dir
 }
