@@ -40,6 +40,7 @@ exec /usr/bin/urxvtd -q -f -o
 # start a terminal
 # bindsym $mod+Return exec termite
 bindsym $mod+Return exec /usr/bin/urxvtc -e tmux
+bindsym $mod+Shift+Return exec /usr/bin/urxvtc
 
 # kill focused window
 bindsym $mod+Shift+q kill
