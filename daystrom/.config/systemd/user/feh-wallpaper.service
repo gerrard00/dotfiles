@@ -3,7 +3,7 @@ Description=Random wallpaper with feh
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -c '/usr/bin/feh --bg-max "$(find %h/.wallpaper/|shuf|head -n 1)" --no-fehbg'
+ExecStart=/bin/bash -c '/home/gerrard/.config/systemd/user/i3-and-sway-wallpaper.sh'
 
 [Install]
 WantedBy=default.target
