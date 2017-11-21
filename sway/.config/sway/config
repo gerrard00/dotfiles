@@ -241,12 +241,6 @@ bindsym Control+Right workspace next; $peek_bar_command
 bindsym XF86Back workspace prev; $peek_bar_command
 bindsym XF86Forward workspace next; $peek_bar_command
 
-# use compton
-exec compton --config ~/.config/compton.conf -b
-
-# launch redshift
-exec --no-startup-id redshift -l 40.71:-74.00 -t 6500:3700
-
 # toggle trackpad
 bindsym XF86Launch1 exec ~/.i3/toggleTrackPad
 
@@ -256,8 +250,9 @@ exec xautolock -time 15 -locker $Locker
 # Your preferred application launcher
 set $menu dmenu_run
 
-# Default wallpaper (more resolutions are available in /usr/share/sway/)
-output * bg /usr/share/sway/Sway_Wallpaper_Blue_1920x1080.png fill
-
 # I'm still using urxvt which seems faster than termite
 xrdb -merge ~/.Xresources
+
+input 2:7:SynPS/2_Synaptics_TouchPad {
+  natural_scroll enabled
+}
