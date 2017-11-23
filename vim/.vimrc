@@ -73,7 +73,7 @@ Plug 'gerrard00/vim-diffbuff'
 Plug 'lifepillar/pgsql.vim'
 Plug 'majutsushi/tagbar'
 " better jsx highlighting for react
-Plug 'mxw/vim-jsx', { 'for': ['javascript'] }
+Plug 'mxw/vim-jsx'
 " required for vim-jsx to work on .js files
 let g:jsx_ext_required = 0
 
