@@ -50,7 +50,7 @@ Plug 'tpope/vim-jdaddy'
 " graphical undo
 Plug 'sjl/gundo.vim'
 " docker syntax
-Plug 'docker/docker'
+Plug 'tianon/vim-docker'
 " signature for mark magic
 Plug 'kshenoy/vim-signature'
 " show indent lines
