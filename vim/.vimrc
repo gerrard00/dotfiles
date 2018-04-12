@@ -91,10 +91,6 @@ endif
 
 set tabstop=2 shiftwidth=2 expandtab
 
-"this is to  set up simple save with \s
-noremap <silent><Leader>s :update<CR>
-inoremap <silent><Leader>s <Esc>:update<CR>
-
 " Write this in your vimrc file
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
