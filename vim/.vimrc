@@ -77,6 +77,8 @@ Plug 'mxw/vim-jsx'
 " required for vim-jsx to work on .js files
 let g:jsx_ext_required = 0
 
+Plug 'easymotion/vim-easymotion'
+
 " Add plugins to &runtimepath
 call plug#end()
 
