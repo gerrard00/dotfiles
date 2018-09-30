@@ -59,6 +59,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
+let g:go_fmt_command = "goimports"
 " repl like
 Plug 'metakirby5/codi.vim'
 " Docker
