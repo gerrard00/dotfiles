@@ -247,6 +247,7 @@ exec --no-startup-id redshift -l 40.71:-74.00 -t 6500:3700
 
 # toggle trackpad
 bindsym XF86Launch1 exec ~/.i3/toggleTrackPad
+exec ~/.i3/toggleTrackPad
 
 # autolock after inactivity
 exec xautolock -time 15 -locker $Locker
