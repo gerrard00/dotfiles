@@ -41,8 +41,13 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
 " Plug 'edkolev/tmuxline.vim'
-Plug 'rking/ag.vim'
-cabbrev Ag Ag!
+" new search hotness
+Plug 'mhinz/vim-grepper'
+nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>G :Grepper -tool ag -cword -noprompt<cr>
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
 " tmux syntax
 Plug 'tmux-plugins/vim-tmux'
 " json formatting
