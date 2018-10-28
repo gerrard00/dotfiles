@@ -14,5 +14,5 @@ function! s:tryJq() abort
   endif
 endfunction
 
-command! <buffer> TryJq call s:tryJq()
+command! -buffer TryJq call s:tryJq()
 nnoremap <buffer> <leader>= :TryJq<CR>
