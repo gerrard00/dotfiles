@@ -260,3 +260,6 @@ endif
 " turn on rainbow parentheses
 let g:lisp_rainbow=1
 
+" don't use syntax for lines longer than 200 characters
+set synmaxcol=200
+
