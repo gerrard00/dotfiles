@@ -176,9 +176,6 @@ silent! nmap <F3> :NERDTreeToggle<CR>
 silent! map <F4> :NERDTreeFind<CR>
 let g:NERDTreeMapPreview="<F4>"
 
-"Ctrlp.vim should ignore stuff in .gitignore
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
 " have vim better whitespace work on save
 let g:strip_whitespace_on_save = 1
 let g:better_whitespace_enabled = 1
