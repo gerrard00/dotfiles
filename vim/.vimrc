@@ -260,3 +260,5 @@ let g:lisp_rainbow=1
 " don't use syntax for lines longer than 200 characters
 set synmaxcol=200
 
+" setup mapping to copy file name
+nnoremap <silent> <Leader>cp :let @+=expand('%:p')<CR>
