@@ -262,3 +262,8 @@ set synmaxcol=200
 
 " setup mapping to copy file name
 nnoremap <silent> <Leader>cp :let @+=expand('%:p')<CR>
+
+" open file in same directory as current buffer map ,e :e
+map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
+map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
+map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
