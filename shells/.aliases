@@ -31,8 +31,9 @@ function convert-to-git-ssh()
 
 # keep this at the end, so aliases can be
 # overridden
-if [ -s "$HOME/.aliases_local" ]; then
-  for aliasfile in $HOME/.aliases_local/*; do
+aliaspath="$HOME/.aliases_local"
+if [ -d $aliaspath ]; then
+  for aliasfile in $(find "$aliaspath" ! -name '*.js'); do
     . $aliasfile
   done
 fi
