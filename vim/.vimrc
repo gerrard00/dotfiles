@@ -28,7 +28,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'w0rp/ale'
-" http://www.adamwadeharris.com/how-to-switch-from-vundle-to-vim-plug/
+" https://adam.garrett-harris.com/how-to-switch-from-vundle-to-vim-plug
 function! BuildTern(info)
   if a:info.status == 'installed' || a:info.force
     !npm install
