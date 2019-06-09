@@ -1,7 +1,10 @@
-CURRENT=$(synclient -l | grep TouchpadOff | sed -e 's/\s*TouchpadOff\s*=\s*//g')
+#!/bin/bash
 
-if [[ $CURRENT -eq '0' ]]; then
-  synclient TouchpadOff=1
+device="SynPS/2 Synaptics TouchPad"
+state=$(xinput list-props "$device" | grep "Device Enabled" | grep -o "[01]$")
+
+if [ $state == '1' ];then
+  xinput --disable "$device"
 else
-  synclient TouchpadOff=0
+  xinput --enable "$device"
 fi
