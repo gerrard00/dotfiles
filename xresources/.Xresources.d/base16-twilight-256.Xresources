@@ -18,7 +18,7 @@
 #define base0E #9b859d
 #define base0F #9b703f
 
-#define base00trans [90]#1e1e1e
+#define base00trans [99]#1e1e1e
 
 *.foreground:   base05
 *.background:   base00
