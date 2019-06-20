@@ -179,6 +179,7 @@ let g:NERDTreeMapPreview="<F4>"
 " have vim better whitespace work on save
 let g:strip_whitespace_on_save = 1
 let g:better_whitespace_enabled = 1
+let g:strip_whitespace_confirm=0
 
 " Don't show mode in status line
 set noshowmode
