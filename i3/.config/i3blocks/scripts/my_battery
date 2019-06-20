@@ -15,7 +15,7 @@
 use strict;
 use warnings;
 use utf8;
-
+use open ':std', ':encoding(UTF-8)';
 my $acpi;
 my $status;
 my $percent;
@@ -37,10 +37,12 @@ $status = $1;
 $percent = $2;
 
 if ($status eq 'Discharging') {
-  if ($percent >= 90) {
+  if ($percent >= 0) {
 	  $full_text .= '';
+	  # $full_text .= '&#f240;';
   } elsif ($percent >= 65) {
     $full_text .= '';
+    # $full_text .= '&#f241;';
   } elsif ($percent >= 40) {
     $full_text .= '';
   } elsif ($percent >= 15) {
@@ -52,7 +54,7 @@ if ($status eq 'Discharging') {
 	$full_text .= '';
 }
 
-$full_text .= " $percent%";
+$full_text .= "$percent%";
 
 $short_text = $full_text;
 
@@ -67,13 +69,13 @@ print "$short_text\n";
 # consider color and urgent flag only on discharge
 if ($status eq 'Discharging') {
 	if ($percent < 20) {
-    $output_color = $ENV{BLOCK_COLOR_BAD} || "#FF0000";
+    $output_color = $ENV{COLOR_BAD} || "#FF0000";
 	} elsif ($percent < 40) {
-    $output_color = $ENV{BLOCK_COLOR_DEGRADED} || "#FFAE00";
+    $output_color = $ENV{COLOR_DEGRADED} || "#FFAE00";
 	} elsif ($percent < 60) {
-    $output_color = $ENV{BLOCK_COLOR_FAIR} || "#FFF600";
+    $output_color = $ENV{COLOR_FAIR} || "#FFF600";
 	} elsif ($percent < 85) {
-    $output_color = $ENV{BLOCK_COLOR_GOOD} || "#A8FF00";
+    $output_color = $ENV{COLOR_GOOD} || "#A8FF00";
 	}
 	if (defined $output_color) {
     print "$output_color\n";

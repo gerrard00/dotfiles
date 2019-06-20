@@ -28,10 +28,10 @@ command=$SCRIPT_DIR/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-color_good=#8f9d6a
-color_fair=#f9ee98
-color_degraded=#cda869
-color_bad=#cf6a4c
+COLOR_GOOD=#8f9d6a
+COLOR_FAIR=#f9ee98
+COLOR_DEGRADED=#cda869
+COLOR_BAD=#cf6a4c
 
 # Volume indicator
 #
@@ -40,8 +40,8 @@ color_bad=#cf6a4c
 # See the script for details.
 [volume]
 label=
-instance=Master
-#instance=PCM
+# instance=Master
+instance=PCM
 interval=once
 signal=1
 separator=false
@@ -121,7 +121,7 @@ interval=60
 #
 [time]
 #label=
-command=date '+%b %d %H:%M:%S'
+command=date '+%b %d %H:%M'
 interval=1
 
 # Generic media player support
