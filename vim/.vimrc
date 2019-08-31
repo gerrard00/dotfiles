@@ -18,7 +18,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs', 'go', 'css'], 'do': '~/.vim/install-ycm' }
+Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs', 'go', 'css', 'python'], 'do': '~/.vim/install-ycm' }
 autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
