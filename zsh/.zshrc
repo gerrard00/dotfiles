@@ -79,3 +79,6 @@ export LESS_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
 
 # zmv makes batch renaming 'foo-(*).txt' 'bar-\$1.txt'
 autoload -U zmv
+
+# use bat as cat if available
+type bat >/dev/null 2>&1 && alias cat=bat
