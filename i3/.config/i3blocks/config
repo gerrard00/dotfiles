@@ -24,8 +24,9 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
+# GAL
 command=$SCRIPT_DIR/$BLOCK_NAME
-separator_block_width=15
+separator_block_width=25
 markup=none
 
 COLOR_GOOD=#8f9d6a
@@ -38,13 +39,12 @@ COLOR_BAD=#cf6a4c
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
-[volume]
-label=
+# [volume]
+# label=
 # instance=Master
-instance=PCM
-interval=once
-signal=1
-separator=false
+# interval=once
+# signal=1
+# separator=false
 
 # Memory usage
 #
@@ -80,13 +80,22 @@ separator=false
 # interval=10
 # separator=false
 
+[volume-pulseaudio]
+command=$SCRIPT_DIR/volume-pulseaudio/volume-pulseaudio
+interval=once
+signal=1
+USE_ALSA_NAME=1
+short_text=
+LONG_FORMAT="${SYMB}${VOL}%"
+SHORT_FORMAT="${SYMB}${VOL}%"
+
 [wifi]
 label=
 instance=wlp3s0
 separator=false
-command=echo "$(iw dev wlp3s0 link | grep SSID | cut -d " " -f 2-)"
+command=echo " $(iw dev wlp3s0 link | grep SSID | cut -d " " -f 2-)"
 interval=30
-separator=false
+separator=true
 
 # [bandwidth]
 #instance=eth0
@@ -103,9 +112,10 @@ separator=false
 #separator=false
 
 [load_average]
-label=
+# label=
 interval=10
-separator=false
+separator=true
+command=$SCRIPT_DIR/$BLOCK_NAME/$BLOCK_NAME
 
 # Battery indicator
 #
@@ -163,3 +173,5 @@ interval=1
 #instance=NUM
 #interval=once
 #signal=11
+
+

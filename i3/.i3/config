@@ -169,7 +169,7 @@ bindsym $mod+r mode "resize"
 
 bar {
   # status_command SCRIPT_DIR=/home/gerrard/oss/i3blocks-fork/scripts i3blocks -c ~/.config/i3blocks/config
-  status_command i3blocks -c ~/.config/i3blocks/config
+  status_command SCRIPT_DIR=$HOME/.config/i3blocks/scripts i3blocks -v
   font pango:Inconsolata 12
   mode hide
   modifier $mod
@@ -187,14 +187,15 @@ bar {
   }
 }
 
-#code for shutdown prompt from arch wiki
-set $Locker $HOME/.i3/i3lock-blur/lock.sh && sleep 1
+# set $Locker $HOME/.i3/i3lock-blur/lock.sh && sleep 1
+set $Locker $HOME/.i3/i3lock-blur/lock.sh && sleep 1 && systemctl suspend-then-hibernate
 
+#code for shutdown prompt from arch wiki
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend-then-hibernate, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
@@ -251,4 +252,9 @@ bindsym XF86Launch1 exec ~/.i3/toggleTrackPad
 exec ~/.i3/toggleTrackPad
 
 # autolock after inactivity
+# testing sytemd; system locks during usage so back to xautolock
 exec xautolock -time 15 -locker $Locker
+# exec xautolock -time 20 -locker $Locker
+
+# move the whole workspace to the next output
+bindsym $mod+x move workspace to output right
