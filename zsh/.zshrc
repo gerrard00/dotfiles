@@ -82,3 +82,5 @@ autoload -U zmv
 
 # use bat as cat if available
 type bat >/dev/null 2>&1 && alias cat=bat
+
+unsetopt BEEP
