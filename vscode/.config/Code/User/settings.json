@@ -4,5 +4,15 @@
         "**/*.swp": true
     },
     "editor.fontSize": 12,
-    "workbench.colorTheme": "Base16 Twilight Dark"
+    "workbench.colorTheme": "Base16 Twilight Dark",
+    "vim.insertModeKeyBindingsNonRecursive": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
