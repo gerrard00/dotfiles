@@ -105,7 +105,7 @@ set tabstop=2 shiftwidth=2 expandtab
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
 let g:ale_lint_on_enter = 0
-let g:ale_fixers = { 'javascript': ['eslint', 'prettier'] }
+let g:ale_fixers = { 'javascript': ['eslint', 'prettier'], 'haskell': ['stylish-haskell'] }
 let g:ale_fix_on_save = 0
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma always'
 let g:ale_set_highlights = 0
