@@ -1,4 +1,4 @@
-function _get_session_name() 
+function _get_session_name()
 {
   # note: the equal sign tells tmux to match the name exactly
   echo ${${PWD##*/}:gs/\./_/}
@@ -6,6 +6,8 @@ function _get_session_name()
 
 function work()
 {
+  local type="${1:-default}"
+  echo "doing $type"
   local session_name=$(_get_session_name)
 
   # kill any already attached clients
@@ -16,8 +18,7 @@ function work()
     tmux detach-client  -s "=$session_name"
   fi
 
-  # attach or start the named session
-  tmuxinator start node -n $session_name
+  tmuxinator start "$type" -n $session_name
 }
 
 function stopwork()
