@@ -18,8 +18,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'chriskempson/base16-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'Valloric/YouCompleteMe', { 'for': ['c', 'cpp', 'javascript', 'cs', 'go', 'css', 'python'], 'do': '~/.vim/install-ycm' }
-autocmd! User YouCompleteMe if !has('vim_starting') | call youcompleteme#Enable() | endif
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-easytags'
@@ -114,13 +112,6 @@ let g:ale_set_highlights = 0
 set nowrap
 
 set number
-
-"default ycm conf for c files.
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-" if installed via the default install py script the ycm server
-" crashes if this isn't set. ycm docs suggest it's a mismatch
-" between python2 and python3 during install vs usage.
-" let g:ycm_path_to_python_interpreter = "/usr/bin/python"
 
 "tagbar config
 nmap <silent> <F8> :TagbarToggle<CR>
