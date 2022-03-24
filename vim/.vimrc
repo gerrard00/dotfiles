@@ -20,7 +20,6 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
@@ -75,7 +74,6 @@ Plug 'gerrard00/vim-diffbuff'
 " Plug '~/projects/vimdiffbuff'
 " pgsql syntax
 Plug 'lifepillar/pgsql.vim'
-Plug 'majutsushi/tagbar'
 " better jsx highlighting for react
 Plug 'mxw/vim-jsx'
 " required for vim-jsx to work on .js files
@@ -113,9 +111,6 @@ set nowrap
 
 set number
 
-"tagbar config
-nmap <silent> <F8> :TagbarToggle<CR>
-
 " airline config
 " for some reason, auto detect of theme isn't working
 " after switching to vim-plug
@@ -133,12 +128,6 @@ let g:airline#extensions#tabline#show_tab_type = 0
 " truncate git branch name
 let g:airline#extensions#branch#displayed_head_limit = 10
 let g:airline#extensions#branch#enabled = 1
-
-function! AirlineInit()
-  let g:airline_section_x = airline#section#create_right(['tagbar'])
-  let g:airline_section_y = ''
-endfunction
-autocmd User AirlineAfterInit call AirlineInit()
 
 " toggle paste mode
 set pastetoggle=<F2>
@@ -194,21 +183,6 @@ inoremap jk <esc>
 " setup ternjs key mappings
 let g:tern_map_keys=1
 let g:tern_show_argument_hints='on_hold'
-
-" tell easytags to stop updating status
-let g:easytags_async=1
-let g:easytags_suppress_report = 1
-
-" setup easytags to use jsctags for javascript
-let g:easytags_languages = {
-  \   'javascript': {
-  \       'cmd': 'jsctags',
-  \       'args': [],
-  \       'fileoutput_opt': '-f',
-  \       'stdout_opt': '-f-',
-  \       'recurse_flag': '-R'
-  \   }
-\}
 
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
