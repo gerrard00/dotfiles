@@ -24,14 +24,6 @@ Plug 'xolox/vim-misc'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'w0rp/ale'
-" https://adam.garrett-harris.com/how-to-switch-from-vundle-to-vim-plug
-function! BuildTern(info)
-  if a:info.status == 'installed' || a:info.force
-    !npm install
-  endif
-endfunction
-Plug 'ternjs/tern_for_vim', { 'do': function('BuildTern') }
 Plug 'tpope/vim-surround'
 Plug 'moll/vim-node', { 'for': 'javascript' }
 " Only need to enable this plugin temporarily, then run
@@ -57,7 +49,7 @@ Plug 'tianon/vim-docker'
 Plug 'kshenoy/vim-signature'
 " show indent lines
 Plug 'Yggdroot/indentLine'
-" needed for ycm + omnisharp
+" needed for a few tim pope plugins
 Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
@@ -83,6 +75,8 @@ Plug 'easymotion/vim-easymotion'
 
 Plug 'gerrard00/vim-js-dump', { 'for': ['javascript'] }
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -96,15 +90,6 @@ if !exists("g:syntax_on")
 endif
 
 set tabstop=2 shiftwidth=2 expandtab
-
-" Write this in your vimrc file
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 0
-let g:ale_lint_on_enter = 0
-let g:ale_fixers = { 'javascript': ['eslint', 'prettier'], 'haskell': ['stylish-haskell'] }
-let g:ale_fix_on_save = 0
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma always'
-let g:ale_set_highlights = 0
 
 "turn off word wrap
 set nowrap
@@ -180,10 +165,6 @@ nnoremap <Leader>O O<Esc>
 " jk for escape
 inoremap jk <esc>
 
-" setup ternjs key mappings
-let g:tern_map_keys=1
-let g:tern_show_argument_hints='on_hold'
-
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
@@ -236,3 +217,5 @@ map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 " ctrlp ignore using gtt ignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+source ~/.vim/coc.nvim.vimrc

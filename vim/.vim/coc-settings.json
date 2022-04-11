@@ -1,0 +1,6 @@
+{
+  "codeLens.enable": true,
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
+  "coc.preferences.formatOnSaveFiletypes": ["*"]
+}
