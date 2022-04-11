@@ -171,6 +171,7 @@ inoremap jk <esc>
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
 " turn on matchit, so we can match markup tags
+runtime macros/matchit.vim
 
 " gundo mapping
 nnoremap <silent> <F7> :GundoToggle<CR>
