@@ -30,9 +30,11 @@ Plug 'moll/vim-node', { 'for': 'javascript' }
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
 " Plug 'edkolev/tmuxline.vim'
+
+
 " new search hotness
 Plug 'mhinz/vim-grepper'
-nnoremap <leader>g :Grepper -tool rg<cr>
+nnoremap <leader>g :Grepper -tool ag<cr>
 nnoremap <leader>G :Grepper -tool ag -cword -noprompt<cr>
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
