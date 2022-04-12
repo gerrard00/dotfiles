@@ -79,6 +79,13 @@ Plug 'gerrard00/vim-js-dump', { 'for': ['javascript'] }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
+
+" ruby motions and text objects
+Plug 'vim-ruby/vim-ruby'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -199,9 +206,9 @@ nnoremap <Leader>mo :MochaOnlyToggle<CR>
 nnoremap <C-j> :bn<CR>
 nnoremap <C-k> :bp<CR>
 
-" set 80 character line limit
+" set 120 character line limit
 if exists('+colorcolumn')
-  set colorcolumn=81
+  set colorcolumn=121
 endif
 
 " turn on rainbow parentheses
