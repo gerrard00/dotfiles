@@ -84,3 +84,14 @@ autoload -U zmv
 type bat >/dev/null 2>&1 && alias cat=bat
 
 unsetopt BEEP
+
+if type autojump &>/dev/null
+then
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Mac OSX
+    [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+  else
+    # assume linux
+    [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
+  fi
+fi
