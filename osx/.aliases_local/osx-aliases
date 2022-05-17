@@ -23,6 +23,3 @@ function portpwdx {
     return -1
   fi
 }
-
-# just shoving this here for now, since I always need it at work
-export NODE_ENV=dev
