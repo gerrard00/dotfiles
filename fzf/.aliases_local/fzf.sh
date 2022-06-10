@@ -1,9 +1,15 @@
 # setup fzf keybindings (NOTE: not tab completions)
-source /usr/share/fzf/key-bindings.zsh
 
-# set rg as the file list generator for fzf instead of find to get .gitignore honored
-# export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+if [ "$(uname)" = "Darwin" ]; then
+  source /opt/homebrew/Cellar/fzf/0.30.0/shell/key-bindings.zsh
+else
+  source /usr/share/fzf/key-bindings.zsh
+fi
+
+
+# set ag as the file list generator for fzf instead of find to get .gitignore honored
+export FZF_DEFAULT_COMMAND='ag --hidden -g'
+# export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # from: https://github.com/junegunn/fzf/wiki/examples#opening-files
 
@@ -36,12 +42,6 @@ fa() {
   # couldn't get this to work with rg for now
   local files=($(ag --nobreak --nonumbers --noheading -l $1 | fzf --preview="ag $1 -C {}"))
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
-}
-
-# GAL: custom; search custom dir bookmarks file
-cdb() {
-  local dir=($(fzf <$DIRBOOKMARKSFILE))
-  [[ -n "$dir" ]] && cd $dir
 }
 
 # fd - cd to selected directory
