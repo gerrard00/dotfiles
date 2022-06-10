@@ -126,3 +126,6 @@ junk
 
 ## hugo ##
 wp-hugo-*
+
+## nodemon configuration
+nodemon.json
