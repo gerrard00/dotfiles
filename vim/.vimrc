@@ -43,8 +43,6 @@ xmap gs <plug>(GrepperOperator)
 Plug 'tmux-plugins/vim-tmux'
 " json formatting
 Plug 'tpope/vim-jdaddy'
-" graphical undo
-Plug 'sjl/gundo.vim'
 " docker syntax
 Plug 'tianon/vim-docker'
 " signature for mark magic
@@ -56,8 +54,6 @@ Plug 'tpope/vim-dispatch'
 " golang
 Plug 'fatih/vim-go', { 'for': ['go']  }
 let g:go_fmt_command = "goimports"
-" repl like
-Plug 'metakirby5/codi.vim'
 " Docker
 Plug 'tianon/vim-docker'
 " my mocha plugin
