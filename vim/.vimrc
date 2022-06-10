@@ -176,9 +176,6 @@ au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \
 " turn on matchit, so we can match markup tags
 runtime macros/matchit.vim
 
-" gundo mapping
-nnoremap <silent> <F7> :GundoToggle<CR>
-
 " tweak indent line color, got color from colortest script
 let g:indentLine_color_term = 18
 " only conceal characters in normal and command
