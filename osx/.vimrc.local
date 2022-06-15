@@ -1,4 +1,8 @@
 set lazyredraw " to avoid scrolling problems in mac
 
 "enable mouse scrolling, will help during demos
-:set mouse=a
+set mouse=a
+
+" the docker virtiofs file system doesn't work correctly the way Vim saves
+" files in backupcopy=no mode.
+set backupcopy=yes
