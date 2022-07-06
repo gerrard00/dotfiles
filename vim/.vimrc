@@ -82,6 +82,8 @@ Plug 'tpope/vim-bundler'
 " ruby motions and text objects
 Plug 'vim-ruby/vim-ruby'
 
+Plug 'tpope/vim-obsession'
+
 " Add plugins to &runtimepath
 call plug#end()
 
