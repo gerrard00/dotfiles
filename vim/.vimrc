@@ -15,7 +15,6 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
-Plug 'chriskempson/base16-vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
@@ -84,6 +83,9 @@ Plug 'vim-ruby/vim-ruby'
 
 Plug 'tpope/vim-obsession'
 
+" nord all the things?
+Plug 'arcticicestudio/nord-vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -104,9 +106,6 @@ set nowrap
 set number
 
 " airline config
-" for some reason, auto detect of theme isn't working
-" after switching to vim-plug
-let g:airline_theme = "base16"
 let g:airline_powerline_fonts = 1
 " only show name part of file path
 let g:airline#extensions# = ':t'
@@ -125,9 +124,12 @@ let g:airline#extensions#branch#enabled = 1
 set pastetoggle=<F2>
 
 " setup colors
-let base16colorspace=256  " Access colors present in 256 colorspace
-set background=dark
-colorscheme base16-twilight
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" set background=dark
+colorscheme nord
+set cursorline
+set cursorlineopt=number
+highlight Visual cterm=bold gui=bold
 
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
@@ -178,8 +180,6 @@ au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \
 " turn on matchit, so we can match markup tags
 runtime macros/matchit.vim
 
-" tweak indent line color, got color from colortest script
-let g:indentLine_color_term = 18
 " only conceal characters in normal and command
 let g:indentLine_concealcursor = 'nc'
 
