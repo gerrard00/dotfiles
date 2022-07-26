@@ -1,7 +1,6 @@
-function rap {
-  git diff --name-only $1...HEAD | while read file;
-  do
-    sed -I '' '/^[[:blank:]]*puts(.*$/d' $file
-  done
+function remove_debug_rap {
+  upstream=$1
+
+  sed_changed_files $upstream '/^[[:blank:]]*puts(.*$/d'
 }
 
