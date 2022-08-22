@@ -70,7 +70,7 @@ let g:jsx_ext_required = 0
 
 Plug 'easymotion/vim-easymotion'
 
-Plug 'gerrard00/vim-js-dump', { 'for': ['javascript'] }
+Plug 'gerrard00/vim-js-dump', { 'for': ['javascript', 'typescriptreact'] }
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
