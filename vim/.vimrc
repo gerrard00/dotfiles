@@ -236,6 +236,10 @@ if has('persistent_undo')      "check if your vim version supports it
   silent !mkdir -p ~/.vim/undo
 endif
 
+" make mouse work w/ vim in tmux
+set ttymouse=xterm2
+set mouse=a
+
 let g:db_ui_env_variable_url = 'DATABASE_URL'
 
 nnoremap <c-h> :SidewaysLeft<cr>
