@@ -89,6 +89,9 @@ Plug 'tpope/vim-obsession'
 " nord all the things?
 Plug 'arcticicestudio/nord-vim'
 
+" sick of moving arguments
+Plug 'AndrewRadev/sideways.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -228,4 +231,13 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 let g:ctrlp_use_caching = 0
 
 let g:db_ui_env_variable_url = 'DATABASE_URL'
+
+nnoremap <c-h> :SidewaysLeft<cr>
+nnoremap <c-l> :SidewaysRight<cr>
+omap aa <Plug>SidewaysArgumentTextobjA
+xmap aa <Plug>SidewaysArgumentTextobjA
+omap ia <Plug>SidewaysArgumentTextobjI
+xmap ia <Plug>SidewaysArgumentTextobjI
+
+
 source ~/.vim/coc.nvim.vimrc
