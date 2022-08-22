@@ -81,6 +81,9 @@ Plug 'tpope/vim-endwise'
 " ruby syntax
 Plug 'vim-ruby/vim-ruby'
 
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
 Plug 'tpope/vim-obsession'
 
 " nord all the things?
@@ -224,4 +227,5 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " ctrlp don't cache
 let g:ctrlp_use_caching = 0
 
+let g:db_ui_env_variable_url = 'DATABASE_URL'
 source ~/.vim/coc.nvim.vimrc
