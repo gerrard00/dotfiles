@@ -95,6 +95,8 @@ Plug 'AndrewRadev/sideways.vim'
 " mainly for HTML and URL encoding/decoding
 Plug 'tpope/vim-unimpaired'
 
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 " Add plugins to &runtimepath
 call plug#end()
 
