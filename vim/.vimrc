@@ -230,6 +230,12 @@ let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standar
 " ctrlp don't cache
 let g:ctrlp_use_caching = 0
 
+if has('persistent_undo')      "check if your vim version supports it
+  set undofile                 "turn on the feature
+  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
+  silent !mkdir -p ~/.vim/undo
+endif
+
 let g:db_ui_env_variable_url = 'DATABASE_URL'
 
 nnoremap <c-h> :SidewaysLeft<cr>
