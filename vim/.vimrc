@@ -77,8 +77,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-bundler'
-
-" ruby motions and text objects
+Plug 'tpope/vim-endwise'
+" ruby syntax
 Plug 'vim-ruby/vim-ruby'
 
 Plug 'tpope/vim-obsession'
