@@ -124,8 +124,6 @@ let g:airline#extensions#branch#enabled = 1
 set pastetoggle=<F2>
 
 " setup colors
-" let base16colorspace=256  " Access colors present in 256 colorspace
-" set background=dark
 colorscheme nord
 set cursorline
 set cursorlineopt=number
