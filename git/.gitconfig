@@ -6,6 +6,7 @@
 	email = gerrardalindsay@gmail.com
 [push]
   default = simple
+	autoSetupRemote = true
 [diff]
   tool = vimdiff
 [merge]
