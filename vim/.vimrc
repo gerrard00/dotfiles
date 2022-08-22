@@ -221,5 +221,7 @@ map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
 
 " ctrlp ignore using gtt ignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+" ctrlp don't cache
+let g:ctrlp_use_caching = 0
 
 source ~/.vim/coc.nvim.vimrc
