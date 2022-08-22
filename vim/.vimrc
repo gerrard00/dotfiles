@@ -92,6 +92,9 @@ Plug 'arcticicestudio/nord-vim'
 " sick of moving arguments
 Plug 'AndrewRadev/sideways.vim'
 
+" mainly for HTML and URL encoding/decoding
+Plug 'tpope/vim-unimpaired'
+
 " Add plugins to &runtimepath
 call plug#end()
 
