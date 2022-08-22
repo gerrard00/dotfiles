@@ -2,5 +2,8 @@
   "codeLens.enable": true,
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
-  "coc.preferences.formatOnSaveFiletypes": ["*"]
+  "coc.preferences.formatOnSaveFiletypes": ["js","jsx", "ts", "tsx", "typescriptreact"],
+  "yaml.schemas": {
+    "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v2.0.json": "**/*compose*.yml"
+  }
 }
