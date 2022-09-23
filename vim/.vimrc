@@ -246,6 +246,25 @@ set ttymouse=xterm2
 set mouse=a
 
 let g:db_ui_env_variable_url = 'DATABASE_URL'
+function! Scratch()
+  vsplit
+  noswapfile hide enew
+  setlocal buftype=nofile
+  setlocal bufhidden=hide
+endfunction
+
+function! ScratchFromClipboard()
+  call Scratch()
+  normal "+p<cr>
+endfunction
+
+nnoremap <leader>s :call Scratch()<cr>
+nnoremap <leader>s+ :call ScratchFromClipboard()<cr>set splitbelow
+
+" splits should extend rather than replace current window
+set splitbelow
+set splitright
+
 
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
