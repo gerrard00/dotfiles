@@ -222,7 +222,7 @@ let g:lisp_rainbow=1
 set synmaxcol=200
 
 " setup mapping to copy file name
-nnoremap <silent> <Leader>cp :let @+=expand('%:p')<CR>
+nnoremap <silent> <Leader>cpa :let @+=expand('%:p')<CR>
 nnoremap <silent> <Leader>cpr :let @+=expand('%')<CR>
 
 " open file in same directory as current buffer map ,e :e
