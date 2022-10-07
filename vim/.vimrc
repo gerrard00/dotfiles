@@ -294,5 +294,9 @@ xmap aa <Plug>SidewaysArgumentTextobjA
 omap ia <Plug>SidewaysArgumentTextobjI
 xmap ia <Plug>SidewaysArgumentTextobjI
 
+" default to using smartcase
+set ignorecase
+set smartcase
+
 
 source ~/.vim/coc.nvim.vimrc
