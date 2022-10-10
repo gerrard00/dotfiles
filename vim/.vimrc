@@ -97,6 +97,11 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
+" want ir and ar for ruby blocks
+Plug 'kana/vim-textobj-user'
+
+Plug 'nelstrom/vim-textobj-rubyblock'
+
 " Add plugins to &runtimepath
 call plug#end()
 
