@@ -5,6 +5,7 @@ autoload -U compinit promptinit colors
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+  export PATH="/opt/homebrew/bin: $PATH"
 fi
 
 compinit
@@ -87,11 +88,6 @@ autoload -U zmv
 type bat >/dev/null 2>&1 && alias cat=bat
 
 unsetopt BEEP
-
-# I always use brew on osx
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  export PATH="/opt/homebrew/bin: $PATH"
-fi
 
 if type autojump &>/dev/null
 then
