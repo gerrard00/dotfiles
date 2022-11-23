@@ -9,7 +9,8 @@ fi
 
 
 # set ag as the file list generator for fzf instead of find to get .gitignore honored
-export FZF_DEFAULT_COMMAND='ag --hidden -g'
+export FZF_DEFAULT_COMMAND='ag --hidden -g ""'
+export FZF_CTRL_T_COMMAND='ag --hidden -g ""'
 # export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # from: https://github.com/junegunn/fzf/wiki/examples#opening-files
