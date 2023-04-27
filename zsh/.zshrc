@@ -99,3 +99,8 @@ then
     [ -f /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
   fi
 fi
+
+if type direnv &>/dev/null
+then
+  eval "$(direnv hook zsh)"
+fi
