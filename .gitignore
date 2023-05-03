@@ -10,3 +10,7 @@ tmux/.tmux/resurrect/
 *.swp
 
 vim/.vim/undo
+
+tmux/.tmux/plugins
+
+
