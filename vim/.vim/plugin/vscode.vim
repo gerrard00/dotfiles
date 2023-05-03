@@ -7,5 +7,5 @@
 " endfunction
 
 " command! -buffer TryJq call s:tryJq()
-nnoremap <buffer> <leader>code :Dispatch code %<cr>
+nnoremap <silent><leader>code :Dispatch code %<cr>
 
