@@ -102,6 +102,10 @@ Plug 'kana/vim-textobj-user'
 
 Plug 'nelstrom/vim-textobj-rubyblock'
 
+" won't seem to work with the dynamic bindings stuff if this isn't set here
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+Plug 'puremourning/vimspector'
+
 " Add plugins to &runtimepath
 call plug#end()
 
@@ -305,3 +309,4 @@ set smartcase
 
 
 source ~/.vim/coc.nvim.vimrc
+source ~/.vim/vimspector.vimrc

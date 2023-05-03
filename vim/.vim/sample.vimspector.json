@@ -1,0 +1,23 @@
+{
+  "configurations": {
+    "run": {
+      "adapter": "js-debug",
+      "filetypes": [ "javascript", "typescript" ],
+      "breakpoints": {
+        "exception": {
+          "caught": "N",
+          "uncaught": "N",
+          "all": "N"
+        }
+      },
+      "configuration": {
+        "request": "launch",
+        "stopOnEntry": false,
+        "console": "integratedTerminal",
+        "program": "${workspaceRoot}/index.js",
+        "cwd": "${workspaceRoot}",
+        "type": "pwa-node"
+      }
+    }
+  }
+}
