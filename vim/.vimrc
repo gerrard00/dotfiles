@@ -107,6 +107,9 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 " let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 " Plug 'puremourning/vimspector', { 'for': ['javascript', 'typescriptreact'] }
 
+" mostly for converting case like crs, crm, cr-, cr. etc for changing variable case
+Plug 'tpope/vim-abolish'
+
 " Add plugins to &runtimepath
 call plug#end()
 
