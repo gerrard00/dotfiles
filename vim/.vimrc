@@ -110,6 +110,8 @@ Plug 'nelstrom/vim-textobj-rubyblock'
 " mostly for converting case like crs, crm, cr-, cr. etc for changing variable case
 Plug 'tpope/vim-abolish'
 
+Plug 'tpope/vim-projectionist'
+
 " Add plugins to &runtimepath
 call plug#end()
 
