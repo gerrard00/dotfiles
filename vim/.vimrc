@@ -282,28 +282,6 @@ nnoremap <leader>s+ :call ScratchFromClipboard()<cr>set splitbelow
 set splitbelow
 set splitright
 
-function! SqlReadable()
-  let l:raw = @+
-  let l:formatted = l:raw
-
-  " active record to_sql leads with '=> '
-  if (strcharpart(l:formatted, 0, 3) == "=> ")
-    let l:formatted = strcharpart(l:formatted, 3, strcharlen(l:formatted) - 3)
-  endif
-
-  " strip leading and trailing double quotes
-  let l:formatted = substitute(l:formatted, '^"\(.*\)"', '\1', '')
-  " unescape escaped double quotes
-  let l:formatted = substitute(l:formatted, '\\"', '"','g')
-
-  let l:tempname = tempname() . '.sql'
-  call writefile(split(l:formatted, '\n'), tempname)
-  execute 'split' l:tempname
-
-  :call CocAction('format')
-  write
-endfunction
-
 nnoremap <c-h> :SidewaysLeft<cr>
 nnoremap <c-l> :SidewaysRight<cr>
 omap aa <Plug>SidewaysArgumentTextobjA
@@ -314,7 +292,6 @@ xmap ia <Plug>SidewaysArgumentTextobjI
 " default to using smartcase
 set ignorecase
 set smartcase
-
 
 source ~/.vim/coc.nvim.vimrc
 source ~/.vim/vimspector.vimrc
