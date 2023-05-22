@@ -3,14 +3,14 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.pickabar.iterm-launch</string>
+	<string></string>
 	<key>connections</key>
 	<dict>
-		<key>410586FD-4A38-4752-9E46-607C18A9C24D</key>
+		<key>B4E84B48-783B-4365-9E58-36A51995ECFE</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
-				<string>9D931770-8030-4276-BFA3-B86F7E43F1E9</string>
+				<string>107598E9-6FC2-4172-B447-98FE99F9FDBD</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -27,7 +27,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Launch New Iterm Window In Workspace</string>
+	<string>Launch New Chrome Window</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -42,11 +42,11 @@
 				<key>focusedappvariablename</key>
 				<string></string>
 				<key>hotkey</key>
-				<integer>17</integer>
+				<integer>34</integer>
 				<key>hotmod</key>
 				<integer>393216</integer>
 				<key>hotstring</key>
-				<string>T</string>
+				<string>I</string>
 				<key>leftcursor</key>
 				<false/>
 				<key>modsmode</key>
@@ -57,7 +57,7 @@
 			<key>type</key>
 			<string>alfred.workflow.trigger.hotkey</string>
 			<key>uid</key>
-			<string>410586FD-4A38-4752-9E46-607C18A9C24D</string>
+			<string>B4E84B48-783B-4365-9E58-36A51995ECFE</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -69,8 +69,10 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>tell application "iTerm"
-   set newSession to create window with default profile
+				<string>tell application "Google Chrome"
+  make new window
+  tell application "System Events" to set frontmost of process "Google Chrome" to true
+  activate
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
@@ -82,7 +84,7 @@ end tell</string>
 			<key>type</key>
 			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>9D931770-8030-4276-BFA3-B86F7E43F1E9</string>
+			<string>107598E9-6FC2-4172-B447-98FE99F9FDBD</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
@@ -91,19 +93,19 @@ end tell</string>
 	<string></string>
 	<key>uidata</key>
 	<dict>
-		<key>410586FD-4A38-4752-9E46-607C18A9C24D</key>
+		<key>107598E9-6FC2-4172-B447-98FE99F9FDBD</key>
 		<dict>
 			<key>xpos</key>
-			<integer>120</integer>
-			<key>ypos</key>
-			<integer>65</integer>
-		</dict>
-		<key>9D931770-8030-4276-BFA3-B86F7E43F1E9</key>
-		<dict>
-			<key>xpos</key>
-			<integer>425</integer>
+			<integer>325</integer>
 			<key>ypos</key>
 			<integer>115</integer>
+		</dict>
+		<key>B4E84B48-783B-4365-9E58-36A51995ECFE</key>
+		<dict>
+			<key>xpos</key>
+			<integer>60</integer>
+			<key>ypos</key>
+			<integer>60</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>
