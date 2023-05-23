@@ -282,16 +282,10 @@ nnoremap <leader>s+ :call ScratchFromClipboard()<cr>set splitbelow
 set splitbelow
 set splitright
 
-nnoremap <c-h> :SidewaysLeft<cr>
-nnoremap <c-l> :SidewaysRight<cr>
-omap aa <Plug>SidewaysArgumentTextobjA
-xmap aa <Plug>SidewaysArgumentTextobjA
-omap ia <Plug>SidewaysArgumentTextobjI
-xmap ia <Plug>SidewaysArgumentTextobjI
-
 " default to using smartcase
 set ignorecase
 set smartcase
 
 source ~/.vim/coc.nvim.vimrc
+source ~/.vim/sideways.vimrc
 source ~/.vim/vimspector.vimrc
