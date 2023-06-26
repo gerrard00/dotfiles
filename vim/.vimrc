@@ -56,7 +56,7 @@ let g:go_fmt_command = "goimports"
 " Docker
 Plug 'tianon/vim-docker'
 " my mocha plugin
-Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript'] }
+Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript', 'typescript'] }
 Plug 'kovisoft/slimv', { 'for': ['scheme'] }
 " my single buffer diff plugin
 Plug 'gerrard00/vim-diffbuff'
