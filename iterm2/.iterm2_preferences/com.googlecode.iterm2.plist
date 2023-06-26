@@ -1817,7 +1817,7 @@
 			<key>Disable Window Resizing</key>
 			<true/>
 			<key>Dynamic Profile Filename</key>
-			<string>/Users/gerrard/Library/Application Support/iTerm2/DynamicProfiles/GerrardDefault.json</string>
+			<string>/Users/gerrardlindsay/Library/Application Support/iTerm2/DynamicProfiles/GerrardDefault.json</string>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
