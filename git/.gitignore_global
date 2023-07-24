@@ -129,3 +129,5 @@ wp-hugo-*
 
 ## nodemon configuration
 nodemon.json
+
+*.orig
