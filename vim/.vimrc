@@ -112,6 +112,8 @@ Plug 'tpope/vim-abolish'
 
 Plug 'tpope/vim-projectionist'
 
+Plug 'storyn26383/vim-vue'
+
 " Add plugins to &runtimepath
 call plug#end()
 
