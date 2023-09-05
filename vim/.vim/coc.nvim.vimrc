@@ -171,14 +171,13 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " My script for toggling auto format on save
 " https://gist.github.com/gerrard00/38b5b087b7a65ebb1acc273441e7893c
 function! s:toggleFormatOnSave()
-  let l:currentValue = coc#util#get_config('coc.preferences').formatOnSaveFiletypes
-  if(len(l:currentValue) > 0)
+  let l:currentValue = coc#util#get_config('coc.preferences').formatOnSave
+  if(l:currentValue == "true")
     echo "Disabling format on save."
-    let g:PreviousFormatOnSaveFiletypesValue = l:currentValue
-    call coc#config('coc.preferences', {'formatOnSaveFiletypes': []})
+    call coc#config('coc.preferences', {'formatOnSave': "false" })
   else
     echo "Re-enabling format on save."
-    call coc#config('coc.preferences', {'formatOnSaveFiletypes': g:PreviousFormatOnSaveFiletypesValue})
+    call coc#config('coc.preferences', {'formatOnSave': "true" })
   endif
 endfunction
 
