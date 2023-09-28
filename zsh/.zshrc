@@ -8,6 +8,14 @@ then
   export PATH="/opt/homebrew/bin: $PATH"
 fi
 
+#zsh autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+ # zle -A {.,}history-incremental-search-backward
+# zle -A {.,}vi-history-search-backward
+# bindkey -M vicmd '/' vi-history-search-forward
+
+#/zsh autosuggestions
+
 compinit
 promptinit
 colors
