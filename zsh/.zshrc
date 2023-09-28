@@ -112,3 +112,6 @@ if type direnv &>/dev/null
 then
   eval "$(direnv hook zsh)"
 fi
+
+# default is 40 (set in hundredths of a second, so that is 400 ms))
+KEYTIMEOUT=20
