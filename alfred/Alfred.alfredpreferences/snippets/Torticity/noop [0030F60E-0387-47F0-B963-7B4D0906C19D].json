@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "const noopTransaction = fn => async () => await fn()",
+    "uid" : "0030F60E-0387-47F0-B963-7B4D0906C19D",
+    "name" : "noop",
+    "keyword" : "noop"
+  }
+}

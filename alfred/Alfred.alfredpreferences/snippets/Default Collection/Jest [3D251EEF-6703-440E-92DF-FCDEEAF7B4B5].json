@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "describe('', () => {\n    it('', () => {\n        expect(false).toBeTruthy()\n    })\n})",
+    "uid" : "3D251EEF-6703-440E-92DF-FCDEEAF7B4B5",
+    "name" : "Jest",
+    "keyword" : "jest"
+  }
+}
