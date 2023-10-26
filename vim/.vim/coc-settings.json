@@ -3,7 +3,7 @@
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "coc.preferences.formatOnSave": true,
-  "coc.preferences.formatOnSaveFiletypes": ["js","jsx", "ts", "tsx", "typescript", "typescriptreact", "vue", "markdown", "css"],
+  "coc.preferences.formatOnSaveFiletypes": ["js","jsx", "ts", "tsx", "typescript", "typescriptreact", "vue", "markdown", "css", "rs"],
   "yaml.schemas": {
     "https://raw.githubusercontent.com/docker/compose/master/compose/config/config_schema_v2.0.json": "**/*compose*.yml"
   }
