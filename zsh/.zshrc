@@ -32,6 +32,9 @@ precmd() {
 
 setopt HIST_IGNORE_DUPS
 
+export HISTFILESIZE=1000000000
+export HISTSIZE=1000000000
+
 #setup prompt substitution, used by git
 setopt PROMPT_SUBST
 
