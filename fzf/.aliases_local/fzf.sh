@@ -1,10 +1,8 @@
 # setup fzf keybindings (NOTE: not tab completions)
-
-if [ "$(uname)" = "Darwin" ]; then
-  # source /opt/homebrew/Cellar/fzf/0.33.0/shell/key-bindings.zsh
-  [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-else
-  source /usr/share/fzf/key-bindings.zsh
+if command -v fzf > /dev/null 2>&1; then
+    # Source fzf key-bindings for zsh
+    FZF_PATH=$(dirname $(readlink -f $(which fzf)))
+    source "$FZF_PATH/../shell/key-bindings.zsh"
 fi
 
 
