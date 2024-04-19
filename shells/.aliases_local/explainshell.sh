@@ -6,5 +6,5 @@ explainshell () {
   # data as compared to pipes where the setup cost dominates.
   # https://unix.stackexchange.com/a/219806/158139
   response=$(w3m -dump "https://explainshell.com/explain?cmd="$(echo $@ | tr ' ' '+'))
-  cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
+  \cat -s <(grep -v -e explainshell -e • -e □ -e "source manpages" <<< "$response")
 }
