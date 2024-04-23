@@ -1,6 +1,6 @@
 " use python to generate uuid/guids, adapted from vim-nuuuid
 function! NewUUID()
-python << endpython
+py3 << endpython
 import vim
 import sys,uuid;
 
@@ -12,4 +12,4 @@ endfunction
 " Mappings to create uuids using NewUUID
 nnoremap <Leader>uuid a<C-R>=NewUUID()<CR><Esc>
 inoremap <Leader>uuid <C-R>=NewUUID()<CR>
-vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>
+vnoremap <Leader>uuid c<C-R>=NewUUID()<CR><Esc>0
