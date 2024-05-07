@@ -131,3 +131,11 @@ wp-hugo-*
 nodemon.json
 
 *.orig
+
+.vim/coc-settings.json
+
+tmp
+
+.ignore
+
+*.hide
