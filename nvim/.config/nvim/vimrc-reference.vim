@@ -1,9 +1,125 @@
-lua require('plugins')
+" load vim defaults
+if filereadable($VIMRUNTIME . "/defaults.vim")
+  unlet! skip_defaults_vim
+  source $VIMRUNTIME/defaults.vim
+endif
 
+" auto-install vim-plug
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+
+" configure plugins
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'pangloss/vim-javascript'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'xolox/vim-misc'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-commentary'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tpope/vim-surround'
+Plug 'moll/vim-node', { 'for': 'javascript' }
 " Only need to enable this plugin temporarily, then run
 " TmuxlineSnapshot to create a new file that can be sourced
 " from .tmux.conf
 " Plug 'edkolev/tmuxline.vim'
+
+
+" new search hotness
+Plug 'mhinz/vim-grepper'
+nnoremap <leader>g :Grepper -tool ag<cr>
+nnoremap <leader>G :Grepper -tool ag -cword -noprompt<cr>
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
+
+" tmux syntax
+Plug 'tmux-plugins/vim-tmux'
+" json formatting
+Plug 'tpope/vim-jdaddy'
+" docker syntax
+Plug 'tianon/vim-docker'
+" signature for mark magic
+Plug 'kshenoy/vim-signature'
+" show indent lines
+Plug 'Yggdroot/indentLine'
+" needed for a few tim pope plugins
+Plug 'tpope/vim-dispatch'
+" golang
+Plug 'fatih/vim-go', { 'for': ['go']  }
+let g:go_fmt_command = "goimports"
+" Docker
+Plug 'tianon/vim-docker'
+" my mocha plugin
+Plug 'gerrard00/vim-mocha-only', { 'for': ['javascript', 'typescript'] }
+Plug 'kovisoft/slimv', { 'for': ['scheme'] }
+" my single buffer diff plugin
+Plug 'gerrard00/vim-diffbuff'
+" Plug '~/projects/vimdiffbuff'
+" pgsql syntax
+Plug 'lifepillar/pgsql.vim'
+" better jsx highlighting for react
+Plug 'mxw/vim-jsx'
+" required for vim-jsx to work on .js files
+let g:jsx_ext_required = 0
+
+Plug 'easymotion/vim-easymotion'
+
+Plug 'gerrard00/vim-js-dump', { 'for': ['javascript', 'typescriptreact'] }
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rake'
+Plug 'tpope/vim-bundler'
+Plug 'tpope/vim-endwise'
+" ruby syntax
+Plug 'vim-ruby/vim-ruby'
+
+Plug 'tpope/vim-dadbod'
+Plug 'kristijanhusak/vim-dadbod-ui'
+
+Plug 'tpope/vim-obsession'
+
+" nord all the things?
+Plug 'arcticicestudio/nord-vim'
+
+" sick of moving arguments
+Plug 'AndrewRadev/sideways.vim'
+
+" mainly for HTML and URL encoding/decoding
+Plug 'tpope/vim-unimpaired'
+
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
+" want ir and ar for ruby blocks
+Plug 'kana/vim-textobj-user'
+
+Plug 'nelstrom/vim-textobj-rubyblock'
+
+" sticking w/ vscode debugger for now
+" won't seem to work with the dynamic bindings stuff if this isn't set here
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" Plug 'puremourning/vimspector', { 'for': ['javascript', 'typescriptreact'] }
+
+" mostly for converting case like crs, crm, cr-, cr. etc for changing variable case
+Plug 'tpope/vim-abolish'
+
+Plug 'tpope/vim-projectionist'
+
+Plug 'storyn26383/vim-vue'
+
+Plug 'PratikBhusal/vim-grip'
+
+Plug 'liuchengxu/vista.vim'
+
+" Add plugins to &runtimepath
+call plug#end()
 
 filetype plugin indent on    " required
 
@@ -45,7 +161,6 @@ set cursorline
 set cursorlineopt=number
 highlight Visual cterm=bold gui=bold
 
-" do I need this in neovim?
 let $vimrc_local = expand('~/.vimrc.local')
 if filereadable($vimrc_local)
   source $vimrc_local
@@ -132,9 +247,11 @@ nnoremap <silent> <Leader>cpa :let @+=expand('%:p')<CR>
 nnoremap <silent> <Leader>cpr :let @+=expand('%')<CR>
 
 " open file in same directory as current buffer map ,e :e
-map ,e :e <C-R>=expand("%:p:h") . "/" <CR>
-map ,t :tabe <C-R>=expand("%:p:h") . "/" <CR>
-map ,s :split <C-R>=expand("%:p:h") . "/" <CR>
+
+map ,e :e <C-R>=fnamemodify(expand("%:h:p"), ":~:.") . "/" <CR>
+map ,s :split <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>
+map ,t :tabe <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>
+map ,v :vsplit <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>
 
 " ctrlp ignore using gtt ignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -147,6 +264,8 @@ if has('persistent_undo')      "check if your vim version supports it
   silent !mkdir -p ~/.vim/undo
 endif
 
+" make mouse work w/ vim in tmux
+set ttymouse=xterm2
 set mouse=a
 
 let g:db_ui_env_variable_url = 'DATABASE_URL'
@@ -169,38 +288,10 @@ nnoremap <leader>s+ :call ScratchFromClipboard()<cr>set splitbelow
 set splitbelow
 set splitright
 
-function! SqlReadable()
-  let l:raw = @+
-  let l:formatted = l:raw
-
-  " active record to_sql leads with '=> '
-  if (strcharpart(l:formatted, 0, 3) == "=> ")
-    let l:formatted = strcharpart(l:formatted, 3, strcharlen(l:formatted) - 3)
-  endif
-
-  " strip leading and trailing double quotes
-  let l:formatted = substitute(l:formatted, '^"\(.*\)"', '\1', '')
-  " unescape escaped double quotes
-  let l:formatted = substitute(l:formatted, '\\"', '"','g')
-
-  let l:tempname = tempname() . '.sql'
-  call writefile(split(l:formatted, '\n'), tempname)
-  execute 'split' l:tempname
-
-  :call CocAction('format')
-  write
-endfunction
-
-nnoremap <c-h> :SidewaysLeft<cr>
-nnoremap <c-l> :SidewaysRight<cr>
-omap aa <Plug>SidewaysArgumentTextobjA
-xmap aa <Plug>SidewaysArgumentTextobjA
-omap ia <Plug>SidewaysArgumentTextobjI
-xmap ia <Plug>SidewaysArgumentTextobjI
-
 " default to using smartcase
 set ignorecase
 set smartcase
 
-" re-enable this...ideally move it to plugins.lua
-" source ~/.vim/coc.nvim.vimrc
+source ~/.vim/coc.nvim.vimrc
+source ~/.vim/sideways.vimrc
+source ~/.vim/vimspector.vimrc
