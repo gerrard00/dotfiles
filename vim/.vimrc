@@ -114,6 +114,8 @@ Plug 'tpope/vim-projectionist'
 
 Plug 'storyn26383/vim-vue'
 
+Plug 'liuchengxu/vista.vim'
+
 " Add plugins to &runtimepath
 call plug#end()
 
