@@ -4,23 +4,13 @@ if filereadable($VIMRUNTIME . "/defaults.vim")
   source $VIMRUNTIME/defaults.vim
 endif
 
-" auto-install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 " configure plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
 Plug 'pangloss/vim-javascript'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-surround'
@@ -72,22 +62,10 @@ Plug 'easymotion/vim-easymotion'
 
 Plug 'gerrard00/vim-js-dump', { 'for': ['javascript', 'typescriptreact'] }
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-Plug 'tpope/vim-rails'
-Plug 'tpope/vim-rake'
-Plug 'tpope/vim-bundler'
 Plug 'tpope/vim-endwise'
-" ruby syntax
-Plug 'vim-ruby/vim-ruby'
 
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
-
-Plug 'tpope/vim-obsession'
-
-" nord all the things?
-Plug 'arcticicestudio/nord-vim'
 
 " sick of moving arguments
 Plug 'AndrewRadev/sideways.vim'
@@ -135,8 +113,6 @@ set tabstop=2 shiftwidth=2 expandtab
 "turn off word wrap
 set nowrap
 
-set number
-
 " airline config
 let g:airline_powerline_fonts = 1
 " only show name part of file path
@@ -156,7 +132,6 @@ let g:airline#extensions#branch#enabled = 1
 set pastetoggle=<F2>
 
 " setup colors
-colorscheme nord
 set cursorline
 set cursorlineopt=number
 highlight Visual cterm=bold gui=bold
@@ -174,11 +149,6 @@ hi LineNr ctermbg=none guibg=bg
 "NERDTree
 "show hidden files
 let NERDTreeShowHidden=1
-
-"toggle display of nerdtree: http://stackoverflow.com/a/10417725/1011470
-silent! nmap <F3> :NERDTreeToggle<CR>
-silent! map <F4> :NERDTreeFind<CR>
-let g:NERDTreeMapPreview="<F4>"
 
 " have vim better whitespace work on save
 let g:strip_whitespace_on_save = 1
