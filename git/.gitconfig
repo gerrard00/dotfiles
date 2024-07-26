@@ -1,6 +1,7 @@
 [core]
   excludesfile = ~/.gitignore_global
   editor = vim
+  pager = delta
 [user]
 	name = Gerrard Lindsay
 	email = gerrardalindsay@gmail.com
@@ -21,3 +22,38 @@
   cmd = vim -f -d -c \"wincmd J\" \"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
 [pull]
   ff = only
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+  dark = false
+  features = nord
+  line-numbers = true
+  navigate = true
+  side-by-side = true
+  syntax-theme = Nord
+[delta "nord"]
+    dark = true
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-style = file line-number syntax
+    hunk-header-decoration-style = blue box
+    minus-style = bold red
+    minus-emph-style = bold red 52
+    minus-non-emph-style = bold red
+    plus-style = bold green
+    plus-emph-style = bold green 22
+    plus-non-emph-style = bold green
+    line-numbers-minus-style = red
+    line-numbers-plus-style = green
+    line-numbers-left-style = blue
+    line-numbers-right-style = blue
+    zero-style = syntax
+    whitespace-error-style = reverse red
+    commit-decoration-style = blue ol
+    commit-style = raw
+    blame-palette = "#3B4252" "#434C5E" "#4C566A"
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
