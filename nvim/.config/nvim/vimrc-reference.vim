@@ -11,9 +11,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'xolox/vim-misc'
-Plug 'tpope/vim-commentary'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'tpope/vim-surround'
 Plug 'moll/vim-node', { 'for': 'javascript' }
 " Only need to enable this plugin temporarily, then run
 " TmuxlineSnapshot to create a new file that can be sourced
@@ -35,7 +33,9 @@ Plug 'tpope/vim-jdaddy'
 " docker syntax
 Plug 'tianon/vim-docker'
 " signature for mark magic
-Plug 'kshenoy/vim-signature'
+" used marks.nvim instead
+" Plug 'kshenoy/vim-signature'
+
 " show indent lines
 Plug 'Yggdroot/indentLine'
 " needed for a few tim pope plugins
