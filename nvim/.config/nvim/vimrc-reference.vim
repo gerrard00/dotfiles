@@ -37,7 +37,8 @@ Plug 'tianon/vim-docker'
 " Plug 'kshenoy/vim-signature'
 
 " show indent lines
-Plug 'Yggdroot/indentLine'
+" used indent-blankline
+" Plug 'Yggdroot/indentLine'
 " needed for a few tim pope plugins
 Plug 'tpope/vim-dispatch'
 " golang
@@ -67,9 +68,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-dadbod'
 Plug 'kristijanhusak/vim-dadbod-ui'
 
-" sick of moving arguments
-Plug 'AndrewRadev/sideways.vim'
-
 " mainly for HTML and URL encoding/decoding
 Plug 'tpope/vim-unimpaired'
 
@@ -77,8 +75,6 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " want ir and ar for ruby blocks
 Plug 'kana/vim-textobj-user'
-
-Plug 'nelstrom/vim-textobj-rubyblock'
 
 " sticking w/ vscode debugger for now
 " won't seem to work with the dynamic bindings stuff if this isn't set here
@@ -197,10 +193,6 @@ imap (); ();<C-o>h
 " my mocha only plugin mapping
 nnoremap <Leader>mo :MochaOnlyToggle<CR>
 
-" setup shortcuts for moving through buffers
-nnoremap <C-j> :bn<CR>
-nnoremap <C-k> :bp<CR>
-
 " set 120 character line limit
 if exists('+colorcolumn')
   set colorcolumn=121
@@ -215,24 +207,6 @@ set synmaxcol=200
 " setup mapping to copy file name
 nnoremap <silent> <Leader>cpa :let @+=expand('%:p')<CR>
 nnoremap <silent> <Leader>cpr :let @+=expand('%')<CR>
-
-" open file in same directory as current buffer map ,e :e
-
-map ,e :e <C-R>=fnamemodify(expand("%:h:p"), ":~:.") . "/" <CR>
-map ,s :split <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>
-map ,t :tabe <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>
-map ,v :vsplit <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>
-
-" ctrlp ignore using gtt ignore
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
-" ctrlp don't cache
-let g:ctrlp_use_caching = 0
-
-if has('persistent_undo')      "check if your vim version supports it
-  set undofile                 "turn on the feature
-  set undodir=$HOME/.vim/undo  "directory where the undo files will be stored
-  silent !mkdir -p ~/.vim/undo
-endif
 
 " make mouse work w/ vim in tmux
 set ttymouse=xterm2

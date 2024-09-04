@@ -18,12 +18,16 @@ vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 
 -- Open a file in the same directory as the current buffer
 vim.api.nvim_set_keymap('n', ',e', ':e <C-R>=fnamemodify(expand("%:h:p"), ":~:.") . "/" <CR>', { noremap = true, silent = false })
--- Open a horizontal split in the same directory as the current buffer
 vim.api.nvim_set_keymap('n', ',s', ':split <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>', { noremap = true, silent = false })
--- Open a new tab in the same directory as the current buffer
 vim.api.nvim_set_keymap('n', ',t', ':tabe <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>', { noremap = true, silent = false })
--- Open a vertical split in the same directory as the current buffer
 vim.api.nvim_set_keymap('n', ',v', ':vsplit <C-R>=fnamemodify(expand("%:p:h"), ":~:.") . "/" <CR>', { noremap = true, silent = false })
+
+-- Set up shortcuts for moving through buffers
+vim.api.nvim_set_keymap('n', '<C-j>', ':bn<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-k>', ':bp<CR>', { noremap = true, silent = true })
+
+-- Enable persistent undo
+vim.opt.undofile = true
 
 --[[ 
 TODO:
