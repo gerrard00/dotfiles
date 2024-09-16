@@ -167,9 +167,6 @@ autocmd User Node
 nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
-" jk for escape
-inoremap jk <esc>
-
 " autoformat xml w/ tidy
 au FileType xml setlocal equalprg=tidy\ -xml\ -i\ -w\ 0\ -q\ -\ 2>\/dev\/null\ \|\|\ true
 
@@ -236,6 +233,4 @@ set splitright
 set ignorecase
 set smartcase
 
-source ~/.vim/coc.nvim.vimrc
-source ~/.vim/sideways.vimrc
 source ~/.vim/vimspector.vimrc

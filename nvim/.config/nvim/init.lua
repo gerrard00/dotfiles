@@ -29,10 +29,19 @@ vim.api.nvim_set_keymap('n', '<C-k>', ':bp<CR>', { noremap = true, silent = true
 -- Enable persistent undo
 vim.opt.undofile = true
 
+-- Enable ignorecase and smartcase for searching
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Set splits to open below and to the right of the current window
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
 --[[ 
 TODO:
-
+* Ctrl-P copy logic ot use ag instead of git hs-files
 * luarocks
 * replace vim sideways with sibling-swap.nvim?
 * replace abolish with textcase?
+* review plugins used by https://github.com/josean-dev/dev-environment-files
 --]]
