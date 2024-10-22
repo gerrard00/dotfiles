@@ -43,6 +43,8 @@ vim.opt.splitright = true
 NOTES:
 * I didn't autoinstall treesitter stuff
 TODO:
+* volar still isn't working correctly
+* ctrl-p is broken when looking for files
 * my ToggleZoom plugin
 * telescope instead of ctrlp?
 * luarocks
