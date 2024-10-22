@@ -39,11 +39,35 @@ vim.opt.smartcase = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 
+vim.diagnostic.config({
+    virtual_text = false, 
+    signs = false,         
+    underline = true,     
+    update_in_insert = false, 
+})
+
+local function show_diagnostics_on_hover()
+    local opts = {
+        focusable = false,
+        close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+        border = "rounded",
+        source = "always",
+        prefix = " ",
+        scope = "cursor",
+    }
+    vim.diagnostic.open_float(nil, opts)
+end
+
+vim.api.nvim_create_autocmd("CursorHold", {
+    pattern = "*",
+    callback = show_diagnostics_on_hover,
+})
+
+vim.o.updatetime = 300
 --[[ 
 NOTES:
 * I didn't autoinstall treesitter stuff
 TODO:
-* volar still isn't working correctly
 * ctrl-p is broken when looking for files
 * my ToggleZoom plugin
 * telescope instead of ctrlp?
