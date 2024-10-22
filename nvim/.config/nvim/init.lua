@@ -13,6 +13,8 @@ vim.opt.shiftwidth = 2
 -- Use spaces instead of tabs
 vim.opt.expandtab = true
 
+vim.opt.wrap = false
+
 
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = true })
 
@@ -38,8 +40,11 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 --[[ 
+NOTES:
+* I didn't autoinstall treesitter stuff
 TODO:
-* Ctrl-P copy logic ot use ag instead of git hs-files
+* my ToggleZoom plugin
+* telescope instead of ctrlp?
 * luarocks
 * replace vim sideways with sibling-swap.nvim?
 * replace abolish with textcase?

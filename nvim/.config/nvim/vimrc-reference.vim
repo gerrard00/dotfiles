@@ -129,7 +129,6 @@ set pastetoggle=<F2>
 
 " setup colors
 set cursorline
-set cursorlineopt=number
 highlight Visual cterm=bold gui=bold
 
 let $vimrc_local = expand('~/.vimrc.local')
