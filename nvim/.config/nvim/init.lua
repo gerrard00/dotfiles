@@ -68,9 +68,9 @@ vim.o.updatetime = 300
 NOTES:
 * I didn't autoinstall treesitter stuff
 TODO:
-* ctrl-p is broken when looking for files
 * my ToggleZoom plugin
 * telescope instead of ctrlp?
+* switch to comment.nvim and nvim-ts-commentstring instead of vim-commentary?
 * luarocks
 * replace vim sideways with sibling-swap.nvim?
 * replace abolish with textcase?
