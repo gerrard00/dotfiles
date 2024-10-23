@@ -118,3 +118,8 @@ fi
 
 # default is 40 (set in hundredths of a second, so that is 400 ms))
 KEYTIMEOUT=20
+
+# test neovim
+if command -v nvim &> /dev/null; then
+    alias vim=nvim
+fi
