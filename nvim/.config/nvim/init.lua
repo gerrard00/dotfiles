@@ -64,6 +64,19 @@ vim.api.nvim_create_autocmd("CursorHold", {
 })
 
 vim.o.updatetime = 300
+
+
+-- load custom plugins
+local custom_plugins_dir = vim.fn.stdpath('config') .. '/lua/custom_plugins/'
+local custom_plugins = vim.fn.globpath(custom_plugins_dir, '*.lua', false, true)
+
+for _, plugin_path in ipairs(custom_plugins) do
+    local plugin_name = plugin_path:match("([^/]+)%.lua$")
+    if plugin_name then
+        require('custom_plugins.' .. plugin_name)
+    end
+end
+
 --[[ 
 NOTES:
 * I didn't autoinstall treesitter stuff
