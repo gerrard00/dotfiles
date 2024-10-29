@@ -1,5 +1,7 @@
 local M = {}
 
+print("Zoom plugin loaded")
+
 -- Store zoom state per tab
 M.zoomed = {}
 M.winrestcmd = {}

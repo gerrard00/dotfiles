@@ -73,7 +73,7 @@ local custom_plugins = vim.fn.globpath(custom_plugins_dir, '*.lua', false, true)
 for _, plugin_path in ipairs(custom_plugins) do
     local plugin_name = plugin_path:match("([^/]+)%.lua$")
     if plugin_name then
-        require('custom_plugins.' .. plugin_name)
+      require('custom_plugins.' .. plugin_name)
     end
 end
 
@@ -81,7 +81,10 @@ end
 NOTES:
 * I didn't autoinstall treesitter stuff
 TODO:
-* my ToggleZoom plugin
+
+* vim projectionist
+* my custom plugins
+* render-markdown.nvim
 * telescope instead of ctrlp?
 * switch to comment.nvim and nvim-ts-commentstring instead of vim-commentary?
 * luarocks
