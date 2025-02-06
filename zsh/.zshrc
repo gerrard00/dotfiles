@@ -30,9 +30,13 @@ precmd() {
     vcs_info
 }
 
+# this seems to be causing some problems with not all history being available in all windows
+# setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_DUPS
 
-export HISTFILESIZE=1000000000
+# on disk
+export SAVEHIST=1000000000
+# in memory
 export HISTSIZE=1000000000
 
 #setup prompt substitution, used by git
