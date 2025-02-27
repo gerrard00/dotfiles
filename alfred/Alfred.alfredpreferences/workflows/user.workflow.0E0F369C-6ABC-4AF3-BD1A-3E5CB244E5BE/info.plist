@@ -70,9 +70,7 @@
 				<integer>68</integer>
 				<key>script</key>
 				<string>tell application "Google Chrome"
-  make new window
-  tell application "System Events" to set frontmost of process "Google Chrome" to true
-  activate
+	make new window without parameters
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>

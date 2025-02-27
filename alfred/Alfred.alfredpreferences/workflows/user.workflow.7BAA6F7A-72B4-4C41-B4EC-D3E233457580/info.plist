@@ -27,7 +27,7 @@
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
-	<string>Launch New Iterm Window In Workspace</string>
+	<string>Launch New Terminal Window In Workspace</string>
 	<key>objects</key>
 	<array>
 		<dict>
@@ -69,8 +69,11 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>tell application "iTerm"
-   set newSession to create window with default profile
+				<string>tell application "kitty"
+    activate
+    tell application "System Events"
+        keystroke "n" using {command down}
+    end tell
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>

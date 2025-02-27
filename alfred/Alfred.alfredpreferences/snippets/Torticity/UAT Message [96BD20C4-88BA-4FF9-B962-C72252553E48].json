@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "@uat-jaguars this is ready for UAT in staging. Testing instructions are in a comment on the ticket.",
+    "uid" : "96BD20C4-88BA-4FF9-B962-C72252553E48",
+    "name" : "UAT Message",
+    "keyword" : "uatm"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "alfredsnippet" : {
+    "snippet" : "const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));",
+    "uid" : "0438A0A4-2CFF-424B-8BC8-E38D5844A82B",
+    "name" : "sleep",
+    "keyword" : "sleep"
+  }
+}
