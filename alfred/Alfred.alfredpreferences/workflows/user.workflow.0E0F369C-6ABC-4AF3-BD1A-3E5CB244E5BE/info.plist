@@ -69,8 +69,11 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
-				<string>tell application "Google Chrome"
-	make new window without parameters
+				<string>tell application "Firefox"
+  activate
+  tell application "System Events"
+	keystroke "n" using {command down}
+  end tell
 end tell</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
