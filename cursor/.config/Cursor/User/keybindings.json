@@ -9,5 +9,9 @@
     "key": "ctrl+a",
     "command": "workbench.action.terminal.focus",
     "when": "!terminalFocus"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
   }
 ]

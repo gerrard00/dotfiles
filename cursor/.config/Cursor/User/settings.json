@@ -4,6 +4,7 @@
     "**/*.swp": true
   },
   "editor.fontSize": 12,
+  "editor.fontFamily": "Hack Nerd Font Mono",
   "workbench.colorTheme": "Nord",
   "vim.insertModeKeyBindingsNonRecursive": [
     {
@@ -17,6 +18,52 @@
   },
   "thunder-client.saveToWorkspace": true,
   "debug.javascript.autoAttachFilter": "always",
-  "autoHide.autoHidePanel": false
-  // "workbench.iconTheme": "vscode-icons"
+  "autoHide.autoHidePanel": false,
+
+  // Vim Keybindings for Cursor
+  "vim.useCtrlKeys": true,
+  "vim.insertModeKeyBindings": [
+    { "before": ["<C-Space>"], "commands": ["editor.action.triggerSuggest"] }
+  ],
+  "vim.normalModeKeyBindings": [
+    { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
+    { "before": ["g", "y"], "commands": ["editor.action.goToTypeDefinition"] },
+    { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+    { "before": ["g", "r"], "commands": ["editor.action.goToReferences"] },
+    { "before": ["K"], "commands": ["editor.action.showHover"] },
+    { "before": ["<leader>", "r", "n"], "commands": ["editor.action.rename"] },
+    { "before": ["<leader>", "a"], "commands": ["editor.action.codeAction"] },
+    { "before": ["[", "g"], "commands": ["editor.action.marker.prev"] },
+    { "before": ["]", "g"], "commands": ["editor.action.marker.next"] },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["<leader>", "q", "f"],
+      "commands": ["editor.action.quickFix"]
+    },
+    {
+      "before": ["<leader>", "c", "l"],
+      "commands": ["editor.action.codelens.action"]
+    },
+    {
+      "before": ["<leader>", "g", "h", "b"],
+      // "commands": ["gitlens.copyGitHubPermalink"]
+      "commands": ["copy-github-permalink.activate"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    { "before": ["<leader>", "a"], "commands": ["editor.action.codeAction"] },
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.formatSelection"]
+    }
+  ],
+  "vim.commandLineModeKeyBindings": [],
+  "extensions.ignoreRecommendations": true,
+  "vsicons.dontShowNewVersionMessage": true,
+  "cSpell.userWords": [
+    "DONT"
+  ]
 }
