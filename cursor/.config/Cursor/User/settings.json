@@ -17,7 +17,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "thunder-client.saveToWorkspace": true,
-  "debug.javascript.autoAttachFilter": "always",
+  // "debug.javascript.autoAttachFilter": "always",
   "autoHide.autoHidePanel": false,
 
   // Vim Keybindings for Cursor
@@ -64,6 +64,14 @@
   "extensions.ignoreRecommendations": true,
   "vsicons.dontShowNewVersionMessage": true,
   "cSpell.userWords": [
-    "DONT"
-  ]
+    "DONT",
+    "Modstamp",
+    "NONRESPOSIVE",
+    "sadd",
+    "TDTO",
+    "Thoughtspot"
+  ],
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
