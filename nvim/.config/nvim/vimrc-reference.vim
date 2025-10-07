@@ -86,7 +86,6 @@ Plug 'tpope/vim-abolish'
 
 Plug 'tpope/vim-projectionist'
 
-Plug 'storyn26383/vim-vue'
 
 Plug 'PratikBhusal/vim-grip'
 
