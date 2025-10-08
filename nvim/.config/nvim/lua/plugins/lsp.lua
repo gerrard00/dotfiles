@@ -14,13 +14,11 @@ return {
       vim.opt.signcolumn = 'yes'
     end,
     config = function()
-      local lsp_defaults = require('lspconfig').util.default_config
-
       -- Add cmp_nvim_lsp capabilities settings to lspconfig
       -- This should be executed before you configure any language server
-      lsp_defaults.capabilities = vim.tbl_deep_extend(
+      local capabilities = vim.tbl_deep_extend(
         'force',
-        lsp_defaults.capabilities,
+        vim.lsp.protocol.make_client_capabilities(),
         require('cmp_nvim_lsp').default_capabilities()
       )
 

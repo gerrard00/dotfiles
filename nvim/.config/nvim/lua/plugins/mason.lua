@@ -11,12 +11,14 @@ return {
     },
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = {},
+        ensure_installed = {'ts_ls'},
         handlers = {
           -- this first function is the "default handler"
           -- it applies to every language server without a "custom handler"
           function(server_name)
-            require('lspconfig')[server_name].setup({})
+            -- Use the new vim.lsp.config API instead of lspconfig
+            vim.lsp.config(server_name, {})
+            vim.lsp.enable(server_name)
           end,
         }
       })
