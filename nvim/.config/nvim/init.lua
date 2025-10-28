@@ -2,6 +2,9 @@ vim.g.mapleader = "\\"
 
 require("config.lazy")
 
+-- Load LSP keybindings after lazy setup
+require("config.lsp_keybindings")
+
 vim.opt.number = true
 
 -- Set tabstop to 2 spaces
