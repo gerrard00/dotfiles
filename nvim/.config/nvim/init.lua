@@ -68,6 +68,30 @@ vim.api.nvim_create_autocmd("CursorHold", {
 
 vim.o.updatetime = 300
 
+-- Auto-format TypeScript files on save using ESLint LSP
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = {'*.ts', '*.tsx', '*.js', '*.jsx'},
+  callback = function()
+    -- Check if ESLint LSP is attached
+    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    local eslint_client = nil
+    for _, client in ipairs(clients) do
+      if client.name == 'eslint' then
+        eslint_client = client
+        break
+      end
+    end
+
+    if eslint_client then
+      vim.lsp.buf.format({
+        async = false,
+        filter = function(client)
+          return client.name == 'eslint'
+        end,
+      })
+    end
+  end,
+})
 
 -- load custom plugins
 local custom_plugins_dir = vim.fn.stdpath('config') .. '/lua/custom_plugins/'
