@@ -125,7 +125,6 @@ function obj:_getTabsForBrowser(win)
                 table.insert(tabs, {
                     title = title,
                     win   = win,
-                    element = child,
                 })
             else
                 logger:w("_getTabsForBrowser: found tab button but title is empty")
@@ -147,6 +146,59 @@ function obj:_getTabsForWindow(win)
     end
     
     return self:_getTabsForBrowser(win)
+end
+
+function obj:_clickTabByTitle(win, tabTitle)
+    if not win or not tabTitle then
+        logger:w("_clickTabByTitle: missing win or tabTitle")
+        return false
+    end
+    
+    local axWin = ax.windowElement(win)
+    if not axWin then
+        logger:w("_clickTabByTitle: could not get window element")
+        return false
+    end
+    
+    local tabButton = findTabButton(axWin, 1, 12)
+    if not tabButton then
+        logger:w("_clickTabByTitle: could not find any tab button")
+        return false
+    end
+    
+    local tabGroup = tabButton:attributeValue("AXParent")
+    if not tabGroup then
+        logger:w("_clickTabByTitle: could not find tab group")
+        return false
+    end
+    
+    local children = tabGroup:attributeValue("AXChildren") or {}
+    for _, child in ipairs(children) do
+        local childRole = child:attributeValue("AXRole")
+        local subrole = child:attributeValue("AXSubrole")
+        
+        if childRole == "AXRadioButton" and subrole == "AXTabButton" then
+            local title = child:attributeValue("AXDescription") or ""
+            if title == "" then
+                title = child:attributeValue("AXTitle") or ""
+            end
+            
+            if title == tabTitle then
+                -- Found the matching tab button, click it
+                local success = child:performAction("AXPress")
+                if success then
+                    logger:d("_clickTabByTitle: successfully clicked tab: " .. tabTitle)
+                    return true
+                else
+                    logger:w("_clickTabByTitle: failed to perform AXPress on tab: " .. tabTitle)
+                    return false
+                end
+            end
+        end
+    end
+    
+    logger:w("_clickTabByTitle: could not find tab with title: " .. tabTitle)
+    return false
 end
 
 local function windowToMeta(win, selfObj)
@@ -210,7 +262,6 @@ function obj:_rebuildChoicesFromIndex()
                         id = meta.id,
                         tabTitle = tab.title,
                         appName = meta.appName,
-                        tabElement = tab.element,
                     }
                 })
             end
@@ -426,12 +477,23 @@ function obj:_ensureChooser()
 
             -- Check if this is a tab selection
             if choice.meta and choice.meta.type == "tab" then
-                -- For tabs, just click the tab button (it will focus automatically)
-                local tabElement = choice.meta.tabElement
-                if tabElement then
-                    tabElement:performAction("AXPress")
+                -- For tabs, activate app, focus window, then click the tab button
+                local app = win:application()
+                
+                if app then
+                    app:activate(true)
+                end
+
+                win:focus()
+                
+                local tabTitle = choice.meta.tabTitle
+                if tabTitle then
+                    -- Small delay to ensure window is focused before clicking tab
+                    timer.doAfter(0.1, function()
+                        self:_clickTabByTitle(win, tabTitle)
+                    end)
                 else
-                    logger:w("Chooser callback: tab selected but tabElement is missing")
+                    logger:w("Chooser callback: tab selected but tabTitle is missing")
                 end
             else
                 -- For regular windows, activate and focus
