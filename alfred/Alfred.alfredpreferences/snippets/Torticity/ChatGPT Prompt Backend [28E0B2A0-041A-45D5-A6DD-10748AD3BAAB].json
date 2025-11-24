@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "I am a typescript developer using typeorm to access my postgres database.",
-    "uid" : "28E0B2A0-041A-45D5-A6DD-10748AD3BAAB",
-    "name" : "ChatGPT Prompt Backend",
-    "keyword" : "promptback"
-  }
-}

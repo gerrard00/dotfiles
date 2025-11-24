@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "I am a typescript developer using knex to create migrations against my postgres database. I already have Lead and User entities. All of my entities include a created_at and udpated_at timestamp columns. ",
-    "uid" : "7ECD2F2F-DF9D-434F-8EBB-2AE51088D75C",
-    "name" : "Migrate",
-    "keyword" : "promptmigrate"
-  }
-}

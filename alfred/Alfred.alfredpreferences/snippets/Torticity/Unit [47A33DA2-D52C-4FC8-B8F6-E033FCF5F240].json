@@ -1,8 +1,0 @@
-{
-  "alfredsnippet" : {
-    "snippet" : "make -f ~\/make\/dockit-api\/Makefile unit",
-    "uid" : "47A33DA2-D52C-4FC8-B8F6-E033FCF5F240",
-    "name" : "Unit",
-    "keyword" : "unit"
-  }
-}
