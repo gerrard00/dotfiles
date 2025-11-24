@@ -12,7 +12,7 @@ run-e2e() {
   echo ""
 
   node -r dotenv/config ./node_modules/.bin/jest "${changed[@]}" \
-    --watch
+    --watch \
     --detectOpenHandles \
     --runInBand \
     --forceExit \
@@ -34,7 +34,7 @@ run-unit() {
   echo ""
 
   node -r dotenv/config ./node_modules/.bin/jest "${changed[@]}" \
-    --watch
+    --watch \
     --detectOpenHandles \
     --runInBand \
     --forceExit \
@@ -46,12 +46,12 @@ gc() {
   # Get current branch name
   local branch
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-  
+
   if [[ $? -ne 0 || -z "$branch" ]]; then
     echo "Error: Unable to determine git branch" >&2
     return 1
   fi
-  
+
   # Extract commit type (feat or fix) and JIRA ID from branch name
   # Expected format: type-XX-1234-* where type is before first hyphen
   local type jira_id
@@ -63,20 +63,20 @@ gc() {
     echo "Expected format: type-XX-1234-* (e.g., feat-pc-2106-description)" >&2
     return 1
   fi
-  
+
   # Parse arguments to find and modify the commit message
   local args=()
   local found_message=0
   local i=1
-  
+
   while [[ $i -le $# ]]; do
     local arg="${@[$i]}"
-    
+
     # Check if this is -m or -nm flag
     if [[ "$arg" == "-m" || "$arg" == "-nm" ]]; then
       args+=("$arg")
       i=$((i + 1))
-      
+
       if [[ $i -le $# ]]; then
         local message="${@[$i]}"
         # Prefix the message with type and JIRA ID
@@ -89,15 +89,19 @@ gc() {
     else
       args+=("$arg")
     fi
-    
+
     i=$((i + 1))
   done
-  
+
   if [[ $found_message -eq 0 ]]; then
     echo "Error: No commit message found (expected -m or -nm flag)" >&2
     return 1
   fi
-  
+
   # Execute git commit with modified arguments
   git commit "${args[@]}"
+}
+
+prisma_everything() {
+  npm run prisma:gen && npm run prisma:apply && npm run prisma:test-apply
 }
