@@ -32,7 +32,7 @@ vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', {silent =
 vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', {silent = true})
 vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', {silent = true})
 vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', {silent = true})
-vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', {silent = true})
+vim.keymap.set('n', '<leader>qf', '<cmd>lua vim.lsp.buf.code_action()<cr>', {silent = true})
 
 -- Copy diagnostic message at cursor position
 vim.keymap.set('n', '<leader>dc', copy_diagnostic_message, {silent = true, desc = 'Copy diagnostic message'})
