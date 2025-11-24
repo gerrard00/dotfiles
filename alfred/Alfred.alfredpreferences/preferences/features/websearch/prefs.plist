@@ -13,33 +13,7 @@
 			<key>text</key>
 			<string>Open Jira</string>
 			<key>url</key>
-			<string>https://torticity.atlassian.net/browse/{query}</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
-		<key>8601F882-0271-471C-8861-86D7A183FE14</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>slead</string>
-			<key>text</key>
-			<string>Staging Lead</string>
-			<key>url</key>
-			<string>https://dockit-v3.staging.torticitylegal.com/leads/{query}/activity</string>
-			<key>utf8</key>
-			<true/>
-		</dict>
-		<key>87460903-76D4-47F8-84F3-618C3764D5BE</key>
-		<dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyword</key>
-			<string>lead</string>
-			<key>text</key>
-			<string>Prod Lead</string>
-			<key>url</key>
-			<string>https://dockit-v3.torticitylegal.com/leads/{query}/activity</string>
+			<string>https://curbwaste.atlassian.net/browse/{query}</string>
 			<key>utf8</key>
 			<true/>
 		</dict>
