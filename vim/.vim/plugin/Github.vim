@@ -10,8 +10,9 @@ if g:hasGithub == 1
       let l:clean_branch_name = substitute(l:branch_name, '\n\+$', '', '')
       let l:command =  'gh browse -b ' . l:clean_branch_name . ' ' . l:current_file_path . ':' . l:current_line . ' -n '
       let l:url = system(l:command)
-      let @+=l:url
-      echo 'Copied GH browse url to clipboard.'
+      let l:clean_url = substitute(l:url, '\n\+$', '', '')
+      let @+=l:clean_url
+      echo 'Copied GH browse url to clipboard: ' . l:clean_url
   endfunction
 
   command! CopyGithubBrowseUrl call CopyGithubBrowseUrl()
