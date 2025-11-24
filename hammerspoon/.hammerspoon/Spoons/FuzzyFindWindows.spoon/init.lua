@@ -125,6 +125,7 @@ function obj:_getTabsForBrowser(win)
                 table.insert(tabs, {
                     title = title,
                     win   = win,
+                    element = child,
                 })
             else
                 logger:w("_getTabsForBrowser: found tab button but title is empty")
@@ -209,6 +210,7 @@ function obj:_rebuildChoicesFromIndex()
                         id = meta.id,
                         tabTitle = tab.title,
                         appName = meta.appName,
+                        tabElement = tab.element,
                     }
                 })
             end
@@ -422,13 +424,25 @@ function obj:_ensureChooser()
                 return
             end
 
-            local app = win:application()
-            
-            if app then
-                app:activate(true)
-            end
+            -- Check if this is a tab selection
+            if choice.meta and choice.meta.type == "tab" then
+                -- For tabs, just click the tab button (it will focus automatically)
+                local tabElement = choice.meta.tabElement
+                if tabElement then
+                    tabElement:performAction("AXPress")
+                else
+                    logger:w("Chooser callback: tab selected but tabElement is missing")
+                end
+            else
+                -- For regular windows, activate and focus
+                local app = win:application()
+                
+                if app then
+                    app:activate(true)
+                end
 
-            win:focus()
+                win:focus()
+            end
         end)
 
         self._chooser:width(30)
