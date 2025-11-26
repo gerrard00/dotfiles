@@ -1,4 +1,4 @@
-shift_hyper = {"cmd","alt","ctrl","shift"}
+hyper = {"cmd","alt","ctrl","shift"}
 
 -- Load GlobalChooserTheme before other Spoons
 local Theme = require("GlobalChooserTheme")
@@ -10,14 +10,14 @@ spoon.SpoonInstall:andUse("ToggleScreenRotation",
   {
     hotkeys = {
       first = {
-        shift_hyper,
+        hyper,
         "r"
       }
     }
   })
 
 hs.loadSpoon("VimWindowNav")
-spoon.VimWindowNav.hotkey_modifier = shift_hyper
+spoon.VimWindowNav.hotkey_modifier = hyper
 
 spoon.VimWindowNav:start()
 
@@ -26,5 +26,5 @@ hs.loadSpoon("FuzzyFindWindows")
 
 -- Bind hotkeys with Hyper + "/"
 spoon.FuzzyFindWindows:bindHotkeys({
-  search = { shift_hyper, "w" }
+  search = { hyper, "w" }
 })
