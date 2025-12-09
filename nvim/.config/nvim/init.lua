@@ -43,28 +43,37 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 vim.diagnostic.config({
-    virtual_text = false, 
-    signs = false,         
-    underline = true,     
+    virtual_text = {
+        enabled = true,
+        severity = { min = vim.diagnostic.severity.WARN }, -- Only show warnings and errors
+        source = "always",
+        format = function(diagnostic)
+            -- Show severity icon and message
+            local icons = {
+                [vim.diagnostic.severity.ERROR] = "❌",
+                [vim.diagnostic.severity.WARN] = "⚠️",
+                [vim.diagnostic.severity.INFO] = "ℹ️",
+                [vim.diagnostic.severity.HINT] = "💡",
+            }
+            return icons[diagnostic.severity] .. " " .. diagnostic.message
+        end,
+    },
+    signs = true,         -- Show icons in the gutter
+    underline = true,     -- Underline problematic code
     update_in_insert = false, 
 })
 
-local function show_diagnostics_on_hover()
-    local opts = {
+-- Optional: Show diagnostic float on demand with <leader>d or K
+vim.keymap.set('n', '<leader>d', function()
+    vim.diagnostic.open_float(nil, {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
         border = "rounded",
         source = "always",
         prefix = " ",
         scope = "cursor",
-    }
-    vim.diagnostic.open_float(nil, opts)
-end
-
-vim.api.nvim_create_autocmd("CursorHold", {
-    pattern = "*",
-    callback = show_diagnostics_on_hover,
-})
+    })
+end, { desc = 'Show diagnostic at cursor' })
 
 vim.o.updatetime = 300
 
