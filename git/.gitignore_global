@@ -139,3 +139,10 @@ tmp
 .ignore
 
 *.hide
+
+.envrc
+
+dist
+
+# personal cursor rules
+**/.cursor/rules/@gerrard-*
