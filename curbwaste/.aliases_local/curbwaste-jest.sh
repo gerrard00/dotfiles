@@ -105,3 +105,7 @@ gc() {
 prisma_everything() {
   npm run prisma:gen && npm run prisma:apply && npm run prisma:test-apply
 }
+
+format_everything() {
+  npm run lint:fix && npm run format && npx tsc --noEmit
+}
