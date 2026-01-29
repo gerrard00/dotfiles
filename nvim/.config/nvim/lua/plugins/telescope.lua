@@ -20,7 +20,6 @@ return {
             "ag",
             "--vimgrep",
             "--smart-case",
-            "--hidden",
             "--follow",
             "--",
           },
@@ -35,22 +34,10 @@ return {
               ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
             },
           },
-          file_ignore_patterns = {
-            "%.git/",
-            "node_modules/",
-            "%.DS_Store",
-          },
         },
         pickers = {
           find_files = {
-            hidden = true,
-            follow = true,
-          },
-          live_grep = {
-            -- Additional ag options for live_grep
-            additional_args = function(opts)
-              return { "--hidden", "--follow" }
-            end,
+            find_command = { "ag", "-g", "", "--follow" },
           },
         },
         extensions = {
