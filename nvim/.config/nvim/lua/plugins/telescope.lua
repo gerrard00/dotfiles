@@ -21,7 +21,6 @@ return {
             "--vimgrep",
             "--smart-case",
             "--follow",
-            "--",
           },
           mappings = {
             i = {
