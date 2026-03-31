@@ -1,6 +1,14 @@
 run-e2e() {
+  local pattern='tests/e2e/**/*.spec.ts'
   local changed
-  changed=($(git diff --name-only origin/main... -- 'tests/e2e/**/*.spec.ts'))
+  changed=($(
+    {
+      git diff --name-only origin/main... -- "$pattern"
+      git diff --name-only -- "$pattern"
+      git diff --name-only --cached -- "$pattern"
+      git ls-files --others --exclude-standard -- "$pattern"
+    } | sort -u
+  ))
 
   if (( ${#changed[@]} == 0 )); then
     echo "✅ No changed E2E test files since origin/main."
@@ -20,26 +28,47 @@ run-e2e() {
     --dotenv_config_path=.env.test
 }
 
-run-unit() {
-  local changed
-  changed=($(git diff --name-only origin/main... -- 'tests/unit/**/*.spec.ts'))
+run-unit () {
+    # Get remote default branch (e.g. origin/main or origin/master)
+    local default_branch
+    default_branch=$(git symbolic-ref --quiet --short refs/remotes/origin/HEAD 2>/dev/null)
 
-  if (( ${#changed[@]} == 0 )); then
-    echo "✅ No changed unit test files since origin/main."
-    return 0
-  fi
+    # Fallback if origin/HEAD isn't set
+    if [[ -z "$default_branch" ]]; then
+        if git show-ref --verify --quiet refs/remotes/origin/main; then
+            default_branch="origin/main"
+        else
+            default_branch="origin/master"
+        fi
+    fi
 
-  echo "🔍 Running Jest on changed unit tests since origin/main:"
-  printf '  %s\n' "${changed[@]}"
-  echo ""
+    local pattern='tests/unit/**/*.spec.ts'
+    local changed
+    changed=($(
+      {
+        git diff --name-only "$default_branch"... -- "$pattern"
+        git diff --name-only -- "$pattern"
+        git diff --name-only --cached -- "$pattern"
+        git ls-files --others --exclude-standard -- "$pattern"
+      } | sort -u
+    ))
 
-  node -r dotenv/config ./node_modules/.bin/jest "${changed[@]}" \
-    --watch \
-    --detectOpenHandles \
-    --runInBand \
-    --forceExit \
-    --showSeed \
-    --dotenv_config_path=.env.test
+    if (( ${#changed[@]} == 0 )); then
+        echo "✅ No changed unit test files since $default_branch."
+        return 0
+    fi
+
+    echo "🔍 Running Jest on changed unit tests since $default_branch:"
+    printf '  %s\n' "${changed[@]}"
+    echo ""
+
+    node -r dotenv/config ./node_modules/.bin/jest "${changed[@]}" \
+        --watch \
+        --detectOpenHandles \
+        --runInBand \
+        --forceExit \
+        --showSeed \
+        --dotenv_config_path=.env.test
 }
 
 gc() {
