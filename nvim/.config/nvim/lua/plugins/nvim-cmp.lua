@@ -25,12 +25,8 @@ return {
           ['<Tab>'] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
-            elseif vim.fn.pumvisible() == 1 then
-              vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
             elseif vim.snippet.active({ direction = 1 }) then
               vim.snippet.jump(1)
-            elseif vim.fn['coc#pum#visible']() == 1 then
-              vim.fn.feedkeys(vim.api.nvim_replace_termcodes('<C-n>', true, true, true), 'n')
             elseif check_backspace() then
               fallback()
             else
