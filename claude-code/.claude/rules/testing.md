@@ -1,0 +1,1 @@
+When fixing bugs, always write a failing test first that reproduces the exact bug (e.g. same error message or behavior). Confirm the test fails as expected before implementing the fix. The fix is validated when that test passes.
