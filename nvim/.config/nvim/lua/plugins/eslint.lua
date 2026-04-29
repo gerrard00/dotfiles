@@ -36,6 +36,7 @@ return {
         end,
         settings = {
           eslint = {
+            format = { enable = true },
             validate = 'on',
             codeAction = {
               disableRuleComment = {
