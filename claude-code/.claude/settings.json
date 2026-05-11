@@ -1,4 +1,7 @@
 {
+  "enabledPlugins": {
+    "chrome-devtools-mcp@claude-plugins-official": true
+  },
   "extraKnownMarketplaces": {
     "chrome-devtools-plugins": {
       "source": {
@@ -7,7 +10,6 @@
       }
     }
   },
-  "enabledPlugins": {
-    "chrome-devtools-mcp@claude-plugins-official": true
-  }
+  "theme": "dark-ansi",
+  "editorMode": "vim"
 }
