@@ -1,6 +1,6 @@
 ---
-description: Check local notes in ~/notes for a Jira ticket, technology, topic, filename, or general notes review before answering. Use when the user says "check my notes", "check for my notes", "check my notes on X", or references notes like PC-123, postgres, or another note key.
-allowed-tools: Read, Bash
+description: Check local notes in ~/notes for a Jira ticket, technology, topic, filename, or general notes review before answering. Use when the user says "check my notes", "check for my notes", "check my notes on X", "resume work on X", "pick up X", "continue X", or references notes like PC-123, postgres, or another note key.
+allowed-tools: Read, Glob, Grep
 ---
 
 Identify whether the user requested:
@@ -11,7 +11,12 @@ Identify whether the user requested:
    - `billing`
    - `customer imports`
 
-2. A general notes review, such as:
+2. A resume work request, such as:
+   - `resume work on PC-123`
+   - `pick up my cool plan`
+   - `continue billing migration`
+
+3. A general notes review, such as:
    - `check my notes`
    - `look at my notes`
    - `review my notes`
@@ -31,25 +36,41 @@ If the user asks for notes on a specific key or topic, prefer matches in this or
 3. Content search:
    - files under `~/notes` whose contents mention the query
 
-Use commands like:
+Use these tools in order:
 
-```bash
-test -f ~/notes/<query>.md && echo ~/notes/<query>.md
-find ~/notes -maxdepth 1 -type f -iname "*<query>*"
-rg -i "<query>" ~/notes
-```
+1. `Read` — try `~/notes/<query>.md` directly (exact match).
+2. `Glob` — pattern `*<query>*` in `~/notes` (case-insensitive filename match).
+3. `Grep` — search for `<query>` in `~/notes` (content match).
 
 Read the most relevant matching note or notes.
+
+## Resume work
+
+If the user says "resume work on X", "pick up X", "continue X", or similar:
+
+1. Extract the key or topic from the request (e.g., `PC-123`, `my cool plan`, `billing migration`).
+2. Use the same file lookup logic as "Specific note lookup" to find the matching note.
+3. Read the full note.
+4. Look for a TODO-like section. Match any of these headings (case-insensitive):
+   - `## TODO`
+   - `## Next steps`
+   - `## Status`
+   - `## Remaining`
+   - `## Progress`
+5. Present a status update:
+   - Brief summary of what the note is about.
+   - What has been completed (checked items, done sections).
+   - What remains (unchecked items, open tasks).
+6. Do NOT start executing any tasks. Wait for the user to decide how to proceed.
+7. If no TODO-like section is found, summarize the full note and mention that no explicit TODO section was found.
 
 ## General notes review
 
 If the user says only "check my notes" or asks for notes in general, inspect recent and relevant notes under `~/notes`.
 
-Start with recently modified markdown files:
+Start by listing markdown files:
 
-```bash
-find ~/notes -maxdepth 1 -type f -name "*.md" -printf "%T@ %p\n" | sort -nr | head -20
-```
+1. `Glob` — pattern `*.md` in `~/notes` (returns files sorted by modification time).
 
 Then read the most relevant recent notes. Prefer files that appear related to the current conversation, active task, branch name, Jira ticket, error, project, or technology being discussed.
 
