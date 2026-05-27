@@ -1,6 +1,6 @@
 ---
-description: Check local notes in ~/notes for a Jira ticket, technology, topic, filename, or general notes review before answering. Use when the user says "check my notes", "check for my notes", "check my notes on X", "resume work on X", "pick up X", "continue X", or references notes like PC-123, postgres, or another note key.
-allowed-tools: Read, Glob, Grep
+description: Check local notes in ~/notes for a Jira ticket, technology, topic, filename, or general notes review before answering, or create a new note when starting work. Use when the user says "check my notes", "check for my notes", "check my notes on X", "resume work on X", "pick up X", "continue X", "start work on X", or references notes like PC-123, postgres, or another note key.
+allowed-tools: Read, Glob, Grep, Write, mcp__claude_ai_Atlassian__getJiraIssue, mcp__claude_ai_Atlassian__getAccessibleAtlassianResources
 ---
 
 Identify whether the user requested:
@@ -63,6 +63,30 @@ If the user says "resume work on X", "pick up X", "continue X", or similar:
    - What remains (unchecked items, open tasks).
 6. Do NOT start executing any tasks. Wait for the user to decide how to proceed.
 7. If no TODO-like section is found, summarize the full note and mention that no explicit TODO section was found.
+
+## Start work
+
+If the user says "start work on X" or similar:
+
+1. Extract the topic from the request (e.g., `PC-123`, `billing migration`).
+2. Determine if X matches a Jira key pattern `[A-Z]+-\d+` (e.g., `PC-123`).
+3. Derive the target filename:
+   - Jira key: `~/notes/<KEY>.md` (preserve original case, e.g., `~/notes/PC-123.md`).
+   - Otherwise: kebab-case slug of the topic (lowercase, spaces → hyphens, strip punctuation). Example: "billing migration" → `~/notes/billing-migration.md`.
+4. Check if the file already exists using `Read`. If it does, STOP and ask the user how to proceed. Do NOT overwrite.
+5. If a Jira key was detected, fetch the ticket via `mcp__claude_ai_Atlassian__getJiraIssue` to get the title and a browseable link. If the cloudId is not known, call `mcp__claude_ai_Atlassian__getAccessibleAtlassianResources` first.
+6. Create the note with `Write`. Template:
+   - Jira key case:
+     ```
+     # <KEY>: <Jira title>
+
+     <Jira browse link>
+     ```
+   - Free-text case:
+     ```
+     # <Original topic as written by the user>
+     ```
+7. Confirm to the user what was created, including the file path. Do NOT start executing the work itself — wait for the user.
 
 ## General notes review
 
