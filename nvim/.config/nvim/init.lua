@@ -48,14 +48,17 @@ vim.diagnostic.config({
         severity = { min = vim.diagnostic.severity.WARN }, -- Only show warnings and errors
         source = "always",
         format = function(diagnostic)
-            -- Show severity icon and message
             local icons = {
                 [vim.diagnostic.severity.ERROR] = "❌",
                 [vim.diagnostic.severity.WARN] = "⚠️",
                 [vim.diagnostic.severity.INFO] = "ℹ️",
                 [vim.diagnostic.severity.HINT] = "💡",
             }
-            return icons[diagnostic.severity] .. " " .. diagnostic.message
+            local msg = diagnostic.message
+            if #msg > 50 then
+                msg = msg:sub(1, 50) .. "…"
+            end
+            return icons[diagnostic.severity] .. " " .. msg
         end,
     },
     signs = true,         -- Show icons in the gutter
@@ -65,24 +68,43 @@ vim.diagnostic.config({
 
 -- Optional: Show diagnostic float on demand with <leader>d or K
 vim.keymap.set('n', '<leader>d', function()
-    vim.diagnostic.open_float(nil, {
+    local _, winid = vim.diagnostic.open_float(nil, {
         focusable = false,
         close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
         border = "rounded",
         source = "always",
         prefix = " ",
         scope = "cursor",
+        max_width = 80,
     })
+    if winid then
+        vim.api.nvim_win_set_option(winid, 'wrap', true)
+    end
 end, { desc = 'Show diagnostic at cursor' })
 
 vim.o.updatetime = 300
+
+-- Auto-show diagnostic float when cursor rests on a line
+vim.api.nvim_create_autocmd("CursorHold", {
+    callback = function()
+        vim.diagnostic.open_float(nil, {
+            focusable = false,
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = "rounded",
+            source = "always",
+            prefix = " ",
+            scope = "cursor",
+            max_width = 80,
+        })
+    end,
+})
 
 -- Auto-format TypeScript files on save using ESLint LSP
 vim.api.nvim_create_autocmd('BufWritePre', {
   pattern = {'*.ts', '*.tsx', '*.js', '*.jsx'},
   callback = function()
     -- Check if ESLint LSP is attached
-    local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
     local eslint_client = nil
     for _, client in ipairs(clients) do
       if client.name == 'eslint' then
