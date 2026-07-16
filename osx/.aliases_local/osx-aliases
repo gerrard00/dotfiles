@@ -23,3 +23,21 @@ function portpwdx {
     return -1
   fi
 }
+
+# copy image buffer to clipboard on macos 
+imgcopy() {
+  [[ -f "$1" ]] || { echo "usage: imgcopy <image-file>" >&2; return 1; }
+
+  local abs="${1:A}" ext="${1:l:e}" class
+  case "$ext" in
+    png)      class="PNGf" ;;
+    jpg|jpeg) class="JPEG" ;;
+    tif|tiff) class="TIFF" ;;
+    gif)      class="GIFf" ;;
+    pdf)      class="PDF " ;;
+    *) echo "imgcopy: unsupported type: .$ext" >&2; return 1 ;;
+  esac
+
+  osascript -e "set the clipboard to (read (POSIX file \"$abs\") as «class $class»)" \
+    && echo "copied $abs to clipboard"
+}
