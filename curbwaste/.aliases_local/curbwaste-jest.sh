@@ -136,5 +136,9 @@ prisma_everything() {
 }
 
 format_everything() {
-  npm run lint:fix && npm run format && npx tsc --noEmit
+  if [[ "$PWD" == *"/projects/curbwaste-web"* ]]; then
+    npm run lint && npm run format && npx tsc --noEmit
+  else
+    npm run lint:fix && npm run format && npx tsc --noEmit
+  fi
 }
