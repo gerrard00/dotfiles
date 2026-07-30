@@ -33,6 +33,25 @@ Identify whether the user requested:
 
 All notes are stored under `~/notes`.
 
+## Active ticket state (status line)
+
+The status line shows the Jira ticket for the current session. It is driven **only** by this skill — never by the git branch. State lives per-session, managed by the helper `~/.claude/set-active-ticket.sh`. Always change it through that helper (via `Bash`) — never write the state file directly.
+
+- **Set** it when starting or resuming work on a Jira key (see those flows below):
+
+  ```
+  ~/.claude/set-active-ticket.sh <KEY>
+  ```
+
+  Use the uppercased Jira key (e.g. `PC-123`). Only set it for Jira keys — do not set it for free-text topics, since the status line shows a ticket key.
+- **Clear** it on wrap up (no argument):
+
+  ```
+  ~/.claude/set-active-ticket.sh
+  ```
+
+A plain note lookup or general review must NOT change this state.
+
 ## Specific note lookup
 
 If the user asks for notes on a specific key or topic, prefer matches in this order:
@@ -66,6 +85,7 @@ If the user says "resume work on X", "pick up X", "continue X", or similar — i
 
 1. Extract the key or topic from the request (e.g., `PC-123`, `my cool plan`, `billing migration`).
 2. Use the same file lookup logic as "Specific note lookup" to find the matching note.
+2a. If the resumed target is a Jira key, set the active ticket state file (see "Active ticket state") to that uppercased key so the status line reflects this session's work.
 3. Read the full note.
 4. If the note contains a `<!-- resume-context:start --> ... <!-- resume-context:end -->` block, surface it first — it is the most recent cold-start summary and the highest-signal section for resuming.
 5. Look for a TODO-like section. Match any of these headings (case-insensitive):
@@ -112,7 +132,8 @@ If the user says "start work on X" or similar:
 
      - [ ] 
      ```
-7. Confirm to the user what was created, including the file path. Do NOT start executing the work itself — wait for the user.
+7. If a Jira key was detected, set the active ticket state file (see "Active ticket state") to that uppercased key so the status line reflects this session's work.
+8. Confirm to the user what was created, including the file path. Do NOT start executing the work itself — wait for the user.
 
 ## Wrap up / end of session
 
@@ -154,7 +175,8 @@ If the user says "let's wrap it up for now", "that's enough for now", "wrap up",
 
 6. Also refresh the `## TODO` section per "Updating an existing note": mark completed items as `- [x]`, add any newly identified follow-ups as `- [ ]`. If the note is missing a `## TODO` section, add one.
 
-7. Confirm to the user what was written, including the file path and a brief summary of the Resume context. Do NOT commit, push, stage, or otherwise touch git state — notes only.
+7. Clear the active ticket state file (see "Active ticket state") so the status line goes blank until work is next started or resumed.
+8. Confirm to the user what was written, including the file path and a brief summary of the Resume context. Do NOT commit, push, stage, or otherwise touch git state — notes only.
 
 ## Updating an existing note
 
