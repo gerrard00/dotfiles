@@ -1,16 +1,15 @@
 ---
 name: pr-bumper
-description: Keep Gerrard's open PRs visible in the pod-c code reviews Slack channel. Finds his open, ready-for-review PRs on GitHub (all three Curbwaste repos, or just the current branch's PR), checks whether each has a post from him in the code-reviews channels, offers to post missing ones, and offers to bump stale threads (last comment from him >4h old) with a random phrase from phrases.md. Use when the user says "pr bumper", "/pr-bumper", "bump my prs", "bump the current pr", "bump the pr", or "bump this".
+description: Keep Gerrard's open PRs visible in the pod-c code reviews Slack channel. Finds his open, ready-for-review PRs on GitHub (all three Curbwaste repos, or just the current branch's PR), checks whether each has a post from him in the code-reviews channels, reports any that he still needs to post himself, and offers to bump stale threads (last comment from him >4h old) with a random phrase from phrases.md. Use when the user says "pr bumper", "/pr-bumper", "bump my prs", "bump the current pr", "bump the pr", or "bump this".
 allowed-tools: Bash, Read, Write, AskUserQuestion, mcp__claude_ai_Slack__slack_read_channel, mcp__claude_ai_Slack__slack_read_thread, mcp__claude_ai_Slack__slack_send_message, mcp__claude_ai_Slack__slack_search_channels, mcp__claude_ai_Slack__slack_search_users
 ---
 
-Surface Gerrard's ready-for-review PRs in Slack: post links for PRs that haven't been posted yet, and bump threads that have gone quiet. Never post or bump anything without an explicit yes via AskUserQuestion first.
+Keep Gerrard's ready-for-review PRs visible in Slack by bumping threads that have gone quiet. This skill never posts a PR link itself — Slack masks any URL an app posts, which makes every click show a "this link does not come from data in your Slack workspace" warning, so Gerrard posts the initial message by hand. Never bump anything without an explicit yes via AskUserQuestion first.
 
 ## Fixed context
 
 - **GitHub org:** `curbsidetechnologies`. Repos: `curbwaste-web`, `curbwaste-apis`, `curbwaste-backend`.
-- **Primary Slack channel (where new posts go):** `#pod-c-code-reviews`.
-- **Secondary Slack channel (check only, never post):** `#code-reviews`. Team posts occasionally land here, so existing posts must be searched for in both channels.
+- **Slack channels to search:** `#pod-c-code-reviews` (primary) and `#code-reviews`. Team posts land in either, so existing posts must be searched for in both. Bumps go to whichever channel the PR's post lives in; nothing else is ever sent.
 - **Phrases file:** `~/.claude/skills/pr-bumper/phrases.md` (one phrase per line; ignore the header lines and blank lines).
 
 ## 0. Resolve Slack IDs (cached)
@@ -64,23 +63,9 @@ Classify each PR as:
 - **Posted** — a matching message from Gerrard exists (in either channel). Record its channel, `ts`, and whether it has replies.
 - **Not posted** — no matching message from Gerrard in either channel. (A post from someone else does not count.)
 
-## 3. Not-posted PRs → offer to post
+## 3. Not-posted PRs → report only
 
-If any PRs are unposted, use AskUserQuestion (multiSelect) listing each unposted PR by title, plus the option to post all of them. For each PR the user selects, send **one separate message per PR** to `#pod-c-code-reviews` (its resolved channel ID) via `slack_send_message` with `unfurl_app_links: true`. The message body is exactly a markdown link whose text mirrors GitHub's own page title, using the middle-dot separator ` · `:
-
-```
-[<PR title> by <author login> · Pull Request #<PR number> · curbsidetechnologies/<repo>](<PR URL>)
-```
-
-For example:
-
-```
-[feat: PC-3387 expose route id on driver jobs feed by gerrard00 · Pull Request #3122 · curbsidetechnologies/curbwaste-backend](https://github.com/curbsidetechnologies/curbwaste-backend/pull/3122)
-```
-
-`<author login>` comes from the PR data at runtime — the `author.login` field of the `gh pr list` output. Never hardcode a login.
-
-No extra commentary, no emoji, nothing else in the message.
+**Never post a PR link.** If any PRs are unposted, just list them in the summary as needing a manual post — title, number, repo, and URL — so Gerrard can paste them into `#pod-c-code-reviews` himself. Do not offer to post them, and do not ask.
 
 ## 4. Posted PRs → check staleness and offer to bump
 
@@ -99,4 +84,4 @@ Threads whose last Gerrard message is under 4 hours old get no bump offer — ju
 
 ## 5. Summary
 
-Finish with a short per-PR summary: posted now / bumped now / already posted and recently active / user declined. Include the Slack message links returned by `slack_send_message` for anything sent.
+Finish with a short per-PR summary: needs a manual post / bumped now / already posted and recently active / user declined. Include the Slack message links returned by `slack_send_message` for any bumps sent.
