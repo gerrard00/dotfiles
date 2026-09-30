@@ -317,9 +317,39 @@ Do not sweep all of `~/notes` — unrelated tickets produce false matches.
    - questions retired to `## Decisions`;
    - each body deletion as `<file> → <heading> → <first line of the block>` plus a line count.
 
-   Write only after the user confirms. `~/notes` is not under version control, so a wrong deletion is
-   unrecoverable. When a hit is ambiguous — the wording is open-ended but might be a different question —
-   list it as a question for the user instead of deleting it.
+   Write only after the user confirms. When a hit is ambiguous — the wording is open-ended but might be a
+   different question — list it as a question for the user instead of deleting it.
+
+   Before deleting anything, follow "Recoverability" below. A wrong deletion in an untracked note is
+   unrecoverable.
+
+
+## Recoverability
+
+`~/notes` **is** a git repository on branch `master`. That does not make a given note recoverable: many
+notes are untracked and the last commit is often weeks stale. Establish which before any destructive edit
+— deleting a section, rewriting a block, reconciling open questions.
+
+```
+GIT_DIR=/Users/gerrard/notes/.git GIT_WORK_TREE=/Users/gerrard/notes \
+  git ls-files --error-unmatch <file>
+```
+
+- **Tracked** — `git diff -- <file>` shows what changed and `git checkout -- <file>` restores it. Proceed.
+- **Untracked** — there is no baseline. Copy the file aside to the scratchpad first, then edit.
+
+`~/notes/.backups/` holds ad hoc snapshots, but only of the large `PC-3165` files. Do not rely on it.
+
+### Deleting by string index is the hazard that has actually bitten
+
+Slicing a file between two located strings deletes everything in between, including sections you never
+intended to touch. A section title such as `## Message to product and QA` also appears inside the Resume
+context's **Next step** line, so `s.index(title)` lands on the citation, not the heading, and the cut runs
+from there to the next anchor. This destroyed a note's TODO, Open questions and two other sections on
+2026-09-30.
+
+Anchor on a line-start heading (`\n## <title>\n`), and after writing, re-read the headings
+(`grep -n '^## ' <file>`) to confirm only the intended section changed.
 
 ## General notes review
 
