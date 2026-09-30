@@ -106,7 +106,7 @@ If the user says "resume work on X", "pick up X", "continue X", or similar — i
 
 0. If the user did not specify a key or topic:
    a. Run `git branch --show-current` (via `Bash`) to get the current branch name.
-   b. Extract the first Jira-style key from the branch name using regex `[A-Za-z]+-\d+` (case-insensitive), then uppercase it. Example: `feat-pc-3382-expose-termination-effective-date` → `PC-3382`.
+   b. Extract the first Jira-style key from the branch name using regex `[A-Za-z]+-\d+` (case-insensitive), then uppercase it. Example: `feat-pc-123-some-feature-name` → `PC-123`.
    c. If the command fails (not in a git repo) or no key is found in the branch name, STOP and ask the user which note to resume. Do NOT fall back to listing recent notes — that is a different intent.
    d. Otherwise, use the extracted key as X and continue with the steps below. Mention the detected key in your response so the user can correct it if wrong.
 
@@ -271,7 +271,7 @@ Run this on wrap up, whenever a question is answered mid-session, and on an expl
 goal is one record per question — no duplicates inside `## Open questions`, no stale copies outside it.
 
 **Scope.** The target note plus its siblings: glob `~/notes/<KEY>-*.md` when the note is a Jira key (e.g.
-`PC-3165.md` pulls in `PC-3165-test-plan.md`, `PC-3165-execution-status.md`, `PC-3165-gate-matrix.md`).
+`PC-123.md` pulls in `PC-123-test-plan.md`, `PC-123-execution-status.md`, `PC-123-gate-matrix.md`).
 Do not sweep all of `~/notes` — unrelated tickets produce false matches.
 
 0. **Adopt the section if missing.** Older notes predate this convention. If the note has no
@@ -338,7 +338,7 @@ GIT_DIR=/Users/gerrard/notes/.git GIT_WORK_TREE=/Users/gerrard/notes \
 - **Tracked** — `git diff -- <file>` shows what changed and `git checkout -- <file>` restores it. Proceed.
 - **Untracked** — there is no baseline. Copy the file aside to the scratchpad first, then edit.
 
-`~/notes/.backups/` holds ad hoc snapshots, but only of the large `PC-3165` files. Do not rely on it.
+`~/notes/.backups/` holds ad hoc snapshots, but only of a few large notes. Do not rely on it.
 
 ### Deleting by string index is the hazard that has actually bitten
 
