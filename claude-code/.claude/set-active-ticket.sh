@@ -2,7 +2,7 @@
 # Set or clear the active Jira ticket for the current Claude session.
 # Used only by the `notes` skill to drive the status line (see statusline.sh).
 #
-#   set-active-ticket.sh PC-3633   # set the active ticket for this session
+#   set-active-ticket.sh PC-123   # set the active ticket for this session
 #   set-active-ticket.sh           # clear it
 #
 # State is stored per-session at ~/.claude/active-ticket/<session_id>.

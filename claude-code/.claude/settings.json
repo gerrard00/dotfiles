@@ -1,6 +1,12 @@
 {
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 2
+  },
   "enabledPlugins": {
-    "chrome-devtools-mcp@claude-plugins-official": true
+    "chrome-devtools-mcp@claude-plugins-official": true,
+    "datadog@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "chrome-devtools-plugins": {
@@ -10,6 +16,8 @@
       }
     }
   },
+  "effortLevel": "medium",
+  "tui": "fullscreen",
   "theme": "dark-ansi",
   "editorMode": "vim"
 }

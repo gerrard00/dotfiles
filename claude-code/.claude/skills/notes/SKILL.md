@@ -217,9 +217,9 @@ If the user says "let's wrap it up for now", "that's enough for now", "wrap up",
    ## Resume context
 
    - **Updated:** 2026-06-11
-   - **Branch:** feat-pc-3382-expose-termination-effective-date
-   - **Where we left off:** Wired up the new `terminationEffectiveDate` field in the DTO and service, but the integration test for cancellations is still failing on date-only comparison.
-   - **Next step:** Fix `cancellations.spec.ts` by normalising the expected date to `YYYY-MM-DD` before comparing.
+   - **Branch:** feat-pc-123-some-feature-name
+   - **Where we left off:** Wired up the new field in the DTO and service, but the integration test is still failing on a date-only comparison.
+   - **Next step:** Fix the failing spec by normalising the expected date to `YYYY-MM-DD` before comparing.
    - **Open questions:** 2 open, see "Open questions".
    <!-- resume-context:end -->
    ```
@@ -258,8 +258,8 @@ live. Nothing else in the note gets to declare something open.
   checked off in place — and lands in `## Decisions` as:
 
   ```
-  - **2026-08-25 — Does the Cooley override relax date sequencing everywhere?** Yes. Ruled by Gerrard;
-    the override relaxes sequencing on every date field, not just the termination date.
+  - **2026-08-25 — Should the importer retry the whole batch on a partial failure?** No. Ruled by
+    Gerrard; it retries only the rows that failed.
   ```
 
 - `## Decisions` is append-only history and is the answer's single home. Do not also record the answer next
