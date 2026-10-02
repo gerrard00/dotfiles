@@ -10,7 +10,7 @@ Generate a QA summary for a Curbwaste Jira **story** or **QA defect**. The outpu
 2. **How to test** — the steps that reach the changed behavior, and what should be observed.
 3. **Gate state required** — the feature flags and company settings, each with the state it must be in.
 4. **PRs** — a bullet list of markdown links.
-5. **Screenshots** — captioned placeholders for the user to attach images manually.
+5. **Screenshots** — captioned slots, filled with the images through the browser.
 
 Follow the steps below in order. Do not fabricate flags, PRs, or change descriptions — every item must be grounded in the Jira links and PR diffs you actually retrieve.
 
@@ -195,9 +195,67 @@ Give every slot a caption saying what it demonstrates, then an empty placeholder
 
 Pick only shots that demonstrate the fixed behavior. Pre-fix reproduction captures belong in the ticket notes, not here, unless they are the before half of an explicit before and after pair.
 
-🛑 **Get the text completely right before the user pastes anything.** Editing a Jira comment afterwards destroys pasted images: the API returns them as `blob:` references that do not survive a round trip, and the surrounding captions are dropped with them. If something must be added later, post a second comment instead of editing the first.
+🛑 **Get the text completely right before any image goes in.** Once images are in the comment, editing it through the API destroys them: the API returns them as `blob:` references that do not survive a round trip, and the surrounding captions are dropped with them. While the comment still holds nothing but text and empty slots, API edits are safe and are the right way to fix wording. After the images are in, make further changes through the browser editor, or post a second comment.
 
-There is no attachment upload available, so the user pastes each image by hand. Offer to put them on the clipboard one at a time with the `copy-image-to-clipboard` skill, naming which numbered slot each belongs to.
+#### Inserting the images yourself, through the browser
+
+The images do not have to be pasted by hand. Drive Chrome through the chrome-devtools MCP and
+fill every slot, in one pass, before handing the ticket back.
+
+The two obvious routes both fail, so do not spend time on them:
+
+- `Meta+v` dispatched over CDP does not paste. It is a synthetic key event and Chrome never reads
+  the real system clipboard, so the `copy-image-to-clipboard` route can only be driven by the user
+  at the keyboard.
+- The editor toolbar's **Add image, video, or file** button does not open an interceptable file
+  chooser. `upload_file` against it fails with "clicking it did not trigger a file chooser".
+
+What works is the editor's own hidden file input, `[data-testid="media-picker-file-input"]`. It
+accepts files directly, but hidden elements carry no uid in the accessibility snapshot, so it has
+to be made visible first.
+
+1. **Stage the images under the working directory.** `upload_file` only accepts paths beneath it,
+   and the images live in `~/notes/<KEY>/`. Copy them to a temp directory inside the working
+   directory, renamed `slot-01-…` through `slot-NN-…` so slot order is unambiguous. Delete the
+   directory when done.
+2. **Open the comment for editing.** Snapshot the page, find the comment's **Edit** button, click
+   it. The editor subtree appears with its own uid prefix; note the **Save** button's uid now, since
+   later snapshots are large.
+3. **Expose the file input.** There are usually two matches for
+   `[data-testid="media-picker-file-input"]`. Pick the one whose ancestors include
+   `[data-testid="editor-content-container"]` — the other belongs to the page, not the comment
+   editor. Note that `editor-content-container` is a **data-testid, not an id**: selecting it as
+   `#editor-content-container` matches nothing, and a fallback to the first match then grabs the
+   page input, whose uploads never reach the comment. Give it an
+   `aria-label` and a fixed position with real width and height. Do not test the result with
+   `offsetParent`, which is null for fixed elements; check `getBoundingClientRect()`. Snapshot and
+   grep for the label to get its uid. That uid stays valid for the whole pass.
+4. **Fill the slots in descending order, N down to 1.** Working backwards means each insertion
+   lands below every marker still to be filled, so no earlier marker shifts under you. For each:
+   - Select the marker's text node with a DOM `Range` plus `window.getSelection()` (ProseMirror
+     picks the selection up from the DOM), and scroll it into view.
+   - `press_key` **Backspace** to delete the marker, leaving an empty paragraph holding the caret.
+   - `upload_file` the slot's image against the exposed input's uid. The media lands in that
+     paragraph.
+5. **Verify before saving.** Walk the editor's children and confirm no `[screenshot N here]` text
+   remains and that captions and images alternate in the right order. Then click **Save**.
+6. **Verify after saving** by re-reading the comment through `getJiraIssue` with
+   `responseContentFormat: "adf"`. Check there is one `mediaSingle` per slot, each after its own
+   caption, and that each `alt` matches the file intended for that slot.
+
+Two things that cost a pass if you hit them:
+
+- **Never press Escape in the editor.** It closes the comment editor outright and discards the
+  edit, rather than dismissing whatever stray popup prompted it. Jira keeps a local draft, the
+  comment's button then reads **Edit (Unsaved changes)**, and reopening restores that draft. Any
+  slot whose marker was already deleted comes back as an empty paragraph with no marker text to
+  select, so fill it by placing a collapsed `Range` in the paragraph after its caption instead.
+- **The upload is not finished when `upload_file` returns.** Confirm the media landed before
+  moving on, by counting `.media-card-wrapper` inside the editor after each slot.
+
+Only when the browser is unavailable does the manual route apply: offer to put the images on the
+clipboard one at a time with the `copy-image-to-clipboard` skill, naming which numbered slot each
+belongs to.
 
 ## Notes
 
