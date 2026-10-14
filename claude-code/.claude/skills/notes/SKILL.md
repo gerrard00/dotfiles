@@ -79,6 +79,38 @@ in yellow after the context percentage. Change it only through that helper (via 
 
 A plain note lookup or general review must NOT change either piece of state.
 
+## Detecting the session target
+
+Use this when the user gave no key or topic — a bare `resume` / `continue`, or a wrap up with no
+target. Try the sources in order and stop at the first hit.
+
+1. **tmux session name.** If `$TMUX` is set, run (via `Bash`):
+
+   ```
+   tmux display-message -p -t "$TMUX_PANE" '#S'
+   ```
+
+   (If `$TMUX_PANE` is empty, drop the `-t` argument.) The session name is a hit if **either**:
+   - it matches `^[A-Za-z]+-\d+$` — a Jira key. Uppercase it and use it as the key; or
+   - a note with that exact name exists at `~/notes/<name>.md` — use that note, treated as a
+     free-text topic, not a Jira key. Do **not** set the active ticket state for it (see
+     "Session state").
+
+   The key regex is anchored on purpose: the whole session name must be the key, so a session
+   named `curbwaste-backend-2` is not read as `BACKEND-2`. Names that are neither a key nor an
+   existing note (`bugs`, `agent-skill-share`) are not a hit — fall through to the branch.
+2. **Git branch.** Run `git branch --show-current` (via `Bash`) and extract the first Jira-style
+   key from the branch name using regex `[A-Za-z]+-\d+` (case-insensitive), then uppercase it.
+   Example: `feat-pc-123-some-feature-name` → `PC-123`.
+3. **Neither.** STOP and ask the user which note to use. Do NOT fall back to listing recent notes
+   — that is a different intent.
+
+Always mention the detected target in your response so the user can correct it if it is wrong.
+
+**On disagreement:** if the tmux session gave a hit and the branch *also* yields a Jira key that
+differs from it, prefer the tmux value and name both — e.g. "Using PC-1234 (tmux session); the
+branch says PC-4026."
+
 ## Specific note lookup
 
 If the user asks for notes on a specific key or topic, prefer matches in this order:
@@ -104,11 +136,8 @@ Read the most relevant matching note or notes.
 
 If the user says "resume work on X", "pick up X", "continue X", or similar — including bare forms like "resume" or "continue" with no topic:
 
-0. If the user did not specify a key or topic:
-   a. Run `git branch --show-current` (via `Bash`) to get the current branch name.
-   b. Extract the first Jira-style key from the branch name using regex `[A-Za-z]+-\d+` (case-insensitive), then uppercase it. Example: `feat-pc-123-some-feature-name` → `PC-123`.
-   c. If the command fails (not in a git repo) or no key is found in the branch name, STOP and ask the user which note to resume. Do NOT fall back to listing recent notes — that is a different intent.
-   d. Otherwise, use the extracted key as X and continue with the steps below. Mention the detected key in your response so the user can correct it if wrong.
+0. If the user did not specify a key or topic, run "Detecting the session target" to find X, then
+   continue with the steps below.
 
 1. Extract the key or topic from the request (e.g., `PC-123`, `my cool plan`, `billing migration`).
 2. Use the same file lookup logic as "Specific note lookup" to find the matching note.
@@ -186,7 +215,7 @@ If the user says "let's wrap it up for now", "that's enough for now", "wrap up",
 
 1. Identify the target note. Try in order:
    a. A note created or touched during this session — use it.
-   b. Run `git branch --show-current` (via `Bash`) and extract the first Jira-style key (`[A-Za-z]+-\d+`, uppercased). Look up the matching note under `~/notes/` using the "Specific note lookup" rules.
+   b. Run "Detecting the session target", then look up the matching note under `~/notes/` using the "Specific note lookup" rules.
    c. If neither works, STOP and ask the user which note to update. Do NOT guess and do NOT fall back to listing recent notes.
 
 2. Read the current note contents (so updates merge cleanly).
