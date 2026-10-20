@@ -75,6 +75,8 @@ Check `~/notes` for a testing note tied to the ticket (glob `~/notes/*PC-123*`, 
 
 Use whichever the user picks. The Test Plan must have **at least 2 bullet points** (the canned default has two) — the PR check fails otherwise. If no testing note exists, still offer the canned default.
 
+**No fragile details.** Never write test counts ("208 unit tests"), suite counts, run durations, or anything else that goes stale the moment a test is added, removed or reshuffled during review. Describe what the tests cover in behavioral terms instead ("covering the flag off path and the no delivery case"). The same goes for automated test bullets that name a path no remaining test exercises: when tests change after the PR is opened, re-read the Test Plan and fix any bullet that no longer holds.
+
 ## 7. Add a Screenshots section — only if screenshots exist
 
 Screenshots for a ticket live in `~/notes` in one of two layouts. Check both (case-insensitive extensions `png`, `jpg`, `jpeg`, `gif`, `webp`):
