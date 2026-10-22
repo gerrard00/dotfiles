@@ -132,7 +132,11 @@ gc() {
 }
 
 prisma_everything() {
-  npm run prisma:gen && npm run prisma:apply && npm run prisma:test-apply
+  # migrate deploy, not migrate dev: dev resets the database on drift.
+  # Generate last so the client is never ahead of the applied schema.
+  npx prisma migrate deploy \
+    && node --env-file=.env.test node_modules/.bin/prisma migrate deploy \
+    && npm run prisma:gen
 }
 
 format_everything() {
