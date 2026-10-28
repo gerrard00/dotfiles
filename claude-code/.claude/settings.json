@@ -16,6 +16,11 @@
       }
     }
   },
+  "permissions": {
+    "allow": [
+      "mcp__curbwaste-prod-readonly-db__execute_sql"
+    ]
+  },
   "effortLevel": "medium",
   "tui": "fullscreen",
   "theme": "dark-ansi",
