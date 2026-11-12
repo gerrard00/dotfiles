@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code status line: show the Jira ticket for the current session,
+# Claude Code status line: show the Jira ticket or topic slug for the current session,
 # context-window usage, whether a wrap up is waiting on approval, and which of
 # the ~/projects worktrees the session is in. The active ticket and the wrap up
 # marker are set exclusively by the `notes` skill, stored per-session at
@@ -18,6 +18,12 @@ if [ -n "$session" ]; then
   state_file="$HOME/.claude/active-ticket/$session"
   [ -f "$state_file" ] && ticket=$(tr -d '[:space:]' < "$state_file")
   [ -f "$HOME/.claude/wrapup-pending/$session" ] && wrapup=$(printf '\033[33mwrap up pending\033[0m')
+fi
+
+# Free-text topic slugs can be long; cap them so the row keeps its other segments.
+MAX_TICKET=30
+if [ "${#ticket}" -gt "$MAX_TICKET" ]; then
+  ticket="${ticket:0:$((MAX_TICKET - 1))}…"
 fi
 
 # used_percentage is null before the first API call and right after /compact.

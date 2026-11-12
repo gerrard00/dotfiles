@@ -42,17 +42,36 @@ Identify whether the user requested:
 
 All notes are stored under `~/notes`.
 
+## Note names
+
+Every target is either a Jira key or a free-text name. Classify it before using it anywhere — filename,
+note title, status line, lookup.
+
+1. **Jira key.** If the extracted target matches `^[A-Za-z]+-\d+$`, it is a Jira key. Uppercase it
+   (`pc-123` → `PC-123`) and use it as is.
+2. **Free-text name.** Anything else is normalized to a slug, regardless of how the user typed it:
+   - lowercase it;
+   - replace every run of characters outside `a-z0-9` with a single `-`;
+   - trim leading and trailing `-`.
+
+   Examples: `Foo Bar` → `foo-bar`; `foo  bar!!` → `foo-bar`; `Foo/Bar v2` → `foo-bar-v2`.
+3. **Empty slug.** If normalizing leaves nothing (`!!!`), STOP and ask the user for a name.
+
+The slug is the only form a free-text name is saved or displayed in: the file is `~/notes/<slug>.md`,
+the note's `#` title is the slug, and the status line shows the slug. Never keep the user's original
+spelling alongside it.
+
 ## Session state (status line)
 
-The status line shows the Jira ticket for the current session, and whether a wrap up is waiting on approval. It is driven **only** by this skill — never by the git branch. State lives per-session, managed by the helper `~/.claude/set-active-ticket.sh`. Always change it through that helper (via `Bash`) — never write the state file directly.
+The status line shows the target for the current session (a Jira key or a free-text slug), and whether a wrap up is waiting on approval. It is driven **only** by this skill — never by the git branch. State lives per-session, managed by the helper `~/.claude/set-active-ticket.sh`. Always change it through that helper (via `Bash`) — never write the state file directly.
 
-- **Set** it when starting or resuming work on a Jira key (see those flows below):
+- **Set** it when starting or resuming work on any target (see those flows below):
 
   ```
-  ~/.claude/set-active-ticket.sh <KEY>
+  ~/.claude/set-active-ticket.sh <TARGET>
   ```
 
-  Use the uppercased Jira key (e.g. `PC-123`). Only set it for Jira keys — do not set it for free-text topics, since the status line shows a ticket key.
+  Use the form from "Note names": the uppercased Jira key (e.g. `PC-123`) or the slug (e.g. `foo-bar`).
 - **Clear** it on wrap up (no argument):
 
   ```
@@ -92,16 +111,16 @@ target. Try the sources in order and stop at the first hit.
 
    (If `$TMUX_PANE` is empty, drop the `-t` argument.) The session name is a hit if **either**:
    - it matches `^[A-Za-z]+-\d+$` — a Jira key. Uppercase it and use it as the key; or
-   - a note with that exact name exists at `~/notes/<name>.md` — use that note, treated as a
-     free-text topic, not a Jira key. Do **not** set the active ticket state for it (see
-     "Session state").
+   - normalizing it per "Note names" gives a slug and `~/notes/<slug>.md` exists — use that note
+     as a free-text target. A session named `Foo Bar` finds `~/notes/foo-bar.md`.
 
    The key regex is anchored on purpose: the whole session name must be the key, so a session
    named `curbwaste-backend-2` is not read as `BACKEND-2`. Names that are neither a key nor an
    existing note (`bugs`, `agent-skill-share`) are not a hit — fall through to the branch.
 2. **Git branch.** Run `git branch --show-current` (via `Bash`) and extract the first Jira-style
    key from the branch name using regex `[A-Za-z]+-\d+` (case-insensitive), then uppercase it.
-   Example: `feat-pc-123-some-feature-name` → `PC-123`.
+   Example: `feat-pc-123-some-feature-name` → `PC-123`. This step only finds Jira keys —
+   free-text work has no branch, so it is found by tmux session name or not at all.
 3. **Neither.** STOP and ask the user which note to use. Do NOT fall back to listing recent notes
    — that is a different intent.
 
@@ -113,22 +132,23 @@ branch says PC-4026."
 
 ## Specific note lookup
 
-If the user asks for notes on a specific key or topic, prefer matches in this order:
+If the user asks for notes on a specific key or topic, first classify the query per "Note names". Below,
+`<name>` is the uppercased Jira key or the slug. Prefer matches in this order:
 
 1. Exact file match:
-   - `~/notes/<query>.md`
+   - `~/notes/<name>.md`
 
 2. Case-insensitive filename match:
-   - files whose names contain the query
+   - files whose names contain `<name>`
 
 3. Content search:
    - files under `~/notes` whose contents mention the query
 
 Use these tools in order:
 
-1. `Read` — try `~/notes/<query>.md` directly (exact match).
-2. `Glob` — pattern `*<query>*` in `~/notes` (case-insensitive filename match).
-3. `Grep` — search for `<query>` in `~/notes` (content match).
+1. `Read` — try `~/notes/<name>.md` directly (exact match).
+2. `Glob` — pattern `*<name>*` in `~/notes` (case-insensitive filename match).
+3. `Grep` — search for the query as the user typed it, and for `<name>`, in `~/notes` (content match).
 
 Read the most relevant matching note or notes.
 
@@ -139,9 +159,9 @@ If the user says "resume work on X", "pick up X", "continue X", or similar — i
 0. If the user did not specify a key or topic, run "Detecting the session target" to find X, then
    continue with the steps below.
 
-1. Extract the key or topic from the request (e.g., `PC-123`, `my cool plan`, `billing migration`).
+1. Extract the key or topic from the request (e.g., `PC-123`, `my cool plan`, `billing migration`) and classify it per "Note names".
 2. Use the same file lookup logic as "Specific note lookup" to find the matching note.
-2a. If the resumed target is a Jira key, set the active ticket state file (see "Session state") to that uppercased key so the status line reflects this session's work.
+2a. Set the active ticket state file (see "Session state") to the uppercased Jira key or the slug so the status line reflects this session's work.
 3. Read the full note.
 4. If the note contains a `<!-- resume-context:start --> ... <!-- resume-context:end -->` block, surface it first — it is the most recent cold-start summary and the highest-signal section for resuming.
 4a. Read the `## Open questions` section and surface it immediately after the Resume context block. That section is the only authority on what is still unresolved. If the note phrases something as open **outside** that section — "OPEN QUESTION", "TBD", "awaiting", "we believe", "not settled" — do not treat it as live. Treat it as a reconcile bug: check it against `## Decisions`, say so, and offer to run "Reconciling open questions".
@@ -165,11 +185,14 @@ If the user says "resume work on X", "pick up X", "continue X", or similar — i
 If the user says "start work on X" or similar:
 
 1. Extract the topic from the request (e.g., `PC-123`, `billing migration`).
-2. Determine if X matches a Jira key pattern `[A-Z]+-\d+` (e.g., `PC-123`).
+2. Classify it per "Note names".
 3. Derive the target filename:
-   - Jira key: `~/notes/<KEY>.md` (preserve original case, e.g., `~/notes/PC-123.md`).
-   - Otherwise: kebab-case slug of the topic (lowercase, spaces → hyphens, strip punctuation). Example: "billing migration" → `~/notes/billing-migration.md`.
-4. Check if the file already exists using `Read`. If it does, STOP and ask the user how to proceed. Do NOT overwrite.
+   - Jira key: `~/notes/<KEY>.md` (uppercased, e.g., `~/notes/PC-123.md`).
+   - Otherwise: `~/notes/<slug>.md`. Example: "Billing Migration!" → `~/notes/billing-migration.md`.
+4. Check if the file already exists using `Read`. If it does, STOP. Do NOT overwrite. Warn the user that
+   the name collides — for a free-text name, show what they typed and the slug it normalized to, since
+   different inputs (`Foo Bar`, `foo/bar`) land on the same file — then show the existing note's title
+   and Resume context (if any), and ask whether to resume that note or pick a different name.
 5. If a Jira key was detected, fetch the ticket via `mcp__claude_ai_Atlassian__getJiraIssue` to get the title and a browseable link. If the cloudId is not known, call `mcp__claude_ai_Atlassian__getAccessibleAtlassianResources` first.
 6. Create the note with `Write`. Every note must include a `## TODO` section with one or more checkbox list items (`- [ ]`) so progress can be tracked. Template:
    - Jira key case:
@@ -192,7 +215,7 @@ If the user says "start work on X" or similar:
      ```
    - Free-text case:
      ```
-     # <Original topic as written by the user>
+     # <slug>
 
      ## TODO
 
@@ -206,7 +229,7 @@ If the user says "start work on X" or similar:
 
      _None yet._
      ```
-7. If a Jira key was detected, set the active ticket state file (see "Session state") to that uppercased key so the status line reflects this session's work.
+7. Set the active ticket state file (see "Session state") to the uppercased Jira key or the slug so the status line reflects this session's work.
 8. Confirm to the user what was created, including the file path. Do NOT start executing the work itself — wait for the user.
 
 ## Wrap up / end of session
@@ -227,7 +250,8 @@ If the user says "let's wrap it up for now", "that's enough for now", "wrap up",
 
 3. Auto-detect the fields of the Resume context block:
    - **Updated:** today's date (`YYYY-MM-DD`).
-   - **Branch:** output of `git branch --show-current`. Omit the line if not in a git repo.
+   - **Branch:** output of `git branch --show-current`, for Jira-key notes only. Omit the line for
+     free-text notes (they have no branch, so the current one is unrelated) and when not in a git repo.
    - **Where we left off:** a 1–2 sentence summary of session state, derived from what was actually discussed and changed this session (not invented).
    - **Next step:** a single concrete next action — what future-you should do first when resuming.
    - **Blockers:** anything preventing progress that is not a question. Omit the line if none.
@@ -301,6 +325,9 @@ goal is one record per question — no duplicates inside `## Open questions`, no
 
 **Scope.** The target note plus its siblings: glob `~/notes/<KEY>-*.md` when the note is a Jira key (e.g.
 `PC-123.md` pulls in `PC-123-test-plan.md`, `PC-123-execution-status.md`, `PC-123-gate-matrix.md`).
+For a free-text note, glob `~/notes/<slug>-*.md`. A slug can be the prefix of an unrelated topic
+(`billing` matches `billing-migration.md`), so if that glob returns anything, STOP before reading the
+matches: warn the user, list them, and ask which belong to this note. Include only the ones they confirm.
 Do not sweep all of `~/notes` — unrelated tickets produce false matches.
 
 0. **Adopt the section if missing.** Older notes predate this convention. If the note has no
