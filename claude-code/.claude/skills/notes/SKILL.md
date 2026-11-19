@@ -286,7 +286,8 @@ If the user says "let's wrap it up for now", "that's enough for now", "wrap up",
 7. Clear the active ticket state file and the wrap up pending marker (see "Session state") so the status line goes blank until work is next started or resumed.
 8. Confirm to the user what was written: the file path, a brief summary of the Resume context, and what
    the reconcile pass changed (questions resolved, duplicates merged, stale blocks deleted, files touched).
-   Do NOT commit, push, stage, or otherwise touch git state — notes only.
+   Do NOT commit, push, stage, or otherwise touch git state of any code repository. In `~/notes`, only
+   the commits described in "Recoverability" are made.
 
 ## Updating an existing note
 
@@ -382,19 +383,23 @@ Do not sweep all of `~/notes` — unrelated tickets produce false matches.
 
 ## Recoverability
 
-`~/notes` **is** a git repository on branch `master`. That does not make a given note recoverable: many
-notes are untracked and the last commit is often weeks stale. Establish which before any destructive edit
-— deleting a section, rewriting a block, reconciling open questions.
+`~/notes` is a git repository on branch `master`, and every note is tracked: the note, its siblings, and
+its evidence folder (`~/notes/<KEY>/`). Git is the only recovery mechanism.
+
+Before any destructive edit (deleting a section, rewriting a block, reconciling open questions), make sure
+the files you are about to touch are committed:
 
 ```
 GIT_DIR=/Users/gerrard/notes/.git GIT_WORK_TREE=/Users/gerrard/notes \
-  git ls-files --error-unmatch <file>
+  git status --short -- <files>
 ```
 
-- **Tracked** — `git diff -- <file>` shows what changed and `git checkout -- <file>` restores it. Proceed.
-- **Untracked** — there is no baseline. Copy the file aside to the scratchpad first, then edit.
+- **Clean**: proceed. `git diff -- <file>` shows what you changed and `git checkout -- <file>` restores it.
+- **Untracked (`??`) or modified (`M`)**: `git add` and `git commit` those files first, then edit.
 
-`~/notes/.backups/` holds ad hoc snapshots, but only of a few large notes. Do not rely on it.
+`~/notes/junk/` is the only place for files that must not be tracked: ad hoc backups, scratch copies,
+throwaway notes. `junk` is ignored by the global gitignore. Never copy notes aside to the scratchpad or
+any other folder as a backup; commit them instead.
 
 ### Deleting by string index is the hazard that has actually bitten
 
