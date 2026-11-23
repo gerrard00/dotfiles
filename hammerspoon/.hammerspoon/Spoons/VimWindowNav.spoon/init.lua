@@ -98,22 +98,14 @@ local function focusWindow(self, direction)
         return
     end
 
-    local targetWindow = nil
-
     if direction == "north" then
-        targetWindow = win:focusWindowNorth()
+        win:focusWindowNorth()
     elseif direction == "south" then
-        targetWindow = win:focusWindowSouth()
+        win:focusWindowSouth()
     elseif direction == "east" then
-        targetWindow = win:focusWindowEast()
+        win:focusWindowEast()
     elseif direction == "west" then
-        targetWindow = win:focusWindowWest()
-    end
-
-    if targetWindow then
-        log(self, "Focused window " .. direction .. ": " .. targetWindow:title())
-    else
-        log(self, "No window found " .. direction)
+        win:focusWindowWest()
     end
 end
 
