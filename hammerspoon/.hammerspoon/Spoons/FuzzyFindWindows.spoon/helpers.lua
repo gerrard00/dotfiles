@@ -28,6 +28,11 @@ function M.shouldExcludeWindow(win, appName)
         end
     end
 
+    -- filter out title-less helper windows (menu bar apps, agents)
+    if not win:isStandard() and (win:title() or "") == "" then
+        return true
+    end
+
     return false
 end
 
